@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://casa-e-harmonia-portal.adm-a3mediagroup.chatgpt.site/sitemap.xml
