@@ -21,7 +21,7 @@ for (const f of files) {
   const title = decode(html.match(/<title>(.*?)<\/title>/)?.[1] || "");
   const desc = decode(html.match(/<meta name="description" content="([^"]*)"/)?.[1] || "");
   const main = html.match(/<main[\s\S]*?<\/main>/)?.[0] || "";
-  const article = html.match(/<article[\s\S]*?<\/article>/)?.[0] || main;
+  const article = html.match(/<article>[\s\S]*?<\/article>/)?.[0] || main;
   const words = article.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ").split(/\s+/).filter((w) => /\p{L}/u.test(w)).length;
   const out = new Set(
     [...main.matchAll(/href="(\/[^"]*)"/g)].map((m) => norm(m[1])).filter((u) => !/\.(css|js|png|webp|svg|ico|xml|txt)$/.test(u)),
