@@ -83,3 +83,22 @@ curl -sI  https://casaeharmonia.com.br/build.mjs             | head -1          
 - `npm run imagens` (Python 3 + Pillow, só no desenvolvimento) gera `assets/og/*.jpg` (1200 × 675), as versões 16:9 `assets/fotos/*-600|1200.webp` das fotos locais, `logo.webp`, favicons e recomprime fotos pesadas. Rode depois de `npm run build`, que grava `dist/imagens-manifest.json`, e rode o build de novo.
 - `npm run fotos` baixa as fotos do Pexels para `assets/fotos/` e `assets/og/` (precisa de internet; a rede do ambiente de edição bloqueia o Pexels). Enquanto não forem baixadas, as capas continuam vindo de `images.pexels.com` e a imagem de compartilhamento é um cartão tipográfico.
 - Fontes: DM Sans e Playfair Display (variáveis, subconjunto latin, licença OFL) em `assets/fontes/`, sem Google Fonts.
+
+## Medição (preparada, desligada)
+
+Não há Google Analytics, AdSense nem pixels. O site já marca as interações principais e as empilha em `window.dataLayer`, que fica só no navegador enquanto nenhum serviço estiver instalado:
+
+| Evento | Quando |
+| --- | --- |
+| `ferramenta_calculou` | o usuário calcula em qualquer ferramenta (`{ ferramenta }`) |
+| `ferramenta_compartilhou` | copiar resultado ou compartilhar link (`{ ferramenta, acao }`) |
+| `ferramenta_clicou_calcular` | clique no botão Calcular (atributo `data-evento`) |
+| `guia_clicou_ferramenta` | clique no CTA ou na barra lateral de ferramentas de um guia |
+| `clicou_ferramenta` | clique em um card de ferramenta |
+
+Para ligar o GA4 depois: (1) publique uma política de privacidade atualizada e um banner de consentimento; (2) carregue o `gtag.js` com o Consent Mode v2 iniciando em `denied` e só mude para `granted` após o aceite; (3) no GA4/GTM, crie gatilhos de evento personalizado com os nomes acima. Nenhum dado é coletado antes disso.
+
+## Contato e autoria
+
+- `CONTATO_EMAIL=contato@exemplo.com.br npm run build` publica o e-mail em `/contato/`. Sem a variável, o build avisa e usa o canal público do GitHub.
+- Guias aceitam os campos opcionais `autor: { nome, bio }`, `revisor: { nome, bio }` e `revisado: "AAAA-MM-DD"`. Sem dados reais, a assinatura é "Redação Casa e Harmonia". Não preencha com pessoas fictícias.

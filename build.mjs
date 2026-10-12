@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { imagens } from "./data/imagens.mjs";
 import { artigosNovos } from "./data/artigos.mjs";
 import { guiasOriginais } from "./data/guias-originais.mjs";
+import { guiasDicas } from "./data/guias-dicas.mjs";
 import { hubs } from "./data/hubs.mjs";
 import { ferramentas as dadosFerramentas, grupos as gruposFerramentas } from "./data/ferramentas.mjs";
 import crypto from "node:crypto";
@@ -17,7 +18,14 @@ const DATAS = {
   ferramentas: "2026-10-12",
   dicas: "2026-10-12",
   sobre: "2026-10-12",
+  privacidade: "2026-10-12",
+  contato: "2026-10-12",
 };
+// Contato: defina CONTATO_EMAIL no ambiente do build. Sem ele, o site usa o canal público do GitHub.
+const CONTATO_EMAIL = (process.env.CONTATO_EMAIL || "").trim();
+const CANAL_GITHUB = "https://github.com/A3-Media-Group/Casa-e-Harmonia/issues";
+if (!CONTATO_EMAIL) console.warn("Aviso: CONTATO_EMAIL não definido; a página de contato usa o canal público do GitHub.");
+if (CONTATO_EMAIL && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(CONTATO_EMAIL)) throw Error("CONTATO_EMAIL inválido.");
 // Versão de CSS/JS pelo conteúdo: muda só quando o arquivo muda, permitindo cache longo.
 const versao = (f) => crypto.createHash("sha1").update(fs.readFileSync(f)).digest("hex").slice(0, 8);
 const V = { css: versao("styles.css"), js: versao("scripts.js"), print: versao("print.css") };
@@ -68,9 +76,12 @@ const valida = (onde, title, desc) => {
   if (title.length > 60 || /…$/.test(title)) throw Error(`Title inválido (${title.length}) em ${onde}: ${title}`);
   if (desc.length < 120 || desc.length > 155 || /…$/.test(desc)) throw Error(`Description inválida (${desc.length}) em ${onde}`);
 };
-const artigos = [...guiasOriginais, ...artigosNovos.map((a) => ({ ...a, novo: true }))];
+const artigos = [...guiasOriginais, ...artigosNovos.map((a) => ({ ...a, novo: true })), ...guiasDicas];
 const hubDe = (a) => hubs.find((h) => h.slug === a.cluster) || falha(`Guia sem hub: ${a.slug}`);
 const hubUrl = (h) => `/guias/${h.slug}/`;
+// Autoria: campos opcionais autor/revisor ({ nome, bio }) e revisado (data). Sem dados reais, assina a redação.
+const byline = (a) =>
+  `<p class="byline">Por ${a.autor ? `<b>${a.autor.nome}</b>` : '<a href="/sobre.html">Redação Casa e Harmonia</a>'}${a.revisor ? ` · Revisado por <b>${a.revisor.nome}</b>${a.revisado ? ` em ${dataTxt(a.revisado)}` : ""}` : ""} · Atualizado em ${dataTxt(a.atualizado)}</p>${a.autor?.bio || a.revisor?.bio ? `<p class="byline-bio">${[a.autor?.bio, a.revisor?.bio].filter(Boolean).join(" ")}</p>` : ""}`;
 const dataTxt = (iso) => {
   const [y, m, d] = iso.split("-").map(Number);
   return `${d} de ${["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"][m - 1]} de ${y}`;
@@ -78,7 +89,7 @@ const dataTxt = (iso) => {
 
 // ---------- Layout ----------
 const nav = `<header><a class="brand" href="/"><img src="/assets/logo.webp" alt="Casa e Harmonia" width="150" height="82"></a><nav aria-label="Principal"><a href="/#artigos">Guias</a><a href="/dicas.html">Dicas</a><a href="/ferramentas/">Ferramentas</a><a href="/sobre.html">Sobre</a></nav><a class="header-cta" href="/ferramentas/">Ferramentas grátis <span>↗</span></a></header>`;
-const footer = `<footer><div><strong>CASA E HARMONIA</strong><p>Ideias para morar bem. Espaço para viver melhor.</p></div><div><b>Explore</b><a href="/#artigos">Guias da casa</a><a href="/dicas.html">Dicas do dia a dia</a><a href="/ferramentas/">Ferramentas gratuitas</a></div><div><b>Mais lidos</b><a href="/artigos/como-tirar-mofo-da-parede.html">Tirar mofo da parede</a><a href="/artigos/economizar-conta-de-luz.html">Economizar na conta de luz</a><a href="/artigos/quantos-btus-ar-condicionado.html">Quantos BTUs preciso?</a><a href="/artigos/como-limpar-sofa.html">Como limpar o sofá</a></div><div><b>Temas</b>${hubs.map((h) => `<a href="${hubUrl(h)}">${h.nome}</a>`).join("")}</div><div><b>Portal</b><a href="/sobre.html">Sobre e privacidade</a></div><small>© 2026 Casa e Harmonia · Feito para a vida em casa.</small></footer>`;
+const footer = `<footer><div><strong>CASA E HARMONIA</strong><p>Ideias para morar bem. Espaço para viver melhor.</p></div><div><b>Explore</b><a href="/#artigos">Guias da casa</a><a href="/dicas.html">Dicas do dia a dia</a><a href="/ferramentas/">Ferramentas gratuitas</a></div><div><b>Mais lidos</b><a href="/artigos/como-tirar-mofo-da-parede.html">Tirar mofo da parede</a><a href="/artigos/economizar-conta-de-luz.html">Economizar na conta de luz</a><a href="/artigos/quantos-btus-ar-condicionado.html">Quantos BTUs preciso?</a><a href="/artigos/como-limpar-sofa.html">Como limpar o sofá</a></div><div><b>Temas</b>${hubs.map((h) => `<a href="${hubUrl(h)}">${h.nome}</a>`).join("")}</div><div><b>Portal</b><a href="/sobre.html">Sobre o portal</a><a href="/privacidade/">Privacidade</a><a href="/contato/">Contato</a></div><small>© 2026 Casa e Harmonia · Feito para a vida em casa.</small></footer>`;
 const ogDe = (path) => (path === "index.html" ? "home" : path.replace(/\/index\.html$/, "").replace(/\.html$/, "").replace(/\//g, "-"));
 function page(title, desc, body, path, schema = {}, { image = "hero", type, eyebrow = "Casa e Harmonia" } = {}) {
   if (!path.startsWith("404")) valida(path, title, desc);
@@ -115,7 +126,7 @@ const toolGrid = (lista) =>
 const articleCard = (a) =>
   `<a class="article-card" data-category="${esc(a.cat)}" href="/artigos/${a.slug}.html">${img(a.slug, "", { dono: a.slug, sizes: "(max-width: 600px) 100vw, 33vw" })}<div><span class="eyebrow">${a.cat}${a.novo ? " · NOVO" : ""}</span><h3>${a.card}</h3><p>${a.intro.split(". ")[0]}.</p><span class="read">Ler o guia <b>↗</b></span></div></a>`;
 const tipCard = ([cat, h, p, link]) =>
-  `<article class="tip-card" data-category="${esc(cat)}"><span class="eyebrow">${cat}</span><h3>${h}</h3><p>${p}</p>${link ? `<a href="${link}">Saiba mais ↗</a>` : ""}</article>`;
+  `<article class="tip-card" data-category="${esc(cat)}"><span class="eyebrow">${cat}</span><h3>${h}</h3><p>${p}</p>${link ? `<a href="${link}">${link.startsWith("/artigos/") ? "Ler o guia completo" : link.startsWith("/ferramentas/") ? "Usar a ferramenta" : "Saiba mais"} ↗</a>` : ""}</article>`;
 const searchTools = (id, label, placeholder, cats, total, nome) =>
   `<div class="search-tools" data-search="${id}"><label for="${id}-search">${label}<input id="${id}-search" type="search" placeholder="${placeholder}"></label><label for="${id}-filter">Filtrar por categoria<select id="${id}-filter"><option value="">Todas</option>${cats.map((c) => `<option>${c}</option>`).join("")}</select></label></div><p id="${id}-count" class="search-count" role="status" data-label="${nome}">${total} ${nome}</p>`;
 const uniq = (arr) => [...new Set(arr)];
@@ -156,7 +167,7 @@ for (const a of artigos) {
   const relacionados = a.relacionados.map((s) => artigos.find((b) => b.slug === s) || falha(`Relacionado inexistente em ${a.slug}: ${s}`));
   const ferramentasDoGuia = a.ferramentas.map((id) => ferramentas.find((f) => f[0] === id) || falha(`Ferramenta inexistente em ${a.slug}: ${id}`));
   const contexto = (j) => (a.contexto || []).filter(([k]) => k === j).map(([, h]) => h).join("");
-  const body = `<main class="post"><nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <a href="${hubUrl(hubDe(a))}">${hubDe(a).nome}</a> / <span>${a.title}</span></nav><p class="eyebrow">${a.cat} · GUIA PRÁTICO</p><h1>${a.title}</h1><p class="intro">${a.intro}</p><p class="byline"><a href="/sobre.html">Redação Casa e Harmonia</a> · Atualizado em ${dataTxt(a.atualizado)}</p><figure class="cover-figure">${img(a.slug, "cover", { eager: true, dono: a.slug, sizes: "(max-width: 900px) 100vw, 1100px" })}<figcaption>${credito(a.slug)}</figcaption></figure><div class="post-layout"><article><nav class="contents" aria-label="Neste artigo"><strong>Neste guia</strong>${a.sections.map((s, j) => `<a href="#sec${j}">${s[0]}</a>`).join("")}<a href="#faq">Perguntas frequentes</a></nav>${a.resumo ? `<aside class="summary"><strong>Resumo rápido</strong><ul>${a.resumo.map((r) => `<li>${r}</li>`).join("")}</ul></aside>` : ""}${a.sections.map((s, j) => `<section id="sec${j}"><h2>${s[0]}</h2>${s[1]}${contexto(j)}</section>`).join("")}<h2 id="faq">Perguntas frequentes sobre ${a.tema}</h2>${a.faq.map((f) => `<details class="faq" open><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}<aside class="post-cta"><p class="eyebrow">SEU PRÓXIMO PASSO</p><p class="cta-title">${a.cta}.</p><a class="button" href="${a.tool[0]}" data-evento="guia_clicou_ferramenta">${a.tool[1]} ↗</a></aside><p class="related-title">Leia também</p><ul class="related">${relacionados.map((b) => `<li><a href="/artigos/${b.slug}.html"><span class="eyebrow">${b.cat}</span>${b.title}</a></li>`).join("")}</ul><h2>Fontes e referências</h2><p>Este guia reúne orientações gerais para adaptar ao seu espaço. Para serviços técnicos, siga os manuais dos produtos e a orientação de um profissional qualificado.</p>${a.sources.map(([l, u]) => `<p><a href="${u}" rel="noopener">${l}</a>.</p>`).join("")}</article><aside class="reading-aside"><p class="eyebrow">FERRAMENTAS GRÁTIS</p><p class="aside-title">Faça as contas antes de começar.</p><ul>${ferramentasDoGuia.map(([id, , h]) => `<li><a href="${toolUrl(id)}" data-evento="guia_clicou_ferramenta">${h} ↗</a></li>`).join("")}</ul><p class="eyebrow">NO DIA A DIA</p><ul><li><a href="/dicas.html">Dicas rápidas para a casa ↗</a></li></ul></aside></div></main>`;
+  const body = `<main class="post"><nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <a href="${hubUrl(hubDe(a))}">${hubDe(a).nome}</a> / <span>${a.title}</span></nav><p class="eyebrow">${a.cat} · GUIA PRÁTICO</p><h1>${a.title}</h1><p class="intro">${a.intro}</p>${byline(a)}<figure class="cover-figure">${img(a.slug, "cover", { eager: true, dono: a.slug, sizes: "(max-width: 900px) 100vw, 1100px" })}<figcaption>${credito(a.slug)}</figcaption></figure><div class="post-layout"><article><nav class="contents" aria-label="Neste artigo"><strong>Neste guia</strong>${a.sections.map((s, j) => `<a href="#sec${j}">${s[0]}</a>`).join("")}<a href="#faq">Perguntas frequentes</a></nav>${a.resposta ? `<aside class="summary answer"><strong>Resposta rápida</strong><p>${a.resposta}</p></aside>` : ""}${a.resumo ? `<aside class="summary"><strong>Resumo rápido</strong><ul>${a.resumo.map((r) => `<li>${r}</li>`).join("")}</ul></aside>` : ""}${a.sections.map((s, j) => `<section id="sec${j}"><h2>${s[0]}</h2>${s[1]}${contexto(j)}</section>`).join("")}<h2 id="faq">Perguntas frequentes sobre ${a.tema}</h2>${a.faq.map((f) => `<details class="faq" open><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}<aside class="post-cta"><p class="eyebrow">SEU PRÓXIMO PASSO</p><p class="cta-title">${a.cta}.</p><a class="button" href="${a.tool[0]}" data-evento="guia_clicou_ferramenta">${a.tool[1]} ↗</a></aside><p class="related-title">Leia também</p><ul class="related">${relacionados.map((b) => `<li><a href="/artigos/${b.slug}.html"><span class="eyebrow">${b.cat}</span>${b.title}</a></li>`).join("")}</ul><h2>Fontes e referências</h2><p>Este guia reúne orientações gerais para adaptar ao seu espaço. Para serviços técnicos, siga os manuais dos produtos e a orientação de um profissional qualificado.</p>${a.sources.map(([l, u]) => `<p><a href="${u}" rel="noopener">${l}</a>.</p>`).join("")}</article><aside class="reading-aside"><p class="eyebrow">FERRAMENTAS GRÁTIS</p><p class="aside-title">Faça as contas antes de começar.</p><ul>${ferramentasDoGuia.map(([id, , h]) => `<li><a href="${toolUrl(id)}" data-evento="guia_clicou_ferramenta">${h} ↗</a></li>`).join("")}</ul><p class="eyebrow">NO DIA A DIA</p><ul><li><a href="/dicas.html">Dicas rápidas para a casa ↗</a></li></ul></aside></div></main>`;
   write(
     `artigos/${a.slug}.html`,
     page(
@@ -170,7 +181,7 @@ for (const a of artigos) {
             "@type": "Article",
             headline: a.title,
             description: a.desc,
-            author: { "@type": "Organization", name: "Redação Casa e Harmonia", url: origin + "/sobre.html" },
+            author: a.autor ? { "@type": "Person", name: a.autor.nome } : { "@type": "Organization", name: "Redação Casa e Harmonia", url: origin + "/sobre.html" },
             publisher: { "@type": "Organization", name: "Casa e Harmonia", logo: { "@type": "ImageObject", url: origin + "/assets/icone-512.png" } },
             datePublished: a.publicado,
             dateModified: a.atualizado,
@@ -332,9 +343,9 @@ write(
 write(
   "sobre.html",
   page(
-    "Sobre e privacidade | Casa e Harmonia",
-    "Conheça o portal, a política editorial, a origem das fotografias e como as ferramentas usam o armazenamento local do navegador.",
-    `<main class="post narrow"><h1>Sobre o Casa e Harmonia</h1><p>Um portal sobre decoração, limpeza, organização e jardinagem, com guias, dicas e ferramentas práticas para planejar a vida em casa.</p><h2>Critério editorial</h2><p>Guias introdutórios com sugestões adaptáveis. Os temas são escolhidos a partir de dúvidas frequentes de quem cuida da casa e de tendências públicas de busca. Estimativas de tinta, energia, BTU e materiais dependem do produto e do local. Custos de reforma e tarifas são premissas editáveis, não cotações. Trabalhos técnicos exigem avaliação de um profissional.</p><h2>Privacidade</h2><p>Não há cadastro nem formulário de coleta de dados. O cronograma e suas marcações ficam no localStorage deste navegador e podem ser apagados nas configurações do navegador. Os cálculos das ferramentas acontecem no seu dispositivo. A tipografia usa o Google Fonts e parte das fotografias é carregada do Pexels (images.pexels.com); esses serviços recebem os dados normais de conexão ao carregar os arquivos.</p><h2>Publicidade</h2><p>Nenhum anúncio ou rastreador está ativo nesta versão. Conteúdos patrocinados, quando houver, serão identificados.</p><h2>Fotografias</h2><p>As fotos vêm do Pexels (licença gratuita, sem necessidade de cadastro) e do Wikimedia Commons (licenças Creative Commons). O crédito e o link para a página original aparecem abaixo de cada imagem. As imagens são ilustrativas.</p><h2>Correções e contato</h2><p>Encontrou um erro? <a href="https://github.com/A3-Media-Group/Casa-e-Harmonia/issues">Envie uma sugestão pelo repositório oficial</a>. Esse canal é público; não inclua dados pessoais. O portal é mantido pela A3 Media Group.</p></main>`,
+    "Sobre o Casa e Harmonia: critério editorial e fontes",
+    "Conheça o Casa e Harmonia: como escolhemos os temas, como usamos fontes e valores de referência, de onde vêm as fotografias e como corrigimos erros.",
+    `<main class="post narrow"><h1>Sobre o Casa e Harmonia</h1><p>Um portal sobre decoração, limpeza, organização, jardinagem e conforto em casa, com guias, dicas e ferramentas gratuitas para planejar a vida doméstica. O portal é mantido pela A3 Media Group.</p><h2>Critério editorial</h2><p>Os temas partem de dúvidas frequentes de quem cuida da casa e de tendências públicas de busca. Cada guia traz fontes específicas do assunto e deixa claro o que é recomendação técnica, o que é regra editorial de decoração e o que depende de avaliação profissional. Estimativas de tinta, energia, BTU e materiais dependem do produto e do local; custos e tarifas são premissas editáveis, não cotações.</p><h2>Autoria e revisão</h2><p>Os textos são produzidos pela Redação Casa e Harmonia. Quando um guia tiver autor ou revisor técnico identificado, o nome, a formação e a data de revisão aparecem no topo da página.</p><h2>Fotografias</h2><p>As fotos vêm do Pexels (licença gratuita, sem necessidade de cadastro) e do Wikimedia Commons (licenças Creative Commons). O crédito e o link para a página original aparecem abaixo de cada imagem. As imagens são ilustrativas.</p><h2>Publicidade</h2><p>Nenhum anúncio ou rastreador está ativo nesta versão. Conteúdos patrocinados, quando houver, serão identificados.</p><h2>Correções</h2><p>Encontrou um erro? Use a página de <a href="/contato/">contato</a>. Atualizações substanciais mudam a data de “atualizado em” do guia.</p><p>Leia também a <a href="/privacidade/">política de privacidade</a>.</p></main>`,
     "sobre.html",
     {},
     { eyebrow: "Sobre o portal" },
@@ -342,11 +353,35 @@ write(
   DATAS.sobre,
 );
 write(
+  "privacidade/index.html",
+  page(
+    "Política de privacidade | Casa e Harmonia",
+    "Política de privacidade do Casa e Harmonia: sem cadastro, cálculos no navegador, dados salvos só no seu aparelho e quais serviços externos são acessados.",
+    `<main class="post narrow"><nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <span>Privacidade</span></nav><h1>Política de privacidade</h1><p>Esta política explica quais dados o Casa e Harmonia trata quando você usa o site. Última atualização: ${dataTxt(DATAS.privacidade)}.</p><h2>O que não coletamos</h2><p>Não há cadastro, login nem formulário que envie dados ao portal. As calculadoras fazem as contas no seu navegador; os valores que você digita não são enviados a servidores.</p><h2>Armazenamento no seu aparelho</h2><p>O cronograma de limpeza e o checklist de mudança guardam suas marcações no armazenamento local do navegador (localStorage), apenas neste aparelho. Você pode apagá-las nas configurações do navegador. Os links compartilháveis das ferramentas levam os valores digitados no endereço da página: compartilhe-os apenas com quem quiser.</p><h2>Serviços externos</h2><p>Parte das fotografias é carregada do Pexels (images.pexels.com), que recebe os dados normais de conexão, como endereço IP e navegador, ao entregar as imagens. As fontes tipográficas são servidas pelo próprio site.</p><h2>Medição de audiência e publicidade</h2><p>Nesta versão não há Google Analytics, AdSense, pixels de redes sociais nem outros rastreadores. Se forem adotados no futuro, esta política será atualizada antes, e o uso de cookies não essenciais dependerá do seu consentimento.</p><h2>Seus direitos</h2><p>Como não mantemos dados pessoais, não há registros para consultar ou excluir. Em caso de dúvidas, use a página de <a href="/contato/">contato</a>.</p></main>`,
+    "privacidade/index.html",
+    { "@graph": [breadcrumb([["Início", "/"], ["Privacidade", "/privacidade/"]])] },
+    { eyebrow: "Privacidade" },
+  ),
+  DATAS.privacidade,
+);
+write(
+  "contato/index.html",
+  page(
+    "Contato | Casa e Harmonia",
+    "Fale com o Casa e Harmonia: sugestões de pauta, correções em guias e ferramentas e dúvidas sobre o portal. Veja o canal de contato e o que informar.",
+    `<main class="post narrow"><nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <span>Contato</span></nav><h1>Contato</h1><p>Encontrou um erro em um guia, tem uma sugestão de tema ou uma dúvida sobre uma ferramenta? Fale com a gente.</p>${CONTATO_EMAIL ? `<p>Escreva para <a href="mailto:${CONTATO_EMAIL}">${CONTATO_EMAIL}</a>.</p>` : `<p>O canal de contato desta versão é público: <a href="${CANAL_GITHUB}">envie uma mensagem pelo repositório oficial</a>. Não inclua dados pessoais.</p>`}<h2>O que informar</h2><ul><li>O endereço da página.</li><li>O trecho ou o cálculo com problema.</li><li>A fonte que você usou para comparar, se houver.</li></ul><p>Não respondemos dúvidas técnicas individuais sobre obras, instalações elétricas ou de gás: nesses casos, procure um profissional habilitado.</p></main>`,
+    "contato/index.html",
+    { "@graph": [breadcrumb([["Início", "/"], ["Contato", "/contato/"]])] },
+    { eyebrow: "Contato" },
+  ),
+  DATAS.contato,
+);
+write(
   "404.html",
   page(
     "Página não encontrada | Casa e Harmonia",
     "Encontre os guias, dicas e ferramentas do Casa e Harmonia.",
-    '<main class="post narrow"><h1>Vamos encontrar outro caminho?</h1><p>Esta página não está disponível. Que tal começar por aqui?</p><p><a href="/#artigos">Guias da casa</a> · <a href="/dicas.html">Dicas</a> · <a href="/ferramentas/">Ferramentas</a></p><a class="button" href="/">Voltar para o início</a></main>',
+    '<main class="post narrow"><h1>Vamos encontrar outro caminho?</h1><p>Esta página não está disponível. Que tal começar por aqui?</p><p><a href="/#artigos">Guias da casa</a> · <a href="/dicas.html">Dicas</a> · <a href="/contato/">Contato</a> · <a href="/ferramentas/">Ferramentas</a></p><a class="button" href="/">Voltar para o início</a></main>',
     "404.html",
   ).replace('content="index,follow,max-image-preview:large"', 'content="noindex"'),
 );

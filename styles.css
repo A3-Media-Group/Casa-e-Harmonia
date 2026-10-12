@@ -1985,3 +1985,7 @@ header nav {
 .tool-group h2 { font-size: 28px; }
 .check-group { font-weight: 700; color: var(--green); margin: 14px 0 6px; }
 @media (max-width: 600px) { .wall-row { grid-template-columns: 1fr 1fr; } .wall-row .text-button { grid-column: 1 / -1; justify-self: start; } }
+/* Fase 7: resposta rápida e autoria */
+.summary.answer { background: #f3efe4; border-left-color: #b9773f; }
+.summary.answer p { margin: 6px 0 0; font-size: 16px; }
+.byline-bio { font-size: 13px; color: var(--muted); margin-top: -6px; }

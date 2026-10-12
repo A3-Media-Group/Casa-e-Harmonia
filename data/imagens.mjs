@@ -60,5 +60,13 @@ export const imagens = {
   "tirar-manchas-de-roupa": pexels(4440652, "Pessoa colocando roupas na máquina de lavar", "a-person-putting-clothes-in-a-washing-machine"),
   "quantos-btus-ar-condicionado": pexels(38788452, "Ar-condicionado split instalado na parede de um ambiente", "wall-mounted-air-conditioner-in-modern-interior"),
   "organizar-geladeira": pexels(4443442, "Frutas e verduras organizadas dentro da geladeira", "assorted-fruits-and-vegetables-in-refrigerator"),
-
+  // Guias criados a partir das dicas
+  "como-limpar-panela-queimada": pexels(3768169, "Panela de inox sobre a boca do fogão", "stainless-steel-cooking-pot-on-stove"),
+  "como-limpar-rejunte": pexels(7303903, "Escova de limpeza apoiada sobre um pano", "a-brush-lying-on-a-cloth"),
+  "como-limpar-micro-ondas": pexels(9462228, "Pessoa limpando o interior do micro-ondas com pano", "a-person-cleaning-a-microwave-oven"),
+  "como-higienizar-colchao": pexels(212269, "Cama com edredom e lençóis brancos", "white-bed-comforter"),
+  "como-saber-se-o-ovo-esta-bom": pexels(6294430, "Ovos vermelhos em caixa, um deles quebrado", "carton-container-with-eggs-in-rows"),
+  "como-cortar-cebola-sem-chorar": pexels(10432426, "Mãos cortando cebola roxa sobre tábua de madeira", "woman-cutting-onion-with-knife"),
+  "como-limpar-box-de-vidro": pexels(271631, "Banheiro com box de vidro transparente", "clear-glass-shower-room"),
+  "como-descobrir-vazamento-de-agua": pexels(67184, "Gotas de água caindo de uma torneira", "water-drops-from-faucet"),
 };

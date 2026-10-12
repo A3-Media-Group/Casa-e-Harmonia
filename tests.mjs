@@ -164,7 +164,7 @@ test("cada guia tem foto própria, sem repetição", () => {
     assert.ok(!capas.has(src), `imagem repetida em ${f} e ${capas.get(src)}`);
     capas.set(src, f);
   }
-  assert.equal(capas.size, 23);
+  assert.equal(capas.size, 31);
 });
 
 test("o site não tem referências a receitas", () => {

@@ -42,7 +42,7 @@ export const artigosNovos = [
         "<p>Procure um profissional se a mancha volta rapidamente, se a área é maior que um metro quadrado, se o reboco está esfarelando ou se há goteiras. Infiltração não se resolve com tinta: é preciso corrigir a origem da água. Pessoas com asma, alergias ou baixa imunidade devem evitar fazer a limpeza.</p>",
       ],
     ],
-    relacionados: ["rotina-limpeza", "como-calcular-tinta", "tirar-manchas-de-roupa", "organizar-guarda-roupa"],
+    relacionados: ["rotina-limpeza","como-calcular-tinta","como-limpar-rejunte","como-limpar-box-de-vidro","tirar-manchas-de-roupa"],
     ferramentas: ["tinta", "organizacao"],
     contexto: [
       [2, "<p>Depois de resolver a umidade, use o guia de <a href=\"/artigos/como-calcular-tinta.html\">como calcular a tinta para repintar</a> e confira as dicas para <a href=\"/artigos/organizar-guarda-roupa.html\">evitar mofo dentro do guarda-roupa</a>.</p>"],
@@ -94,7 +94,7 @@ export const artigosNovos = [
         "<p>Couro natural pede pano levemente úmido e hidratante específico; evite álcool e vinagre. Veludo deve ser escovado no sentido do pelo com escova macia, com umidade mínima. Suede e camurça sintética costumam aceitar escova própria e pouca água. Em tecidos delicados, a limpeza profissional é a escolha mais segura.</p>",
       ],
     ],
-    relacionados: ["sofa-perfeito", "tirar-manchas-de-roupa", "rotina-limpeza"],
+    relacionados: ["sofa-perfeito","tirar-manchas-de-roupa","rotina-limpeza","como-higienizar-colchao"],
     ferramentas: ["organizacao", "reforma"],
     contexto: [
       [2, "<p>Muitas dessas técnicas também servem para tecidos de roupa: veja a <a href=\"/artigos/tirar-manchas-de-roupa.html\">tabela de manchas por tipo</a>.</p>"],
@@ -150,7 +150,7 @@ export const artigosNovos = [
         "<ul><li>Use ralo com peneira e descarte restos de comida no lixo.</li><li>Limpe pratos com papel antes de lavar.</li><li>Guarde óleo usado em garrafa PET fechada e leve a um ponto de coleta.</li><li>Uma vez por semana, despeje água quente com detergente no ralo.</li></ul>",
       ],
     ],
-    relacionados: ["cozinha-funcional", "organizar-geladeira", "rotina-limpeza"],
+    relacionados: ["cozinha-funcional","organizar-geladeira","rotina-limpeza","como-descobrir-vazamento-de-agua"],
     ferramentas: ["organizacao", "reforma"],
     contexto: [
       [4, "<p>Uma <a href=\"/artigos/cozinha-funcional.html\">cozinha bem organizada</a> facilita esse hábito, e a limpeza semanal do ralo pode entrar na sua <a href=\"/artigos/rotina-limpeza.html\">rotina de limpeza</a>.</p>"],
@@ -206,7 +206,7 @@ export const artigosNovos = [
         "<p>Compare a Etiqueta Nacional de Conservação de Energia (ENCE): ela mostra a classe de eficiência e o consumo estimado em kWh por mês. Um aparelho um pouco mais caro, mas eficiente, pode se pagar com a economia ao longo dos anos. Famílias de baixa renda inscritas no CadÚnico podem ter direito à Tarifa Social de Energia Elétrica; consulte sua distribuidora.</p>",
       ],
     ],
-    relacionados: ["quantos-btus-ar-condicionado", "iluminacao-led", "casa-inteligente", "organizar-geladeira"],
+    relacionados: ["quantos-btus-ar-condicionado","iluminacao-led","casa-inteligente","organizar-geladeira","como-descobrir-vazamento-de-agua"],
     ferramentas: ["energia", "quanto-gasta-o-chuveiro-eletrico", "consumo-mensal-do-ar-condicionado"],
     contexto: [
       [2, "<p>Veja também <a href=\"/artigos/organizar-geladeira.html\">como organizar a geladeira</a> para que o ar frio circule melhor.</p>"],
@@ -414,7 +414,7 @@ export const artigosNovos = [
         "<p>Deixe a peça de molho em água morna com sabão em pó ou alvejante sem cloro, conforme o rótulo, por algumas horas. Repita se necessário. Golas amareladas respondem bem a uma pasta de bicarbonato com detergente esfregada com escova macia. Seque à sombra e só passe depois de confirmar que a mancha saiu.</p>",
       ],
     ],
-    relacionados: ["como-limpar-sofa", "rotina-limpeza", "organizar-guarda-roupa"],
+    relacionados: ["como-limpar-sofa","rotina-limpeza","organizar-guarda-roupa","como-higienizar-colchao"],
     ferramentas: ["organizacao", "energia"],
     contexto: [
       [0, "<p>Para manchas em estofados, siga o passo a passo de <a href=\"/artigos/como-limpar-sofa.html\">como limpar sofá de tecido</a>.</p>"],
@@ -517,7 +517,7 @@ export const artigosNovos = [
         "<ul><li>Porcione antes de congelar e retire o máximo de ar dos sacos.</li><li>Identifique com nome e data.</li><li>Descongele na geladeira, nunca sobre a pia.</li><li>Não recongele alimentos crus que já foram descongelados.</li></ul>",
       ],
     ],
-    relacionados: ["cozinha-funcional", "economizar-conta-de-luz", "organizacao-5s"],
+    relacionados: ["cozinha-funcional","economizar-conta-de-luz","organizacao-5s","como-limpar-micro-ondas","como-saber-se-o-ovo-esta-bom"],
     ferramentas: ["energia", "organizacao"],
     contexto: [
       [1, "<p>Uma geladeira organizada também gasta menos: veja os hábitos para <a href=\"/artigos/economizar-conta-de-luz.html\">economizar na conta de luz</a>.</p>"],

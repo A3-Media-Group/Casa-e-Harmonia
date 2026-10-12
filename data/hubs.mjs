@@ -7,7 +7,7 @@ export const hubs = [
     nome: "Limpeza e manutenção",
     title: "Limpeza e manutenção da casa: guias práticos",
     desc: "Guias de limpeza e manutenção da casa: mofo na parede, sofá, pia entupida, manchas de roupa e uma rotina de limpeza que cabe na semana.",
-    guias: ["como-tirar-mofo-da-parede", "como-limpar-sofa", "como-desentupir-pia", "tirar-manchas-de-roupa", "rotina-limpeza"],
+    guias: ["como-tirar-mofo-da-parede", "como-limpar-sofa", "como-desentupir-pia", "tirar-manchas-de-roupa", "rotina-limpeza", "como-limpar-rejunte", "como-limpar-box-de-vidro", "como-limpar-panela-queimada", "como-limpar-micro-ondas", "como-higienizar-colchao", "como-descobrir-vazamento-de-agua"],
     ferramentas: ["organizacao", "checklist-de-mudanca"],
     intro: [
       "Limpar a casa fica mais leve quando você separa dois tipos de trabalho: a manutenção diária, que evita o acúmulo, e as tarefas pontuais, que resolvem um problema específico, como uma mancha de mofo, um sofá encardido ou uma pia que não escoa. Os guias desta seção cobrem os dois lados, sempre com o mesmo critério: começar pela causa, usar o produto certo para cada superfície e saber a hora de chamar um profissional.",
@@ -39,7 +39,7 @@ export const hubs = [
     nome: "Organização e cozinha",
     title: "Organização da casa e da cozinha: guias práticos",
     desc: "Guias de organização: guarda-roupa, geladeira, método 5S adaptado para casa e cozinha funcional para guardar, preparar e limpar com menos passos.",
-    guias: ["organizar-guarda-roupa", "organizar-geladeira", "organizacao-5s", "cozinha-funcional"],
+    guias: ["organizar-guarda-roupa", "organizar-geladeira", "organizacao-5s", "cozinha-funcional", "como-saber-se-o-ovo-esta-bom", "como-cortar-cebola-sem-chorar"],
     ferramentas: ["organizacao", "checklist-de-mudanca", "reforma", "calculadora-de-rejunte"],
     intro: [
       "Organizar a casa não é deixá-la com cara de catálogo, e sim fazer com que cada coisa tenha um lugar fácil de encontrar e fácil de devolver. Quando guardar dá trabalho, o objeto fica pelo caminho. Os guias desta seção partem dessa ideia e mostram como reduzir o volume, criar zonas por frequência de uso e montar sistemas que outras pessoas da casa também conseguem manter.",
