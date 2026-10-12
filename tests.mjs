@@ -46,11 +46,6 @@ test("consumo de energia em kWh e custo com bandeira", () => {
   assert.equal(Math.round(r.cost * 100) / 100, 90.75);
   assert.throws(() => run('energy([{name:"X",qty:1,watts:100,hours:25,days:30}],1)'));
 });
-test("conversor de medidas culinárias", () => {
-  assert.equal(run('measure(1,"240","Farinha de trigo").g'), 120);
-  assert.equal(run('measure(2,"15","Açúcar refinado").g'), 22.5);
-  assert.equal(run('measure(120,"g","Farinha de trigo").ml'), 240);
-});
 test("papel de parede com rapport", () => {
   const r = run("wallpaper(3.5,2.6,0,0.53,10,0)");
   assert.equal(r.strips, 7);
@@ -65,14 +60,6 @@ test("churrasco por convidado", () => {
   assert.equal(r.charcoal, 5);
   assert.throws(() => run("barbecue(1,1,0,5,4)"));
 });
-test("quantidades de receita em frações legíveis", () => {
-  assert.equal(run("fmtQty(0.5)"), "½");
-  assert.equal(run("fmtQty(1.5)"), "1½");
-  assert.equal(run("fmtQty(2.5 * 2)"), "5");
-  assert.equal(run("fmtQty(0.25)"), "¼");
-  assert.equal(run("fmtQty(1000)"), "1000");
-});
-
 const walk = (d) =>
   fs
     .readdirSync(d, { withFileTypes: true })
@@ -80,7 +67,7 @@ const walk = (d) =>
 const files = walk("dist").filter((f) => f.endsWith(".html"));
 
 test("páginas, assets, links internos e JSON-LD válidos", () => {
-  assert.equal(files.length, 41);
+  assert.equal(files.length, 28);
   for (const f of files) {
     const html = fs.readFileSync(f, "utf8");
     assert.equal((html.match(/<h1[ >]/g) || []).length, 1, f);
@@ -92,32 +79,26 @@ test("páginas, assets, links internos e JSON-LD válidos", () => {
     for (const m of html.matchAll(/<img [^>]*>/g)) assert.match(m[0], /alt="[^"]+"/, f);
   }
   const tools = fs.readFileSync("dist/ferramentas.html", "utf8");
-  for (const id of ["floor-form", "btu-form", "energy-form", "measure-form", "bbq-form", "wallpaper-form"])
+  for (const id of ["floor-form", "btu-form", "energy-form", "bbq-form", "wallpaper-form"])
     assert.match(tools, new RegExp(`id="${id}"`));
   assert.match(fs.readFileSync("dist/index.html", "utf8"), /cores-sala-pequena/);
 });
 
-test("cada guia e cada receita tem foto própria, sem repetição", () => {
+test("cada guia tem foto própria, sem repetição", () => {
   const capas = new Map();
-  for (const f of files.filter((f) => /dist\/(artigos|receitas)\//.test(f))) {
+  for (const f of files.filter((f) => /dist\/artigos\//.test(f))) {
     const html = fs.readFileSync(f, "utf8");
     const src = html.match(/<img class="cover" src="([^"]+)"/)?.[1];
     assert.ok(src, "sem imagem de capa: " + f);
     assert.ok(!capas.has(src), `imagem repetida em ${f} e ${capas.get(src)}`);
     capas.set(src, f);
   }
-  assert.equal(capas.size, 35);
-  // A listagem de receitas exibe a foto de cada receita.
-  const lista = fs.readFileSync("dist/receitas.html", "utf8");
-  assert.equal((lista.match(/class="recipe-card"[^>]*><img /g) || []).length, 12);
+  assert.equal(capas.size, 23);
 });
-
-test("receitas têm dados estruturados Recipe completos", () => {
-  for (const f of files.filter((f) => f.includes("dist/receitas/"))) {
+test("o site não tem mais referências a receitas", () => {
+  for (const f of files) {
     const html = fs.readFileSync(f, "utf8");
-    const ld = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/)[1]);
-    const recipe = ld["@graph"].find((x) => x["@type"] === "Recipe");
-    for (const k of ["name", "image", "recipeIngredient", "recipeInstructions", "totalTime", "recipeYield"])
-      assert.ok(recipe[k], `${f} sem ${k}`);
+    assert.doesNotMatch(html, /\/receitas|"Recipe"|Receitas/, f);
   }
+  assert.ok(!fs.existsSync("dist/receitas.html"));
 });

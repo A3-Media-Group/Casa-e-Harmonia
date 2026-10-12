@@ -399,7 +399,7 @@ export const artigosNovos = [
       ["Posso colocar comida quente na geladeira?", "Espere esfriar até perder o vapor (sem deixar horas fora) e divida em porções menores. Comida muito quente aumenta o consumo e aquece os outros alimentos."],
       ["Bicarbonato tira o cheiro da geladeira?", "Um pote aberto com bicarbonato ajuda a absorver odores leves. Limpeza e descarte de alimentos estragados continuam essenciais."],
     ],
-    tool: ["/receitas.html", "Ver receitas para aproveitar os ingredientes"],
+    tool: ["/ferramentas.html#energia", "Calcular o consumo da geladeira"],
     sources: [],
   },
 ];

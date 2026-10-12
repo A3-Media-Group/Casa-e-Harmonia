@@ -32,7 +32,6 @@ const pexels = (id, alt, pagina) => ({
 export const imagens = {
   // Home e páginas institucionais
   hero: pexels(5825380, "Sala clara com sofá, plantas e luz natural", "living-room-interior-with-furniture-and-plants-at-home"),
-  receitasCapa: local(4, "Cozinha com bancada de preparo e armários"),
   dicasCapa: pexels(4740484, "Sala moderna com móveis e várias plantas", "modern-living-room-interior-with-furniture-and-assorted-plants"),
 
   // Artigos originais (uma foto exclusiva por guia)
@@ -62,17 +61,4 @@ export const imagens = {
   "quantos-btus-ar-condicionado": pexels(38788452, "Ar-condicionado split instalado na parede de um ambiente", "wall-mounted-air-conditioner-in-modern-interior"),
   "organizar-geladeira": pexels(4443442, "Frutas e verduras organizadas dentro da geladeira", "assorted-fruits-and-vegetables-in-refrigerator"),
 
-  // Receitas
-  "morango-do-amor": pexels(19478157, "Doces vermelhos brilhantes com calda de açúcar caramelizada, a mesma calda do morango do amor", "candy-apples-on-display"),
-  "batata-frita-air-fryer": pexels(2962450, "Batatas fritas douradas e crocantes", "macro-photography-of-french-fries"),
-  "pudim-de-leite": pexels(18089587, "Pudim de leite com calda de caramelo", "spanish-flan-dessert"),
-  "bolo-de-cenoura": pexels(5741969, "Fatia de bolo de cenoura vista de cima", "top-view-of-a-slice-of-carrot-cake"),
-  brigadeiro: pexels(9285197, "Brigadeiros enrolados no granulado", "close-up-of-brigadeiro-cookies"),
-  "panqueca-simples": pexels(4725646, "Panquecas finas dobradas em prato branco", "close-up-photo-of-crepes-on-white-plate"),
-  "coxa-de-frango-air-fryer": pexels(2611917, "Frango assado dourado", "close-up-photo-of-cooked-chicken"),
-  "lasanha-a-bolonhesa": pexels(4079522, "Fatia de lasanha à bolonhesa em prato branco", "lasagna-on-white-ceramic-plate"),
-  "bolo-de-banana": pexels(830894, "Fatias de bolo de banana em pires", "close-up-photography-of-banana-bread-on-saucer"),
-  "omelete-de-legumes": pexels(10934498, "Omelete com tomate e ervas em prato branco", "directly-above-view-of-omelette-on-plate"),
-  "pao-caseiro": pexels(7693958, "Fatias de pão caseiro sobre tábua de madeira", "slices-of-delicious-homemade-bread"),
-  "strogonoff-de-frango": pexels(4661880, "Cogumelos refogando na frigideira para o strogonoff", "photo-of-mushroom-cooking-in-frying-pan"),
 };

@@ -103,33 +103,6 @@ function energy(rows, tariff, flag = 0) {
   return { items, kwh, cost: kwh * (tariff + flag) };
 }
 
-// Gramas por xícara de 240 ml (valores aproximados de uso doméstico).
-const INGREDIENTES = {
-  "Farinha de trigo": 120,
-  "Açúcar refinado": 180,
-  "Açúcar mascavo": 150,
-  "Açúcar de confeiteiro": 120,
-  "Chocolate ou cacau em pó": 90,
-  Manteiga: 200,
-  "Óleo": 220,
-  "Leite ou água": 240,
-  "Arroz cru": 190,
-  "Aveia em flocos": 80,
-  "Fubá": 140,
-  "Amido de milho": 150,
-  Polvilho: 150,
-  Mel: 340,
-  "Coco ralado": 80,
-  "Queijo ralado": 90,
-};
-function measure(qty, unit, ingredient) {
-  const gCup = INGREDIENTES[ingredient];
-  if (!gCup || !Number.isFinite(qty) || qty <= 0) throw Error("Informe uma quantidade válida.");
-  const ml = unit === "g" ? (qty / gCup) * 240 : qty * Number(unit);
-  if (!Number.isFinite(ml)) throw Error("Medida inválida.");
-  return { ml, g: (ml / 240) * gCup, cups: ml / 240, tbsp: ml / 15 };
-}
-
 function wallpaper(width, height, discount, rollWidth, rollLength, repeatCm) {
   if (![width, height, discount, rollWidth, rollLength, repeatCm].every(Number.isFinite) || width <= 0 || height <= 0 || discount < 0 || rollWidth <= 0 || rollLength <= 0 || repeatCm < 0)
     throw Error("Confira as medidas.");
@@ -162,25 +135,6 @@ function barbecue(men, women, kids, drinkers, hours) {
     water: people * 0.5 * factor,
     ice: Math.ceil(people * 0.5),
   };
-}
-
-function fmtQty(v) {
-  if (v == null) return "";
-  if (v >= 20) return String(Math.round(v));
-  const inteiro = Math.floor(v + 1e-9);
-  const resto = v - inteiro;
-  const fr = [
-    [0, ""],
-    [0.25, "¼"],
-    [1 / 3, "⅓"],
-    [0.5, "½"],
-    [2 / 3, "⅔"],
-    [0.75, "¾"],
-    [1, ""],
-  ].reduce((a, b) => (Math.abs(b[0] - resto) < Math.abs(a[0] - resto) ? b : a));
-  const base = fr[0] === 1 ? inteiro + 1 : inteiro;
-  if (!base && !fr[1]) return String(Math.round(v * 100) / 100).replace(".", ",");
-  return (base ? String(base) : "") + fr[1];
 }
 
 /* ------------------------------- Interface ------------------------------- */
@@ -326,26 +280,6 @@ if ($("energy-form")) {
       fail("energia-result", error);
     }
   };
-}
-
-if ($("measure-form")) {
-  $("measure-ing").innerHTML = Object.keys(INGREDIENTES).map((k) => `<option>${k}</option>`).join("");
-  const run = () => {
-    try {
-      const ing = $("measure-ing").value;
-      const r = measure(n("measure-qty"), $("measure-unit").value, ing);
-      const g = INGREDIENTES[ing];
-      $("medidas-result").innerHTML = `<p class="eyebrow">${ing.toUpperCase()}</p><div class="number">${fmt(r.g, 0)} <small>g</small></div><p>≈ ${fmt(r.ml, 0)} ml · ${fmt(r.cups, 2)} xícara(s) · ${fmt(r.tbsp, 1)} colher(es) de sopa</p><table><thead><tr><th>Medida</th><th>Peso aproximado</th></tr></thead><tbody><tr><td>1 xícara</td><td>${fmt(g, 0)} g</td></tr><tr><td>½ xícara</td><td>${fmt(g / 2, 0)} g</td></tr><tr><td>⅓ xícara</td><td>${fmt(g / 3, 0)} g</td></tr><tr><td>¼ xícara</td><td>${fmt(g / 4, 0)} g</td></tr><tr><td>1 colher de sopa</td><td>${fmt(g / 16, 1)} g</td></tr><tr><td>1 colher de chá</td><td>${fmt(g / 48, 1)} g</td></tr></tbody></table><p class="form-note">Valores aproximados para medidas niveladas. Para confeitaria, prefira a balança.</p>`;
-    } catch (error) {
-      fail("medidas-result", error);
-    }
-  };
-  $("measure-form").onsubmit = (e) => {
-    e.preventDefault();
-    run();
-  };
-  $("measure-ing").onchange = run;
-  $("measure-unit").onchange = run;
 }
 
 if ($("bbq-form"))
@@ -586,36 +520,3 @@ if (document.querySelectorAll)
         }),
     );
   });
-
-/* ------------------------------ Receitas ------------------------------ */
-if ($("servings")) {
-  const base = Number(document.querySelector(".recipe").dataset.base);
-  const update = () => {
-    const v = Math.max(1, Math.min(200, Math.round(n("servings")) || base));
-    const plural = [["lata", "latas"], ["xícara", "xícaras"], ["colher (sopa)", "colheres (sopa)"], ["colher (chá)", "colheres (chá)"], ["medida", "medidas"], ["dente", "dentes"]];
-    document.querySelectorAll(".qty").forEach((q) => {
-      const val = (Number(q.dataset.qty) * v) / base;
-      q.textContent = fmtQty(val);
-      const u = q.parentElement.querySelector(".unit");
-      const pair = u && plural.find((p) => p.includes(u.textContent));
-      if (pair) u.textContent = pair[val > 1 ? 1 : 0];
-    });
-  };
-  $("servings").oninput = update;
-  document.querySelectorAll(".step").forEach(
-    (b) =>
-      (b.onclick = () => {
-        $("servings").value = Math.max(1, n("servings") + Number(b.dataset.step));
-        update();
-      }),
-  );
-  $("copy-ingredients").onclick = async () => {
-    const text = [...document.querySelectorAll(".ing-list li")].map((li) => (li.classList.contains("ing-group") ? `\n${li.textContent}:` : `- ${li.textContent.trim()}`)).join("\n");
-    try {
-      await navigator.clipboard.writeText(`${document.querySelector("h1").textContent}\n${text}`);
-      $("copy-status").textContent = "Lista copiada para a área de transferência.";
-    } catch {
-      $("copy-status").textContent = "Não foi possível copiar automaticamente. Selecione a lista e copie.";
-    }
-  };
-}
