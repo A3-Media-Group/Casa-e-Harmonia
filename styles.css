@@ -1,4 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap");
+/* Fontes hospedadas no próprio site (latin, variáveis, licença OFL em assets/fontes/). */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/assets/fontes/dm-sans-latin.woff2") format("woff2-variations"), url("/assets/fontes/dm-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/assets/fontes/playfair-display-latin.woff2") format("woff2-variations"), url("/assets/fontes/playfair-display-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/assets/fontes/playfair-display-latin-italic.woff2") format("woff2-variations"), url("/assets/fontes/playfair-display-latin-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 :root {
   --green: #2d503e;
   --olive: #777c50;
@@ -1589,7 +1613,7 @@ select:focus-visible {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 22px;
 }
-.idea-grid article {
+.idea-grid > div {
   border-top: 2px solid var(--green);
   padding-top: 14px;
 }
@@ -1875,3 +1899,93 @@ header nav {
   flex-wrap: wrap;
   gap: 8px 18px;
 }
+/* Títulos visuais que não entram no outline de headings (Fase 2). */
+.aside-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 26px;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.cta-title,
+.related-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+.related-title {
+  margin-top: 40px;
+}
+/* Hubs por tema (Fase 4) */
+.hub-intro p {
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 760px;
+}
+.hub-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 0 0 36px;
+}
+.hub-list a {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  background: #fffdf9;
+}
+.hub-list b {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.25;
+}
+.hub-list span:last-child {
+  font-size: 14px;
+  color: var(--muted);
+}
+.hub .tool-grid,
+.hub .tip-grid {
+  margin-bottom: 36px;
+}
+.hub-outros {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  font-size: 15px;
+}
+.hub-outros a,
+.hub-intro a {
+  color: var(--green);
+  text-decoration: underline;
+}
+/* Páginas de ferramenta (Fase 5) */
+.tool-page .intro p { font-size: 17px; }
+.campo { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.campo small { color: var(--muted); font-size: 12px; }
+.input-unit { display: flex; align-items: center; gap: 8px; }
+.input-unit input { flex: 1; min-width: 0; }
+.input-unit em { font-style: normal; color: var(--muted); font-size: 13px; white-space: nowrap; }
+.walls { display: grid; gap: 10px; margin-bottom: 8px; }
+.wall-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; }
+.premissas { margin: 14px 0; border: 1px dashed var(--line); border-radius: 12px; padding: 10px 14px; }
+.premissas summary { cursor: pointer; font-weight: 600; font-size: 14px; }
+.premissas .form-grid { margin-top: 12px; }
+.tool-panel form .button { margin-top: 18px; }
+.tool-actions { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; border-top: 1px solid #cfd8c4; padding-top: 12px; }
+.tool-actions[hidden] { display: none; }
+.result-title { font-family: "Playfair Display", Georgia, serif; font-size: 26px; line-height: 1.2; }
+.aviso { background: #f6efe0; border-left: 4px solid #b9773f; padding: 12px 16px; border-radius: 8px; font-size: 15px; }
+.tool-group { margin: 36px 0; }
+.tool-group h2 { font-size: 28px; }
+.check-group { font-weight: 700; color: var(--green); margin: 14px 0 6px; }
+@media (max-width: 600px) { .wall-row { grid-template-columns: 1fr 1fr; } .wall-row .text-button { grid-column: 1 / -1; justify-self: start; } }
+/* Fase 7: resposta rápida e autoria */
+.summary.answer { background: #f3efe4; border-left-color: #b9773f; }
+.summary.answer p { margin: 6px 0 0; font-size: 16px; }
+.byline-bio { font-size: 13px; color: var(--muted); margin-top: -6px; }

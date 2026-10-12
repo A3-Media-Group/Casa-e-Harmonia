@@ -1,0 +1,75 @@
+# Casa e Harmonia — configuração Apache/LiteSpeed (Hostinger).
+# Gerado a partir de hospedagem/htaccess pelo build (npm run build). Não edite a cópia da raiz.
+
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) http -> https e www -> domínio sem www, em um único 301.
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://casaeharmonia.com.br%{REQUEST_URI} [R=301,L,NE]
+
+  # 2) /index.html e /pasta/index.html -> versão com barra (só para pedidos diretos, sem laço com o DirectoryIndex).
+  RewriteCond %{THE_REQUEST} \s/+((?:[^\s?]*/)?)index\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L,NE]
+
+  # 3) Página única antiga de ferramentas -> índice novo (o navegador mantém a âncora; o índice
+  #    redireciona #tinta, #btu etc. para a página própria de cada ferramenta).
+  RewriteRule ^ferramentas\.html$ /ferramentas/ [R=301,L]
+
+  # 4) Arquivos de código e dados do repositório não são páginas públicas: respondem 404.
+  RewriteRule ^(data|scripts|hospedagem|dist|node_modules|\.git)(/|$) - [R=404,L]
+  RewriteRule \.(mjs|md|py|lock)$ - [R=404,L]
+  RewriteRule ^(package(-lock)?\.json|tests\.mjs|serve\.mjs|build\.mjs|\.gitignore)$ - [R=404,L]
+</IfModule>
+
+# Compressão (Brotli quando disponível, senão gzip).
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# Tipos usados pelo site.
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+</IfModule>
+
+# Cache: fontes por 1 ano (arquivos imutáveis); imagens por 30 dias (nomes sem hash);
+# CSS/JS levam ?v=<hash do conteúdo> e podem ficar 1 ano; HTML, sitemap e robots sempre revalidam.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|jpe?g|png|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

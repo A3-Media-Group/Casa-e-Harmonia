@@ -1,0 +1,63 @@
+/* Impressão: ferramentas, guias e checklists sem navegação. */
+header,
+footer,
+nav,
+.skip,
+.tool-actions,
+.tool-panel form button,
+.text-button,
+.post-cta,
+.reading-aside,
+.related,
+.related-title,
+.premissas summary,
+.energy-add,
+.search-tools {
+  display: none !important;
+}
+body {
+  background: #fff;
+  color: #000;
+  font-size: 12pt;
+}
+main {
+  padding: 0 !important;
+  max-width: none !important;
+}
+.tool-panel {
+  display: block !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 16pt !important;
+}
+.result {
+  background: none !important;
+  border: 1px solid #999;
+  padding: 12pt !important;
+  break-inside: avoid;
+}
+input,
+select {
+  border: 0 !important;
+  border-bottom: 1px solid #999 !important;
+  background: none !important;
+}
+details {
+  display: block;
+}
+details > summary {
+  list-style: none;
+  font-weight: 700;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+.check-item input {
+  width: 12pt;
+  height: 12pt;
+}
+img {
+  max-height: 6cm;
+  width: auto !important;
+}
