@@ -1916,3 +1916,51 @@ header nav {
 .related-title {
   margin-top: 40px;
 }
+/* Hubs por tema (Fase 4) */
+.hub-intro p {
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 760px;
+}
+.hub-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 0 0 36px;
+}
+.hub-list a {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  background: #fffdf9;
+}
+.hub-list b {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.25;
+}
+.hub-list span:last-child {
+  font-size: 14px;
+  color: var(--muted);
+}
+.hub .tool-grid,
+.hub .tip-grid {
+  margin-bottom: 36px;
+}
+.hub-outros {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  font-size: 15px;
+}
+.hub-outros a,
+.hub-intro a {
+  color: var(--green);
+  text-decoration: underline;
+}

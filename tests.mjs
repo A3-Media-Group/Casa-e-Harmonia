@@ -67,7 +67,7 @@ const walk = (d) =>
 const files = walk("dist").filter((f) => f.endsWith(".html"));
 
 test("páginas, assets, links internos e JSON-LD válidos", () => {
-  assert.equal(files.length, 28);
+  assert.equal(files.length, 33);
   for (const f of files) {
     const html = fs.readFileSync(f, "utf8");
     assert.equal((html.match(/<h1[ >]/g) || []).length, 1, f);

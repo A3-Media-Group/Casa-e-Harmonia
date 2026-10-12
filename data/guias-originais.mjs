@@ -3,6 +3,7 @@ export const guiasOriginais = [
   {
     "slug": "japandi",
     "cat": "Decoração",
+    "cluster": "decoracao-e-cores",
     "card": "Japandi: simplicidade que acolhe",
     "title": "Estilo Japandi: como criar uma casa leve e acolhedora",
     "desc": "Estilo Japandi em casa: como unir o minimalismo japonês ao aconchego escandinavo com móveis que você já tem, paleta neutra e texturas naturais.",
@@ -70,6 +71,7 @@ export const guiasOriginais = [
   {
     "slug": "biofilia",
     "cat": "Jardinagem",
+    "cluster": "plantas-e-natureza",
     "card": "Um pouco mais de natureza, dentro de casa",
     "title": "Design biofílico em apartamentos pequenos: por onde começar",
     "desc": "Design biofílico em apartamento pequeno: use luz natural, plantas certas e materiais naturais para trazer a natureza para casa sem complicar a rotina.",
@@ -132,6 +134,7 @@ export const guiasOriginais = [
   {
     "slug": "iluminacao-led",
     "cat": "Arquitetura",
+    "cluster": "energia-e-conforto",
     "card": "A luz certa muda tudo",
     "title": "LED quente ou frio: escolha a luz de cada cômodo",
     "desc": "LED quente ou frio? Entenda kelvin, lúmens e IRC e planeje a iluminação de cada cômodo: sala, quarto, cozinha e banheiro, sem errar na compra.",
@@ -194,6 +197,7 @@ export const guiasOriginais = [
   {
     "slug": "plantas-para-sala",
     "cat": "Jardinagem",
+    "cluster": "plantas-e-natureza",
     "card": "7 plantas para uma sala mais viva",
     "title": "7 plantas resistentes para a sala: cuidados sem mitos",
     "desc": "7 plantas resistentes para a sala, escolhidas pela luz do ambiente, com cuidados de rega e o que a ciência diz sobre plantas e qualidade do ar.",
@@ -260,6 +264,7 @@ export const guiasOriginais = [
   {
     "slug": "cozinha-funcional",
     "cat": "Organização",
+    "cluster": "organizacao-e-cozinha",
     "card": "Cada centímetro pode trabalhar a seu favor",
     "title": "Cozinha funcional: 10 soluções para aproveitar o espaço",
     "desc": "Cozinha funcional: 10 soluções para guardar, lavar, preparar e cozinhar com menos passos, aproveitando gavetas, cantos e nichos sem apertar o espaço.",
@@ -322,6 +327,7 @@ export const guiasOriginais = [
   {
     "slug": "casa-inteligente",
     "cat": "Funcionalidades",
+    "cluster": "energia-e-conforto",
     "card": "Uma casa inteligente começa pequena",
     "title": "Casa inteligente acessível: automatize uma tarefa por vez",
     "desc": "Casa inteligente acessível: comece por uma automação útil, confira compatibilidade (Wi-Fi, Matter, hub) e proteja o acesso aos dispositivos.",
@@ -383,6 +389,7 @@ export const guiasOriginais = [
   {
     "slug": "cores-terrosas",
     "cat": "Decoração",
+    "cluster": "decoracao-e-cores",
     "card": "O aconchego mora nas cores",
     "title": "Cores terrosas na sala: combinações que acolhem",
     "desc": "Cores terrosas na sala: terracota, areia, caramelo e verde-oliva em três combinações que acolhem, com dicas para testar antes de pintar a parede.",
@@ -449,6 +456,7 @@ export const guiasOriginais = [
   {
     "slug": "organizacao-5s",
     "cat": "Organização",
+    "cluster": "organizacao-e-cozinha",
     "card": "Menos bagunça. Mais espaço para viver.",
     "title": "Organização minimalista: aplique o método 5S em casa",
     "desc": "Método 5S em casa: utilização, ordenação, limpeza, padronização e disciplina adaptados à rotina para organizar sem comprar caixas antes da hora.",
@@ -510,6 +518,7 @@ export const guiasOriginais = [
   {
     "slug": "sofa-perfeito",
     "cat": "Decoração",
+    "cluster": "decoracao-e-cores",
     "card": "O sofá certo para a sua vida real",
     "title": "Como escolher o sofá: medidas, tecidos e conforto",
     "desc": "Como escolher o sofá certo: medidas da sala e do caminho de entrega, profundidade do assento, densidade da espuma e o tecido ideal para a rotina.",
@@ -567,6 +576,7 @@ export const guiasOriginais = [
   {
     "slug": "varanda-pequena",
     "cat": "Arquitetura",
+    "cluster": "decoracao-e-cores",
     "card": "Sua varanda, um novo lugar de encontro",
     "title": "Varanda gourmet pequena: ideias para receber com conforto",
     "desc": "Varanda gourmet pequena: como definir o uso, escolher móveis e materiais para sol e chuva e o que verificar com o condomínio antes de reformar.",
@@ -625,6 +635,7 @@ export const guiasOriginais = [
   {
     "slug": "cores-sala-pequena",
     "cat": "Decoração",
+    "cluster": "decoracao-e-cores",
     "card": "Sala pequena, personalidade de sobra",
     "title": "Cores para sala pequena: monte uma paleta que combina com você",
     "seo": "Cores para sala pequena: paleta que combina",
@@ -693,6 +704,7 @@ export const guiasOriginais = [
   {
     "slug": "como-calcular-tinta",
     "cat": "Decoração",
+    "cluster": "decoracao-e-cores",
     "card": "Tinta na medida, sem conta em dobro",
     "title": "Como calcular tinta: área, demãos e rendimento acabado",
     "desc": "Como calcular tinta sem erro: meça a área líquida, entenda rendimento por demão ou acabado e transforme litros em latas, galões e quartos.",
@@ -759,6 +771,7 @@ export const guiasOriginais = [
   {
     "slug": "rotina-limpeza",
     "cat": "Organização",
+    "cluster": "limpeza-e-manutencao",
     "card": "Uma rotina leve para cuidar da casa",
     "title": "Rotina de limpeza: divida as tarefas sem sobrecarregar o dia",
     "desc": "Rotina de limpeza realista: separe tarefas diárias, semanais e mensais, divida responsabilidades e use os produtos sem misturas perigosas.",

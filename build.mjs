@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { imagens } from "./data/imagens.mjs";
 import { artigosNovos } from "./data/artigos.mjs";
 import { guiasOriginais } from "./data/guias-originais.mjs";
+import { hubs } from "./data/hubs.mjs";
 import crypto from "node:crypto";
 import { dicas, ideias } from "./data/dicas.mjs";
 
@@ -25,6 +26,9 @@ const esc = (s) =>
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll('"', "&quot;");
+const falha = (msg) => {
+  throw Error(msg);
+};
 const abs = (src) => (src.startsWith("http") ? src : origin + src);
 
 // ---------- Imagens: cada fotografia pertence a um único conteúdo ----------
@@ -64,6 +68,8 @@ const valida = (onde, title, desc) => {
   if (desc.length < 120 || desc.length > 155 || /…$/.test(desc)) throw Error(`Description inválida (${desc.length}) em ${onde}`);
 };
 const artigos = [...guiasOriginais, ...artigosNovos.map((a) => ({ ...a, novo: true }))];
+const hubDe = (a) => hubs.find((h) => h.slug === a.cluster) || falha(`Guia sem hub: ${a.slug}`);
+const hubUrl = (h) => `/guias/${h.slug}/`;
 const dataTxt = (iso) => {
   const [y, m, d] = iso.split("-").map(Number);
   return `${d} de ${["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"][m - 1]} de ${y}`;
@@ -71,7 +77,7 @@ const dataTxt = (iso) => {
 
 // ---------- Layout ----------
 const nav = `<header><a class="brand" href="/"><img src="/assets/logo.webp" alt="Casa e Harmonia" width="150" height="82"></a><nav aria-label="Principal"><a href="/#artigos">Guias</a><a href="/dicas.html">Dicas</a><a href="/ferramentas.html">Ferramentas</a><a href="/sobre.html">Sobre</a></nav><a class="header-cta" href="/ferramentas.html">Ferramentas grátis <span>↗</span></a></header>`;
-const footer = `<footer><div><strong>CASA E HARMONIA</strong><p>Ideias para morar bem. Espaço para viver melhor.</p></div><div><b>Explore</b><a href="/#artigos">Guias da casa</a><a href="/dicas.html">Dicas do dia a dia</a><a href="/ferramentas.html">Ferramentas gratuitas</a></div><div><b>Mais lidos</b><a href="/artigos/como-tirar-mofo-da-parede.html">Tirar mofo da parede</a><a href="/artigos/economizar-conta-de-luz.html">Economizar na conta de luz</a><a href="/artigos/quantos-btus-ar-condicionado.html">Quantos BTUs preciso?</a><a href="/artigos/como-limpar-sofa.html">Como limpar o sofá</a></div><div><b>Portal</b><a href="/sobre.html">Sobre e privacidade</a></div><small>© 2026 Casa e Harmonia · Feito para a vida em casa.</small></footer>`;
+const footer = `<footer><div><strong>CASA E HARMONIA</strong><p>Ideias para morar bem. Espaço para viver melhor.</p></div><div><b>Explore</b><a href="/#artigos">Guias da casa</a><a href="/dicas.html">Dicas do dia a dia</a><a href="/ferramentas.html">Ferramentas gratuitas</a></div><div><b>Mais lidos</b><a href="/artigos/como-tirar-mofo-da-parede.html">Tirar mofo da parede</a><a href="/artigos/economizar-conta-de-luz.html">Economizar na conta de luz</a><a href="/artigos/quantos-btus-ar-condicionado.html">Quantos BTUs preciso?</a><a href="/artigos/como-limpar-sofa.html">Como limpar o sofá</a></div><div><b>Temas</b>${hubs.map((h) => `<a href="${hubUrl(h)}">${h.nome}</a>`).join("")}</div><div><b>Portal</b><a href="/sobre.html">Sobre e privacidade</a></div><small>© 2026 Casa e Harmonia · Feito para a vida em casa.</small></footer>`;
 const ogDe = (path) => (path === "index.html" ? "home" : path.replace(/\/index\.html$/, "").replace(/\.html$/, "").replace(/\//g, "-"));
 function page(title, desc, body, path, schema = {}, { image = "hero", type, eyebrow = "Casa e Harmonia" } = {}) {
   if (!path.startsWith("404")) valida(path, title, desc);
@@ -121,9 +127,6 @@ const tipCard = ([cat, h, p, link]) =>
 const searchTools = (id, label, placeholder, cats, total, nome) =>
   `<div class="search-tools" data-search="${id}"><label for="${id}-search">${label}<input id="${id}-search" type="search" placeholder="${placeholder}"></label><label for="${id}-filter">Filtrar por categoria<select id="${id}-filter"><option value="">Todas</option>${cats.map((c) => `<option>${c}</option>`).join("")}</select></label></div><p id="${id}-count" class="search-count" role="status" data-label="${nome}">${total} ${nome}</p>`;
 const uniq = (arr) => [...new Set(arr)];
-const falha = (msg) => {
-  throw Error(msg);
-};
 // Endereço de cada ferramenta (centralizado para a migração de /ferramentas.html#id para páginas próprias).
 const toolUrl = (id) => `/ferramentas.html#${id}`;
 
@@ -133,7 +136,7 @@ write(
   page(
     "Casa e Harmonia | Guias, dicas e ferramentas para sua casa",
     "Decoração, limpeza, organização e ferramentas grátis: calcule tinta, BTUs, conta de luz, piso, papel de parede e churrasco. Ideias práticas para morar bem.",
-    `<main><section class="hero"><div class="hero-copy"><p class="eyebrow">INSPIRAÇÃO PARA A VIDA REAL</p><h1>Mais cor. Mais calma.<br><em>Mais a sua casa.</em></h1><p>Guias de decoração, limpeza e organização e calculadoras grátis para a casa: tinta, BTU de ar-condicionado, conta de luz, piso e muito mais, com dicas práticas para morar melhor.</p><a class="button" href="#artigos">Encontre sua inspiração <span>↗</span></a><div class="hero-stats"><span><b>${artigos.length}</b> guias</span><span><b>${ferramentas.length}</b> ferramentas</span><span><b>${dicas.length}</b> dicas</span></div></div><a class="hero-image" href="/artigos/cores-sala-pequena.html">${img("hero", "hero-cover", { eager: true, dono: "home" })}<span class="image-label">SALA COM PERSONALIDADE <b>Monte sua paleta de cores ↗</b></span></a></section><div class="category-strip"><span>UM LAR, MUITAS POSSIBILIDADES</span>${uniq(artigos.map((a) => a.cat)).map((c) => `<a href="#artigos" data-filter="${c}">${c}</a>`).join("")}</div><section class="tools-band"><div class="section-head"><div><p class="eyebrow">DO PLANO À PRÁTICA</p><h2>Ferramentas gratuitas, sem cadastro.</h2></div><a href="/ferramentas.html">Todas as ${ferramentas.length} ferramentas ↗</a></div>${toolGrid(ferramentas.slice(0, 6))}</section><section id="artigos" class="articles"><div class="section-head"><div><p class="eyebrow">IDEIAS PARA O SEU PRÓXIMO CAPÍTULO</p><h2>Guias práticos para cada canto da casa.</h2></div><span>${artigos.length} guias para morar melhor</span></div>${searchTools("article", "O que você quer resolver?", "Busque por mofo, sofá, luz, plantas…", uniq(artigos.map((a) => a.cat)), artigos.length, "guias")}<div class="article-grid" data-grid="article">${[...artigos].reverse().map(articleCard).join("")}</div><p id="article-empty" class="empty" hidden>Nenhum guia encontrado. Experimente outro termo ou escolha todas as categorias.</p></section><section class="tips-band"><div class="section-head"><div><p class="eyebrow">DICAS DO DIA A DIA</p><h2>Pequenos truques, grande diferença.</h2></div><a href="/dicas.html">Ver todas as ${dicas.length} dicas ↗</a></div><div class="tip-grid">${[0, 7, 14, 20, 26, 30].map((i) => tipCard(dicas[i])).join("")}</div></section><section class="closing"><p class="eyebrow">MAIS INTENÇÃO, MENOS EXCESSO</p><h2>Uma casa melhor começa<br>com uma ideia possível.</h2><a href="/ferramentas.html" class="button">Vamos colocar em prática ↗</a></section></main>`,
+    `<main><section class="hero"><div class="hero-copy"><p class="eyebrow">INSPIRAÇÃO PARA A VIDA REAL</p><h1>Mais cor. Mais calma.<br><em>Mais a sua casa.</em></h1><p>Guias de decoração, limpeza e organização e calculadoras grátis para a casa: tinta, BTU de ar-condicionado, conta de luz, piso e muito mais, com dicas práticas para morar melhor.</p><a class="button" href="#artigos">Encontre sua inspiração <span>↗</span></a><div class="hero-stats"><span><b>${artigos.length}</b> guias</span><span><b>${ferramentas.length}</b> ferramentas</span><span><b>${dicas.length}</b> dicas</span></div></div><a class="hero-image" href="/artigos/cores-sala-pequena.html">${img("hero", "hero-cover", { eager: true, dono: "home" })}<span class="image-label">SALA COM PERSONALIDADE <b>Monte sua paleta de cores ↗</b></span></a></section><nav class="category-strip" aria-label="Temas"><span>UM LAR, MUITAS POSSIBILIDADES</span>${hubs.map((h) => `<a href="${hubUrl(h)}">${h.nome}</a>`).join("")}</nav><section class="tools-band"><div class="section-head"><div><p class="eyebrow">DO PLANO À PRÁTICA</p><h2>Ferramentas gratuitas, sem cadastro.</h2></div><a href="/ferramentas.html">Todas as ${ferramentas.length} ferramentas ↗</a></div>${toolGrid(ferramentas.slice(0, 6))}</section><section id="artigos" class="articles"><div class="section-head"><div><p class="eyebrow">IDEIAS PARA O SEU PRÓXIMO CAPÍTULO</p><h2>Guias práticos para cada canto da casa.</h2></div><span>${artigos.length} guias para morar melhor</span></div>${searchTools("article", "O que você quer resolver?", "Busque por mofo, sofá, luz, plantas…", uniq(artigos.map((a) => a.cat)), artigos.length, "guias")}<div class="article-grid" data-grid="article">${[...artigos].reverse().map(articleCard).join("")}</div><p id="article-empty" class="empty" hidden>Nenhum guia encontrado. Experimente outro termo ou escolha todas as categorias.</p></section><section class="tips-band"><div class="section-head"><div><p class="eyebrow">DICAS DO DIA A DIA</p><h2>Pequenos truques, grande diferença.</h2></div><a href="/dicas.html">Ver todas as ${dicas.length} dicas ↗</a></div><div class="tip-grid">${[0, 7, 14, 20, 26, 30].map((i) => tipCard(dicas[i])).join("")}</div></section><section class="closing"><p class="eyebrow">MAIS INTENÇÃO, MENOS EXCESSO</p><h2>Uma casa melhor começa<br>com uma ideia possível.</h2><a href="/ferramentas.html" class="button">Vamos colocar em prática ↗</a></section></main>`,
     "index.html",
     {
       "@graph": [
@@ -161,7 +164,7 @@ for (const a of artigos) {
   const relacionados = a.relacionados.map((s) => artigos.find((b) => b.slug === s) || falha(`Relacionado inexistente em ${a.slug}: ${s}`));
   const ferramentasDoGuia = a.ferramentas.map((id) => ferramentas.find((f) => f[0] === id) || falha(`Ferramenta inexistente em ${a.slug}: ${id}`));
   const contexto = (j) => (a.contexto || []).filter(([k]) => k === j).map(([, h]) => h).join("");
-  const body = `<main class="post"><nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <span>${a.title}</span></nav><p class="eyebrow">${a.cat} · GUIA PRÁTICO</p><h1>${a.title}</h1><p class="intro">${a.intro}</p><p class="byline"><a href="/sobre.html">Redação Casa e Harmonia</a> · Atualizado em ${dataTxt(a.atualizado)}</p><figure class="cover-figure">${img(a.slug, "cover", { eager: true, dono: a.slug, sizes: "(max-width: 900px) 100vw, 1100px" })}<figcaption>${credito(a.slug)}</figcaption></figure><div class="post-layout"><article><nav class="contents" aria-label="Neste artigo"><strong>Neste guia</strong>${a.sections.map((s, j) => `<a href="#sec${j}">${s[0]}</a>`).join("")}<a href="#faq">Perguntas frequentes</a></nav>${a.resumo ? `<aside class="summary"><strong>Resumo rápido</strong><ul>${a.resumo.map((r) => `<li>${r}</li>`).join("")}</ul></aside>` : ""}${a.sections.map((s, j) => `<section id="sec${j}"><h2>${s[0]}</h2>${s[1]}${contexto(j)}</section>`).join("")}<h2 id="faq">Perguntas frequentes sobre ${a.tema}</h2>${a.faq.map((f) => `<details class="faq" open><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}<aside class="post-cta"><p class="eyebrow">SEU PRÓXIMO PASSO</p><p class="cta-title">${a.cta}.</p><a class="button" href="${a.tool[0]}">${a.tool[1]} ↗</a></aside><p class="related-title">Leia também</p><ul class="related">${relacionados.map((b) => `<li><a href="/artigos/${b.slug}.html"><span class="eyebrow">${b.cat}</span>${b.title}</a></li>`).join("")}</ul><h2>Fontes e referências</h2><p>Este guia reúne orientações gerais para adaptar ao seu espaço. Para serviços técnicos, siga os manuais dos produtos e a orientação de um profissional qualificado.</p>${a.sources.map(([l, u]) => `<p><a href="${u}" rel="noopener">${l}</a>.</p>`).join("")}</article><aside class="reading-aside"><p class="eyebrow">FERRAMENTAS GRÁTIS</p><p class="aside-title">Faça as contas antes de começar.</p><ul>${ferramentasDoGuia.map(([id, , h]) => `<li><a href="${toolUrl(id)}">${h} ↗</a></li>`).join("")}</ul><p class="eyebrow">NO DIA A DIA</p><ul><li><a href="/dicas.html">Dicas rápidas para a casa ↗</a></li></ul></aside></div></main>`;
+  const body = `<main class="post"><nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <a href="${hubUrl(hubDe(a))}">${hubDe(a).nome}</a> / <span>${a.title}</span></nav><p class="eyebrow">${a.cat} · GUIA PRÁTICO</p><h1>${a.title}</h1><p class="intro">${a.intro}</p><p class="byline"><a href="/sobre.html">Redação Casa e Harmonia</a> · Atualizado em ${dataTxt(a.atualizado)}</p><figure class="cover-figure">${img(a.slug, "cover", { eager: true, dono: a.slug, sizes: "(max-width: 900px) 100vw, 1100px" })}<figcaption>${credito(a.slug)}</figcaption></figure><div class="post-layout"><article><nav class="contents" aria-label="Neste artigo"><strong>Neste guia</strong>${a.sections.map((s, j) => `<a href="#sec${j}">${s[0]}</a>`).join("")}<a href="#faq">Perguntas frequentes</a></nav>${a.resumo ? `<aside class="summary"><strong>Resumo rápido</strong><ul>${a.resumo.map((r) => `<li>${r}</li>`).join("")}</ul></aside>` : ""}${a.sections.map((s, j) => `<section id="sec${j}"><h2>${s[0]}</h2>${s[1]}${contexto(j)}</section>`).join("")}<h2 id="faq">Perguntas frequentes sobre ${a.tema}</h2>${a.faq.map((f) => `<details class="faq" open><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}<aside class="post-cta"><p class="eyebrow">SEU PRÓXIMO PASSO</p><p class="cta-title">${a.cta}.</p><a class="button" href="${a.tool[0]}">${a.tool[1]} ↗</a></aside><p class="related-title">Leia também</p><ul class="related">${relacionados.map((b) => `<li><a href="/artigos/${b.slug}.html"><span class="eyebrow">${b.cat}</span>${b.title}</a></li>`).join("")}</ul><h2>Fontes e referências</h2><p>Este guia reúne orientações gerais para adaptar ao seu espaço. Para serviços técnicos, siga os manuais dos produtos e a orientação de um profissional qualificado.</p>${a.sources.map(([l, u]) => `<p><a href="${u}" rel="noopener">${l}</a>.</p>`).join("")}</article><aside class="reading-aside"><p class="eyebrow">FERRAMENTAS GRÁTIS</p><p class="aside-title">Faça as contas antes de começar.</p><ul>${ferramentasDoGuia.map(([id, , h]) => `<li><a href="${toolUrl(id)}">${h} ↗</a></li>`).join("")}</ul><p class="eyebrow">NO DIA A DIA</p><ul><li><a href="/dicas.html">Dicas rápidas para a casa ↗</a></li></ul></aside></div></main>`;
   write(
     `artigos/${a.slug}.html`,
     page(
@@ -191,12 +194,50 @@ for (const a of artigos) {
               acceptedAnswer: { "@type": "Answer", text: f[1] },
             })),
           },
-          breadcrumb([["Início", "/"], [a.title, `/artigos/${a.slug}.html`]]),
+          breadcrumb([["Início", "/"], [hubDe(a).nome, hubUrl(hubDe(a))], [a.title, `/artigos/${a.slug}.html`]]),
         ],
       },
       { image: a.slug, eyebrow: a.cat },
     ),
     a.atualizado,
+  );
+}
+
+// ---------- Hubs por tema ----------
+for (const h of hubs) {
+  const guias = h.guias.map((s) => artigos.find((a) => a.slug === s) || falha(`Hub ${h.slug}: guia inexistente ${s}`));
+  for (const g of guias) if (g.cluster !== h.slug) falha(`Guia ${g.slug} listado no hub ${h.slug}, mas com cluster ${g.cluster}`);
+  const palavras = h.intro.join(" ").split(/\s+/).length;
+  if (palavras < 300 || palavras > 500) falha(`Hub ${h.slug}: introdução com ${palavras} palavras (esperado 300–500)`);
+  const urlsGuias = new Set(guias.map((g) => `/artigos/${g.slug}.html`));
+  const dicasDoTema = dicas.filter((d) => urlsGuias.has(d[3]));
+  const ferramentasDoHub = h.ferramentas.map((id) => ferramentas.find((f) => f[0] === id) || falha(`Hub ${h.slug}: ferramenta ${id}`));
+  write(
+    `guias/${h.slug}/index.html`,
+    page(
+      h.title,
+      h.desc,
+      `<main class="post hub"><nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <span>${h.nome}</span></nav><p class="eyebrow">GUIAS POR TEMA</p><h1>${h.nome}</h1><div class="hub-intro">${h.intro.map((p) => `<p>${p}</p>`).join("")}</div><h2>Guias de ${h.nome.toLowerCase()}</h2><ul class="hub-list">${guias.map((g) => `<li><a href="/artigos/${g.slug}.html"><span class="eyebrow">${g.cat}</span><b>${g.title}</b><span>${g.desc}</span></a></li>`).join("")}</ul><h2>Ferramentas para ${h.nome.toLowerCase()}</h2>${toolGrid(ferramentasDoHub)}${dicasDoTema.length ? `<h2>Dicas rápidas sobre ${h.nome.toLowerCase()}</h2><div class="tip-grid">${dicasDoTema.map(tipCard).join("")}</div>` : ""}<p class="hub-outros">Outros temas: ${hubs.filter((o) => o !== h).map((o) => `<a href="${hubUrl(o)}">${o.nome}</a>`).join(" · ")}</p></main>`,
+      `guias/${h.slug}/index.html`,
+      {
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            name: h.title,
+            description: h.desc,
+            url: origin + hubUrl(h),
+            inLanguage: "pt-BR",
+            mainEntity: {
+              "@type": "ItemList",
+              itemListElement: guias.map((g, i) => ({ "@type": "ListItem", position: i + 1, url: `${origin}/artigos/${g.slug}.html`, name: g.title })),
+            },
+          },
+          breadcrumb([["Início", "/"], [h.nome, hubUrl(h)]]),
+        ],
+      },
+      { eyebrow: "Guias por tema" },
+    ),
+    h.atualizado,
   );
 }
 
