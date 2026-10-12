@@ -1899,3 +1899,20 @@ header nav {
   flex-wrap: wrap;
   gap: 8px 18px;
 }
+/* Títulos visuais que não entram no outline de headings (Fase 2). */
+.aside-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 26px;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.cta-title,
+.related-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+.related-title {
+  margin-top: 40px;
+}

@@ -5,14 +5,18 @@ export const guiasOriginais = [
     "cat": "Decoração",
     "card": "Japandi: simplicidade que acolhe",
     "title": "Estilo Japandi: como criar uma casa leve e acolhedora",
+    "desc": "Estilo Japandi em casa: como unir o minimalismo japonês ao aconchego escandinavo com móveis que você já tem, paleta neutra e texturas naturais.",
+    "kw": "japandi",
+    "tema": "o estilo Japandi",
+    "cta": "Explore paletas japandi com base, apoio e destaque",
     "intro": "O estilo Japandi une a simplicidade japonesa ao aconchego escandinavo. Mais do que comprar móveis claros, a proposta é escolher menos peças, valorizar materiais e deixar espaço para a vida acontecer.",
     "sections": [
       [
-        "Comece pelo que você já tem",
+        "Japandi na prática: comece pelo que você já tem",
         "<p>Retire os objetos sem função e observe a circulação. Uma mesa de madeira, uma manta de textura natural e uma luminária bem posicionada já ajudam a construir uma composição tranquila. Não é necessário trocar todos os móveis.</p>"
       ],
       [
-        "Escolha uma paleta com profundidade",
+        "Paleta japandi com profundidade",
         "<p>Combine branco quente, madeira e pequenos pontos de grafite. Use o verde das plantas como cor de apoio. Teste amostras de tinta em paredes diferentes e observe a aparência pela manhã e à noite.</p>"
       ],
       [
@@ -48,10 +52,14 @@ export const guiasOriginais = [
     "cat": "Jardinagem",
     "card": "Um pouco mais de natureza, dentro de casa",
     "title": "Design biofílico em apartamentos pequenos: por onde começar",
+    "desc": "Design biofílico em apartamento pequeno: use luz natural, plantas certas e materiais naturais para trazer a natureza para casa sem complicar a rotina.",
+    "kw": "biofílico",
+    "tema": "design biofílico",
+    "cta": "Organize os cuidados com as plantas na sua rotina",
     "intro": "O design biofílico em apartamentos pequenos aproxima a rotina da natureza por meio de luz, vegetação, ventilação e materiais. Comece entendendo seu espaço, sem transformar a casa em uma coleção difícil de cuidar.",
     "sections": [
       [
-        "Mapeie a luz de cada janela",
+        "Design biofílico começa pela luz de cada janela",
         "<p>Observe onde há sol direto e por quanto tempo. Claridade não é igual a sol. Escolha espécies compatíveis com as condições reais e evite vasos em ambientes totalmente escuros.</p>"
       ],
       [
@@ -59,7 +67,7 @@ export const guiasOriginais = [
         "<p>Agrupe poucos vasos em um suporte estável e com proteção contra água. Preserve passagens e acesso às janelas. Uma planta bem cuidada faz mais sentido que muitas em condições inadequadas.</p>"
       ],
       [
-        "Combine elementos naturais",
+        "Design biofílico além das plantas: materiais e vistas",
         "<p>Madeira, tecidos e vistas para áreas externas também participam da experiência. Abra cortinas quando apropriado e posicione a área de leitura perto da luz natural sem ofuscamento.</p>"
       ]
     ],
@@ -86,14 +94,18 @@ export const guiasOriginais = [
     "cat": "Arquitetura",
     "card": "A luz certa muda tudo",
     "title": "LED quente ou frio: escolha a luz de cada cômodo",
-    "intro": "Escolher LED quente ou frio depende da atmosfera desejada e da tarefa. A temperatura de cor, expressa em kelvin, descreve a aparência da luz; ela não indica sozinha a luminosidade ou o consumo.",
+    "desc": "LED quente ou frio? Entenda kelvin, lúmens e IRC e planeje a iluminação de cada cômodo: sala, quarto, cozinha e banheiro, sem errar na compra.",
+    "kw": "iluminação",
+    "tema": "iluminação LED",
+    "cta": "Estime o custo da reforma da iluminação",
+    "intro": "Na iluminação da casa, escolher LED quente ou frio depende da atmosfera desejada e da tarefa. A temperatura de cor, expressa em kelvin, descreve a aparência da luz; ela não indica sozinha a luminosidade ou o consumo.",
     "sections": [
       [
-        "Entenda os kelvin",
+        "Iluminação LED quente ou fria: entenda os kelvin",
         "<p>Luzes de 2700 a 3000 K costumam criar sensação acolhedora. Em torno de 4000 K, a aparência é mais neutra. Valores maiores produzem luz mais fria. Compare lâmpadas no próprio ambiente.</p>"
       ],
       [
-        "Planeje por atividade",
+        "Iluminação por cômodo e atividade",
         "<p>Na sala, combine iluminação geral e luz de leitura. Na cozinha, ilumine a bancada sem projetar a sombra do corpo sobre o trabalho. No banheiro, luz frontal ou lateral ao espelho reduz sombras no rosto.</p>"
       ],
       [
@@ -124,18 +136,22 @@ export const guiasOriginais = [
     "cat": "Jardinagem",
     "card": "7 plantas para uma sala mais viva",
     "title": "7 plantas resistentes para a sala: cuidados sem mitos",
+    "desc": "7 plantas resistentes para a sala, escolhidas pela luz do ambiente, com cuidados de rega e o que a ciência diz sobre plantas e qualidade do ar.",
+    "kw": "plantas",
+    "tema": "plantas para a sala",
+    "cta": "Inclua a rega das plantas no seu cronograma",
     "intro": "Plantas para a sala trazem vida ao ambiente, mas não substituem ventilação ou controle de poluentes. A fama de “purificar o ar” vem de resultados de laboratório que não se traduzem em uma limpeza relevante em casas comuns.",
     "sections": [
       [
-        "Escolha pela luz, não pela aparência",
+        "Plantas para a sala: escolha pela luz, não pela aparência",
         "<p>Zamioculca e espada-de-são-jorge toleram intervalos maiores entre regas, mas ainda precisam de luz. Jiboia se adapta à luz indireta; clorofito prefere boa claridade. Nenhuma espécie é indestrutível.</p>"
       ],
       [
-        "Mais três opções para conhecer",
+        "Mais três plantas para conhecer",
         "<p>Peperômia, aspidistra e palmeira-chamaedórea ampliam as opções de formatos. As necessidades variam entre espécies e cultivares; confirme o nome botânico e os cuidados com o produtor.</p>"
       ],
       [
-        "Regue observando o substrato",
+        "Como regar as plantas: observe o substrato",
         "<p>Verifique a umidade antes de regar, use vasos com drenagem e não deixe água acumulada. A frequência muda com o clima e a luz. Mantenha espécies potencialmente tóxicas longe de crianças e animais e confira a identificação antes de comprar.</p>"
       ]
     ],
@@ -167,14 +183,18 @@ export const guiasOriginais = [
     "cat": "Organização",
     "card": "Cada centímetro pode trabalhar a seu favor",
     "title": "Cozinha funcional: 10 soluções para aproveitar o espaço",
+    "desc": "Cozinha funcional: 10 soluções para guardar, lavar, preparar e cozinhar com menos passos, aproveitando gavetas, cantos e nichos sem apertar o espaço.",
+    "kw": "cozinha",
+    "tema": "cozinha funcional",
+    "cta": "Simule o orçamento da reforma da cozinha",
     "intro": "Uma cozinha funcional começa com o percurso entre guardar, lavar, preparar e cozinhar. Antes de encomendar marcenaria, meça eletrodomésticos, aberturas e pontos existentes e liste o que precisa ficar acessível.",
     "sections": [
       [
-        "1 a 4: organize o uso diário",
+        "1 a 4: organize o uso diário da cozinha",
         "<p>1. Gavetas com divisores ajustáveis. 2. Panelas perto do preparo. 3. Despensa com prateleiras reguláveis. 4. Lixeira em posição acessível. Essas escolhas reduzem movimentos e evitam pilhas difíceis de usar.</p>"
       ],
       [
-        "5 a 7: aproveite sem apertar",
+        "5 a 7: aproveite a cozinha sem apertar",
         "<p>5. Gavetões para itens pesados nas áreas baixas. 6. Soluções de canto escolhidas pela frequência de uso. 7. Nichos dimensionados para os aparelhos, respeitando a ventilação indicada pelo fabricante.</p>"
       ],
       [
@@ -205,10 +225,14 @@ export const guiasOriginais = [
     "cat": "Funcionalidades",
     "card": "Uma casa inteligente começa pequena",
     "title": "Casa inteligente acessível: automatize uma tarefa por vez",
+    "desc": "Casa inteligente acessível: comece por uma automação útil, confira compatibilidade (Wi-Fi, Matter, hub) e proteja o acesso aos dispositivos.",
+    "kw": "casa inteligente",
+    "tema": "casa inteligente",
+    "cta": "Calcule o consumo dos aparelhos da casa",
     "intro": "Uma casa inteligente acessível começa com um problema concreto: apagar uma luz esquecida, programar uma luminária ou controlar um aparelho compatível. Escolha um primeiro uso e amplie depois de testar.",
     "sections": [
       [
-        "Comece com uma rotina simples",
+        "Casa inteligente: comece com uma rotina simples",
         "<p>Uma lâmpada conectada pode criar horários e cenas. Uma tomada inteligente pode controlar equipamentos dentro de sua capacidade elétrica. Verifique tensão, corrente, potência e as restrições do fabricante antes de conectar.</p>"
       ],
       [
@@ -216,7 +240,7 @@ export const guiasOriginais = [
         "<p>Veja se o produto exige hub, qual rede Wi-Fi utiliza e quais plataformas suporta. O selo Matter pode ajudar na interoperabilidade, mas recursos específicos ainda variam por dispositivo e controlador.</p>"
       ],
       [
-        "Proteja o acesso",
+        "Proteja o acesso à casa inteligente",
         "<p>Use senhas únicas, atualizações e autenticação adicional quando disponível. Considere se o produto mantém controles físicos e funções úteis sem internet. Evite depender de automação para uma tarefa crítica.</p>"
       ]
     ],
@@ -243,14 +267,18 @@ export const guiasOriginais = [
     "cat": "Decoração",
     "card": "O aconchego mora nas cores",
     "title": "Cores terrosas na sala: combinações que acolhem",
+    "desc": "Cores terrosas na sala: terracota, areia, caramelo e verde-oliva em três combinações que acolhem, com dicas para testar antes de pintar a parede.",
+    "kw": "cores terrosas",
+    "tema": "cores terrosas",
+    "cta": "Veja a paleta terrosa com códigos de cor",
     "intro": "Cores terrosas na sala criam uma base expressiva com terracota, areia, argila e marrom. O interesse por tons naturais aparece em pesquisas internacionais de decoração; em casa, a melhor escolha depende da luz e dos materiais existentes.",
     "sections": [
       [
-        "Escolha uma cor protagonista",
+        "Cores terrosas: escolha uma protagonista",
         "<p>Use uma parede ou um móvel como ponto de partida e mantenha as demais superfícies mais tranquilas. Compare a cor com o piso: madeiras avermelhadas e amareladas produzem efeitos diferentes.</p>"
       ],
       [
-        "Monte três combinações",
+        "Três combinações com cores terrosas",
         "<p>Terracota com branco quente cria contraste suave. Marrom com verde-oliva aproxima a composição da natureza. Areia com grafite produz uma leitura mais sóbria. Ajuste a proporção ao tamanho e à luminosidade do ambiente.</p>"
       ],
       [
@@ -286,10 +314,14 @@ export const guiasOriginais = [
     "cat": "Organização",
     "card": "Menos bagunça. Mais espaço para viver.",
     "title": "Organização minimalista: aplique o método 5S em casa",
+    "desc": "Método 5S em casa: utilização, ordenação, limpeza, padronização e disciplina adaptados à rotina para organizar sem comprar caixas antes da hora.",
+    "kw": "5S",
+    "tema": "o método 5S",
+    "cta": "Gere um cronograma de organização para a casa",
     "intro": "Organização minimalista com o método 5S adapta cinco práticas de gestão à rotina doméstica: utilização, ordenação, limpeza, padronização e disciplina. O objetivo é facilitar o cotidiano, não impor uma casa de catálogo.",
     "sections": [
       [
-        "Separe e dê um lugar a cada coisa",
+        "5S em casa: separe e dê um lugar a cada coisa",
         "<p>Comece por uma gaveta. Diferencie o que é usado, o que pode ser doado e o que precisa de descarte adequado. Guarde cada item perto de onde ele é utilizado, com acesso compatível à frequência de uso.</p>"
       ],
       [
@@ -297,7 +329,7 @@ export const guiasOriginais = [
         "<p>Limpe a área antes de reorganizar. Evite comprar caixas antes de conhecer o volume que ficará. Use etiquetas apenas quando ajudarem outras pessoas da casa a manter o sistema.</p>"
       ],
       [
-        "Crie uma rotina que caiba no dia",
+        "Padronize e mantenha o 5S na rotina",
         "<p>Reserve um bloco curto para devolver objetos ao lugar. Distribua tarefas semanais e mensais conforme disponibilidade, compartilhando responsabilidades. Reavalie o sistema quando uma etapa não funcionar.</p>"
       ]
     ],
@@ -324,18 +356,22 @@ export const guiasOriginais = [
     "cat": "Decoração",
     "card": "O sofá certo para a sua vida real",
     "title": "Como escolher o sofá: medidas, tecidos e conforto",
+    "desc": "Como escolher o sofá certo: medidas da sala e do caminho de entrega, profundidade do assento, densidade da espuma e o tecido ideal para a rotina.",
+    "kw": "sofá",
+    "tema": "como escolher o sofá",
+    "cta": "Planeje a reforma da sala antes do sofá novo",
     "intro": "Escolher o sofá exige olhar além da aparência. Medidas do ambiente, acesso ao imóvel, profundidade do assento e tecido devem funcionar para quem senta, deita, recebe visitas e limpa a casa.",
     "sections": [
       [
-        "Meça o caminho inteiro",
+        "Antes do sofá, meça o caminho inteiro",
         "<p>Confira portas, corredores, elevador e escadas, além da parede onde o sofá ficará. Marque o tamanho no piso com fita e simule a circulação, considerando a abertura de modelos retráteis.</p>"
       ],
       [
-        "Experimente o conforto",
+        "Experimente o conforto do sofá",
         "<p>Sente e apoie as costas na posição habitual. A densidade da espuma não é uma nota universal de qualidade: construção, camadas, molas e recomendação de uso também importam. Consulte o fabricante.</p>"
       ],
       [
-        "Escolha o tecido pela rotina",
+        "Escolha o tecido do sofá pela rotina",
         "<p>Considere manutenção, resistência e sensação ao toque. Capas removíveis facilitam alguns cuidados, mas devem seguir as instruções de lavagem. Peça amostras para ver cor e textura na luz da casa.</p>"
       ]
     ],
@@ -362,14 +398,18 @@ export const guiasOriginais = [
     "cat": "Arquitetura",
     "card": "Sua varanda, um novo lugar de encontro",
     "title": "Varanda gourmet pequena: ideias para receber com conforto",
+    "desc": "Varanda gourmet pequena: como definir o uso, escolher móveis e materiais para sol e chuva e o que verificar com o condomínio antes de reformar.",
+    "kw": "varanda",
+    "tema": "varanda gourmet pequena",
+    "cta": "Simule o orçamento da varanda",
     "intro": "Uma varanda gourmet pequena pode ser um lugar agradável de convivência quando o projeto respeita circulação, ventilação e limites da edificação. Comece definindo como você quer usar o espaço no dia a dia.",
     "sections": [
       [
-        "Defina a atividade principal",
+        "Defina a atividade principal da varanda",
         "<p>Se a prioridade é tomar café, uma mesa compacta pode bastar. Para refeições, avalie assentos proporcionais e móveis dobráveis. Não preencha a varanda antes de testar a circulação com portas abertas.</p>"
       ],
       [
-        "Escolha materiais para a exposição",
+        "Materiais para varanda exposta a sol e chuva",
         "<p>Considere sol, chuva e vento antes de escolher madeira, tecidos e ferragens. Use vasos estáveis e mantenha ralos e acessos desobstruídos. Inclua luz de apoio adequada às condições de instalação.</p>"
       ],
       [
@@ -400,14 +440,19 @@ export const guiasOriginais = [
     "cat": "Decoração",
     "card": "Sala pequena, personalidade de sobra",
     "title": "Cores para sala pequena: monte uma paleta que combina com você",
+    "seo": "Cores para sala pequena: paleta que combina",
+    "desc": "Cores para sala pequena: monte uma paleta a partir do piso e do sofá, teste a tinta na luz real e comece com mudanças reversíveis e baratas.",
+    "kw": "sala pequena",
+    "tema": "cores para sala pequena",
+    "cta": "Monte e copie a sua paleta de cores",
     "intro": "Uma sala pequena pode ter cor sem perder a leveza. Comece pelas peças que ficam e escolha uma mudança por vez: uma parede, uma cortina ou uma composição de almofadas.",
     "sections": [
       [
-        "Observe a base da sua sala",
+        "Observe a base da sua sala pequena",
         "<p>Fotografe mentalmente os elementos que você não vai trocar: piso, sofá e marcenaria. Escolha uma cor de fundo que converse com eles e uma cor de destaque. Não existe obrigação de pintar tudo de branco.</p>"
       ],
       [
-        "Experimente antes de pintar",
+        "Cores para sala pequena: experimente antes de pintar",
         "<p>Faça uma amostra na parede e observe de manhã e à noite, com as lâmpadas que usa no dia a dia. A tela serve como inspiração; a aparência real depende da luz, do acabamento e da superfície.</p>"
       ],
       [
@@ -443,7 +488,11 @@ export const guiasOriginais = [
     "cat": "Decoração",
     "card": "Tinta na medida, sem conta em dobro",
     "title": "Como calcular tinta: área, demãos e rendimento acabado",
-    "intro": "Antes de comprar, meça as paredes e leia a unidade de rendimento da embalagem. Saber se o valor se refere a uma demão ou à pintura acabada muda a conta.",
+    "desc": "Como calcular tinta sem erro: meça a área líquida, entenda rendimento por demão ou acabado e transforme litros em latas, galões e quartos.",
+    "kw": "tinta",
+    "tema": "como calcular tinta",
+    "cta": "Calcule a tinta e as latas para repintar",
+    "intro": "Antes de comprar tinta, meça as paredes e leia a unidade de rendimento da embalagem. Saber se o valor se refere a uma demão ou à pintura acabada muda a conta.",
     "sections": [
       [
         "Meça a área que vai receber tinta",
@@ -454,7 +503,7 @@ export const guiasOriginais = [
         "<p>No rendimento por demão, a área é multiplicada pelo número de aplicações. No rendimento acabado, as aplicações previstas já estão consideradas. Se o rótulo trouxer m² por lata, divida esse valor pelos litros da lata para obter m²/L.</p>"
       ],
       [
-        "Transforme a estimativa em compra",
+        "Transforme a estimativa em latas de tinta",
         "<p>Para 8 m² e rendimento acabado de 4 m²/L, são 2 L antes da margem. Com 10% ilustrativos, a estimativa é 2,2 L. Arredonde para as embalagens disponíveis. A condição da parede e o preparo podem mudar o consumo; siga o fabricante.</p>"
       ]
     ],
@@ -486,7 +535,11 @@ export const guiasOriginais = [
     "cat": "Organização",
     "card": "Uma rotina leve para cuidar da casa",
     "title": "Rotina de limpeza: divida as tarefas sem sobrecarregar o dia",
-    "intro": "Um cronograma útil começa pela disponibilidade real. Organize as tarefas por prioridade e distribua os cuidados entre quem usa a casa. O plano pode mudar em semanas mais corridas.",
+    "desc": "Rotina de limpeza realista: separe tarefas diárias, semanais e mensais, divida responsabilidades e use os produtos sem misturas perigosas.",
+    "kw": "limpeza",
+    "tema": "rotina de limpeza",
+    "cta": "Gere seu cronograma de limpeza em segundos",
+    "intro": "Um cronograma de limpeza útil começa pela disponibilidade real. Organize as tarefas por prioridade e distribua os cuidados entre quem usa a casa. O plano pode mudar em semanas mais corridas.",
     "sections": [
       [
         "Separe manutenção de limpeza maior",
@@ -497,7 +550,7 @@ export const guiasOriginais = [
         "<p>Escolha um cômodo por vez. Anote o que foi feito e transfira o restante para outro bloco. A frequência depende do uso, da quantidade de moradores e das necessidades do ambiente; o checklist é um ponto de partida.</p>"
       ],
       [
-        "Use cada produto conforme o rótulo",
+        "Produtos de limpeza: use cada um conforme o rótulo",
         "<p>Não misture produtos de limpeza, mesmo quando cada um parece seguro isoladamente. Mantenha-os na embalagem original, siga as instruções de uso e guarde fora do alcance de crianças e animais.</p>"
       ]
     ],

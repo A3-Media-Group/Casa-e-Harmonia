@@ -11,8 +11,12 @@ export const artigosNovos = [
     cat: "Limpeza",
     card: "Mofo na parede: limpe e evite a volta",
     title: "Como tirar mofo da parede e evitar que ele volte",
+    desc: "Como tirar mofo da parede com segurança: descubra se é condensação ou infiltração, limpe a mancha passo a passo e evite que o mofo volte.",
+    kw: "mofo",
+    tema: "mofo na parede",
+    cta: "Calcule a tinta para repintar a parede",
     intro:
-      "Manchas pretas no canto do teto, cheiro de guardado e tinta descascando são sinais de excesso de umidade. Limpar resolve a mancha; impedir que ela volte depende de entender de onde vem a água.",
+      "Manchas pretas de mofo no canto do teto, cheiro de guardado e tinta descascando são sinais de excesso de umidade. Limpar resolve a mancha; impedir que ela volte depende de entender de onde vem a água.",
     resumo: [
       "Use luvas, máscara e mantenha o ambiente ventilado.",
       "Nunca misture água sanitária com vinagre, amônia ou outros produtos.",
@@ -21,7 +25,7 @@ export const artigosNovos = [
     ],
     sections: [
       [
-        "Descubra a causa antes de limpar",
+        "Descubra a causa do mofo antes de limpar",
         "<p>O mofo é um fungo que cresce onde há umidade constante e pouca circulação de ar. As causas mais comuns são:</p><ul><li><strong>Condensação:</strong> banho quente com a porta fechada, roupas secando dentro de casa e cozinha sem exaustão.</li><li><strong>Infiltração:</strong> água vinda de telhado, laje, calhas, janelas mal vedadas ou da parede vizinha.</li><li><strong>Umidade do solo:</strong> paredes térreas com manchas a partir do rodapé.</li><li><strong>Móveis colados na parede:</strong> guarda-roupas encostados em paredes frias impedem a ventilação.</li></ul><p>Uma pista simples: mancha que aparece em cantos e atrás de móveis costuma ser condensação; mancha que cresce a partir de um ponto, com tinta estufada, sugere infiltração.</p>",
       ],
       [
@@ -52,6 +56,10 @@ export const artigosNovos = [
     cat: "Limpeza",
     card: "Sofá limpo e cheiroso sem estragar o tecido",
     title: "Como limpar sofá de tecido em casa: passo a passo seguro",
+    desc: "Como limpar sofá de tecido em casa: leia a etiqueta, aspire, use pouca água e trate odores e manchas de café, gordura e xixi de pet sem estragar.",
+    kw: "sofá",
+    tema: "limpeza de sofá",
+    cta: "Inclua a limpeza do sofá no seu cronograma",
     intro:
       "Um sofá limpo dura mais e deixa a sala mais agradável. O segredo é respeitar o tipo de tecido, usar pouca água e agir rápido em manchas recentes.",
     resumo: [
@@ -66,11 +74,11 @@ export const artigosNovos = [
         "<p>Procure a etiqueta do fabricante. Alguns estofados indicam códigos como <strong>W</strong> (aceita limpeza com água), <strong>S</strong> (somente solvente específico), <strong>W/S</strong> (ambos) ou <strong>X</strong> (apenas aspirar). Sem etiqueta, trate o tecido como sensível.</p><p>Aspire todo o sofá com o bocal de estofados, incluindo frestas e a parte de baixo das almofadas. Poeira úmida vira lama e espalha manchas.</p>",
       ],
       [
-        "Limpeza geral de tecidos laváveis",
+        "Limpeza geral do sofá de tecido lavável",
         "<ol><li>Misture 500 ml de água morna com uma colher de chá de detergente neutro.</li><li>Umedeça um pano de microfibra e torça bem.</li><li>Limpe por partes, sempre no mesmo sentido do tecido.</li><li>Passe outro pano apenas úmido em água para retirar resíduos de sabão.</li><li>Seque com toalha limpa e deixe em local ventilado, sem sol direto forte.</li></ol><p>Espere secar completamente antes de usar. Se possível, faça a limpeza pela manhã.</p>",
       ],
       [
-        "Odor e manchas comuns",
+        "Odor e manchas comuns no sofá",
         "<ul><li><strong>Odor:</strong> polvilhe bicarbonato de sódio, deixe agir por 30 minutos a algumas horas e aspire.</li><li><strong>Gordura:</strong> retire o excesso com papel, aplique uma gota de detergente diluída e remova com pano úmido.</li><li><strong>Café e suco:</strong> absorva sem esfregar, de fora para dentro; depois use a solução de detergente.</li><li><strong>Xixi de pet:</strong> absorva bem e use produto enzimático próprio. Odor que permanece pode exigir limpeza profissional.</li></ul>",
       ],
       [
@@ -93,6 +101,10 @@ export const artigosNovos = [
     cat: "Limpeza",
     card: "Pia entupida? Tente estes passos primeiro",
     title: "Como desentupir pia da cozinha com segurança",
+    desc: "Como desentupir pia da cozinha: água quente, desentupidor de ventosa e limpeza do sifão, além do que evitar e quando chamar um encanador.",
+    kw: "pia",
+    tema: "pia entupida",
+    cta: "Inclua a manutenção da pia no cronograma",
     intro:
       "A maior parte dos entupimentos de pia é causada por gordura e restos de comida acumulados no sifão. Antes de recorrer a produtos agressivos, vale tentar soluções mecânicas simples.",
     resumo: [
@@ -111,7 +123,7 @@ export const artigosNovos = [
         "<p>Deixe um pouco de água na cuba para cobrir a borracha. Se a pia tiver duas cubas, tampe o outro ralo com um pano úmido. Faça movimentos firmes de empurrar e puxar por cerca de 20 segundos e verifique se a água desce.</p>",
       ],
       [
-        "3. Limpeza do sifão",
+        "3. Limpeza do sifão da pia",
         "<ol><li>Coloque um balde e um pano embaixo da pia.</li><li>Desrosqueie o sifão com as mãos (use luvas).</li><li>Retire a sujeira acumulada e lave as peças com água e detergente.</li><li>Monte novamente, conferindo a vedação, e teste com água.</li></ol><p>Se o sifão estiver limpo e a água continuar parada, o entupimento está mais adiante na tubulação. Nesse caso, uma mola desentupidora ou um encanador são as próximas opções.</p>",
       ],
       [
@@ -119,7 +131,7 @@ export const artigosNovos = [
         "<p>A efervescência ajuda a soltar resíduos leves e a reduzir odores, mas não remove bloqueios sólidos. Use como manutenção: meia xícara de bicarbonato, uma xícara de vinagre, 15 minutos de espera e água quente em seguida. Desentupidores químicos são corrosivos: siga o rótulo à risca, use luvas e óculos e nunca combine com outros produtos.</p>",
       ],
       [
-        "Como prevenir",
+        "Como evitar que a pia entupa de novo",
         "<ul><li>Use ralo com peneira e descarte restos de comida no lixo.</li><li>Limpe pratos com papel antes de lavar.</li><li>Guarde óleo usado em garrafa PET fechada e leve a um ponto de coleta.</li><li>Uma vez por semana, despeje água quente com detergente no ralo.</li></ul>",
       ],
     ],
@@ -138,8 +150,13 @@ export const artigosNovos = [
     cat: "Economia",
     card: "15 hábitos para baixar a conta de luz",
     title: "Como economizar na conta de luz: 15 hábitos que fazem diferença",
+    seo: "Como economizar na conta de luz: 15 hábitos",
+    desc: "Como economizar na conta de luz com 15 hábitos: chuveiro, geladeira, ar-condicionado e iluminação, mais como calcular o consumo em kWh.",
+    kw: "conta de luz",
+    tema: "economia na conta de luz",
+    cta: "Calcule o consumo de cada aparelho",
     intro:
-      "Economizar energia começa por saber quais aparelhos pesam mais. Chuveiro elétrico, ar-condicionado, geladeira antiga e ferro de passar costumam liderar a conta. Pequenas mudanças nesses itens rendem mais que desligar só uma lâmpada.",
+      "Economizar energia começa por saber quais aparelhos pesam mais. Chuveiro elétrico, ar-condicionado, geladeira antiga e ferro de passar costumam liderar a conta de luz. Pequenas mudanças nesses itens rendem mais que desligar só uma lâmpada.",
     resumo: [
       "Consumo (kWh) = potência (W) × horas de uso ÷ 1000.",
       "Chuveiro e ar-condicionado são os primeiros a revisar.",
@@ -148,11 +165,11 @@ export const artigosNovos = [
     ],
     sections: [
       [
-        "Entenda como a conta é calculada",
+        "Entenda como a conta de luz é calculada",
         "<p>A distribuidora cobra por quilowatt-hora (kWh). Um aparelho de 1.000 W ligado por uma hora consome 1 kWh. Um chuveiro de 5.500 W usado 40 minutos por dia consome cerca de 3,7 kWh por dia, ou 110 kWh por mês. Além da tarifa, a conta pode ter bandeiras tarifárias (verde, amarela ou vermelha), definidas pela ANEEL conforme o custo de geração.</p>",
       ],
       [
-        "Banho e aquecimento",
+        "Banho: o maior peso na conta de luz",
         "<ol><li>Reduza o banho para cerca de 8 minutos.</li><li>Use a posição verão nos dias quentes: a potência cai bastante.</li><li>Feche o chuveiro enquanto se ensaboa.</li><li>Verifique a resistência: chuveiro que esquenta pouco na posição inverno pode estar com defeito.</li></ol>",
       ],
       [
@@ -183,6 +200,10 @@ export const artigosNovos = [
     cat: "Decoração",
     card: "Quarto pequeno, amplo e aconchegante",
     title: "Decoração de quarto pequeno: 12 ideias para ganhar espaço",
+    desc: "Decoração de quarto pequeno: 12 ideias para ganhar espaço com circulação planejada, móveis multifuncionais, cores claras e luz indireta.",
+    kw: "quarto pequeno",
+    tema: "decoração de quarto pequeno",
+    cta: "Calcule os rolos de papel de parede",
     intro:
       "Em um quarto pequeno, cada centímetro precisa trabalhar. A boa notícia é que dá para ter conforto e personalidade com móveis na escala certa, armazenamento escondido e luz bem pensada.",
     resumo: [
@@ -193,7 +214,7 @@ export const artigosNovos = [
     ],
     sections: [
       [
-        "Planeje pela circulação",
+        "Planeje o quarto pequeno pela circulação",
         "<p>Desenhe a planta em papel quadriculado ou marque os móveis no piso com fita crepe. Como referência de conforto, deixe cerca de 60 cm livres nas laterais da cama que você usa e na frente do guarda-roupa. Portas de correr economizam o espaço de abertura das portas de giro.</p>",
       ],
       [
@@ -201,7 +222,7 @@ export const artigosNovos = [
         "<ol><li>Cama box com baú para roupas de cama e itens de outra estação.</li><li>Criado-mudo suspenso ou prateleira no lugar da mesa de cabeceira.</li><li>Escrivaninha dobrável fixada na parede.</li><li>Cabeceira com nichos ou prateleira estreita.</li><li>Banqueta que também serve de apoio.</li></ol>",
       ],
       [
-        "Cores, espelho e tecidos",
+        "Cores, espelho e tecidos no quarto pequeno",
         "<ol start=\"6\"><li>Base clara nas paredes e um ponto de cor na cabeceira pintada ou na roupa de cama.</li><li>Espelho grande na porta do armário reflete a luz e amplia a sensação de espaço.</li><li>Cortina do teto ao chão alonga o pé-direito.</li><li>Tapete que passe por baixo da cama, deixando sobra nas laterais.</li></ol><p>Teste a cor com amostras: a mesma tinta parece diferente pela manhã e à noite.</p>",
       ],
       [
@@ -224,6 +245,10 @@ export const artigosNovos = [
     cat: "Organização",
     card: "Guarda-roupa organizado em uma tarde",
     title: "Como organizar o guarda-roupa: método simples que dura",
+    desc: "Como organizar o guarda-roupa em uma tarde: triagem, zonas por frequência de uso, cabides iguais e dobra vertical para manter a ordem.",
+    kw: "guarda-roupa",
+    tema: "organização do guarda-roupa",
+    cta: "Gere um cronograma de organização",
     intro:
       "Um guarda-roupa organizado começa com menos peças e lugares fixos para cada categoria. Reserve uma tarde, separe sacos para doação e siga a ordem abaixo.",
     resumo: [
@@ -234,11 +259,11 @@ export const artigosNovos = [
     ],
     sections: [
       [
-        "1. Esvazie e faça a triagem",
+        "1. Esvazie o guarda-roupa e faça a triagem",
         "<p>Retire todas as roupas e limpe prateleiras e gavetas. Separe quatro grupos: <strong>fica</strong>, <strong>doação</strong>, <strong>conserto</strong> e <strong>descarte</strong>. Pergunte: usei nos últimos 12 meses? Serve hoje? Combina com o restante? Peças em bom estado podem ir para doação ou venda.</p>",
       ],
       [
-        "2. Defina zonas",
+        "2. Defina zonas no guarda-roupa",
         "<ul><li><strong>Altura dos olhos:</strong> roupas do dia a dia.</li><li><strong>Partes altas:</strong> roupas de outra estação e malas.</li><li><strong>Partes baixas:</strong> sapatos e itens pesados.</li><li><strong>Gavetas:</strong> roupas íntimas, meias e camisetas dobradas.</li></ul>",
       ],
       [
@@ -265,6 +290,10 @@ export const artigosNovos = [
     cat: "Jardinagem",
     card: "Horta de temperos em apartamento",
     title: "Horta em apartamento: temperos fáceis para começar",
+    desc: "Horta em apartamento: quais temperos plantar conforme o sol, como montar vasos com drenagem, regar pelo toque e colher sem matar a planta.",
+    kw: "horta",
+    tema: "horta em apartamento",
+    cta: "Inclua a rega da horta no cronograma",
     intro:
       "Uma horta pequena na janela ou na varanda garante temperos frescos e um contato diário com as plantas. O fator mais importante é a luz: escolha as espécies de acordo com o sol que o seu espaço recebe.",
     resumo: [
@@ -279,11 +308,11 @@ export const artigosNovos = [
         "<p>Durante um dia, anote quantas horas de sol direto batem no local. Em geral:</p><ul><li><strong>Sol pleno (4 a 6 horas ou mais):</strong> manjericão, alecrim, tomilho, orégano, pimenta.</li><li><strong>Meia-sombra (2 a 4 horas):</strong> salsinha, cebolinha, hortelã, coentro.</li><li><strong>Pouca luz:</strong> temperos não se desenvolvem bem; considere iluminação de cultivo.</li></ul>",
       ],
       [
-        "Monte os vasos",
+        "Monte os vasos da horta",
         "<ol><li>Escolha vasos com furos no fundo e pratinhos para não manchar o piso.</li><li>Coloque uma camada de argila expandida ou brita e uma manta de drenagem.</li><li>Use substrato para hortaliças, de preferência misturado com húmus de minhoca.</li><li>Plante a hortelã em vaso separado: ela se espalha e domina outras espécies.</li></ol><p>Vasos de 15 a 20 cm de profundidade atendem a maioria dos temperos.</p>",
       ],
       [
-        "Rega e adubação",
+        "Rega e adubação da horta",
         "<p>Enfie o dedo cerca de 2 cm na terra: se estiver seca, regue até a água escorrer pelos furos. Alecrim e tomilho gostam de terra mais seca; salsinha e cebolinha, de umidade constante. Uma adubação orgânica leve por mês, com húmus ou composto, mantém as plantas produtivas.</p>",
       ],
       [
@@ -306,6 +335,10 @@ export const artigosNovos = [
     cat: "Limpeza",
     card: "Guia de manchas: o que usar em cada caso",
     title: "Como tirar manchas de roupa: guia por tipo de mancha",
+    desc: "Como tirar manchas de roupa: tabela por tipo (gordura, café, vinho, sangue, caneta) e o jeito certo de usar alvejante sem estragar o tecido.",
+    kw: "mancha",
+    tema: "manchas de roupa",
+    cta: "Organize a lavanderia no cronograma",
     intro:
       "Quanto mais rápido você age, maior a chance de a mancha sair. A regra de ouro é absorver sem esfregar, usar água fria na maioria dos casos e sempre testar o produto em uma parte escondida da peça.",
     resumo: [
@@ -347,6 +380,10 @@ export const artigosNovos = [
     cat: "Economia",
     card: "Quantos BTUs eu preciso?",
     title: "Quantos BTUs preciso? Como escolher o ar-condicionado certo",
+    desc: "Quantos BTUs preciso? Calcule a capacidade do ar-condicionado pela área, pessoas, sol e aparelhos e compare com os tamanhos comerciais.",
+    kw: "BTU",
+    tema: "BTUs de ar-condicionado",
+    cta: "Calcule os BTUs do seu ambiente",
     intro:
       "BTU (British Thermal Unit) mede a capacidade de refrigeração do aparelho. Um ar-condicionado pequeno demais trabalha sem parar e não resfria; um grande demais liga e desliga com frequência. A conta inicial é simples.",
     resumo: [
@@ -357,11 +394,11 @@ export const artigosNovos = [
     ],
     sections: [
       [
-        "A conta básica",
+        "A conta básica de BTU",
         "<ol><li>Multiplique a área do ambiente (m²) por 600. Se o cômodo recebe sol da tarde, use 800.</li><li>Some 600 para cada pessoa além da primeira que usa o ambiente com frequência.</li><li>Some 600 para cada aparelho que gera calor (TV, computador, geladeira).</li><li>Escolha o modelo comercial igual ou imediatamente acima do resultado.</li></ol><p><strong>Exemplo:</strong> quarto de 12 m², sem sol da tarde, duas pessoas e uma TV: 12 × 600 = 7.200 + 600 + 600 = 8.400 BTU/h. Modelo indicado: 9.000 BTU/h.</p>",
       ],
       [
-        "Tamanhos comerciais mais comuns",
+        "Tamanhos comerciais em BTU/h",
         "<table><thead><tr><th>Capacidade</th><th>Área aproximada (sem sol da tarde)</th></tr></thead><tbody><tr><td>7.500 BTU/h</td><td>até 10 m²</td></tr><tr><td>9.000 BTU/h</td><td>até 13 m²</td></tr><tr><td>12.000 BTU/h</td><td>até 18 m²</td></tr><tr><td>18.000 BTU/h</td><td>até 28 m²</td></tr><tr><td>24.000 BTU/h</td><td>até 38 m²</td></tr><tr><td>30.000 BTU/h</td><td>até 48 m²</td></tr></tbody></table><p>Faixas aproximadas para ambientes com pé-direito de até 2,7 m, uma pessoa e um eletrônico. Use a calculadora para incluir pessoas, sol e eletrônicos.</p>",
       ],
       [
@@ -388,6 +425,10 @@ export const artigosNovos = [
     cat: "Cozinha",
     card: "Geladeira organizada, comida que dura mais",
     title: "Como organizar a geladeira e fazer os alimentos durarem mais",
+    desc: "Como organizar a geladeira: onde guardar cada alimento, temperatura certa, limpeza mensal e congelamento para reduzir desperdício.",
+    kw: "geladeira",
+    tema: "organização da geladeira",
+    cta: "Calcule quanto a geladeira consome",
     intro:
       "Cada parte da geladeira tem uma temperatura diferente. Guardar os alimentos no lugar certo reduz desperdício, evita contaminação e economiza energia.",
     resumo: [
@@ -406,7 +447,7 @@ export const artigosNovos = [
         "<ol><li>Lave as verduras apenas antes de consumir ou seque muito bem antes de guardar.</li><li>Guarde folhas em pote com papel-toalha para absorver umidade.</li><li>Etiquete sobras com a data e consuma em até 3 dias.</li><li>Coloque os itens mais novos atrás e os mais antigos na frente.</li><li>Não lote as prateleiras: o ar frio precisa circular.</li></ol>",
       ],
       [
-        "Limpeza mensal",
+        "Limpeza mensal da geladeira",
         "<p>Desligue ou ajuste conforme o manual, retire os alimentos para uma caixa térmica e lave prateleiras e gavetas com água morna e detergente neutro. Para odores, use uma solução de água com bicarbonato e seque bem. Descarte itens vencidos e aproveite para planejar o cardápio da semana.</p>",
       ],
       [
