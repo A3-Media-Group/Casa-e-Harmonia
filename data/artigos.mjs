@@ -6,6 +6,8 @@ const ANVISA =
 export const artigosNovos = [
   {
     slug: "como-tirar-mofo-da-parede",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Limpeza",
     card: "Mofo na parede: limpe e evite a volta",
     title: "Como tirar mofo da parede e evitar que ele volte",
@@ -45,6 +47,8 @@ export const artigosNovos = [
   },
   {
     slug: "como-limpar-sofa",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Limpeza",
     card: "Sofá limpo e cheiroso sem estragar o tecido",
     title: "Como limpar sofá de tecido em casa: passo a passo seguro",
@@ -84,6 +88,8 @@ export const artigosNovos = [
   },
   {
     slug: "como-desentupir-pia",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Limpeza",
     card: "Pia entupida? Tente estes passos primeiro",
     title: "Como desentupir pia da cozinha com segurança",
@@ -127,6 +133,8 @@ export const artigosNovos = [
   },
   {
     slug: "economizar-conta-de-luz",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Economia",
     card: "15 hábitos para baixar a conta de luz",
     title: "Como economizar na conta de luz: 15 hábitos que fazem diferença",
@@ -170,6 +178,8 @@ export const artigosNovos = [
   },
   {
     slug: "decorar-quarto-pequeno",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Decoração",
     card: "Quarto pequeno, amplo e aconchegante",
     title: "Decoração de quarto pequeno: 12 ideias para ganhar espaço",
@@ -209,6 +219,8 @@ export const artigosNovos = [
   },
   {
     slug: "organizar-guarda-roupa",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Organização",
     card: "Guarda-roupa organizado em uma tarde",
     title: "Como organizar o guarda-roupa: método simples que dura",
@@ -248,6 +260,8 @@ export const artigosNovos = [
   },
   {
     slug: "horta-em-apartamento",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Jardinagem",
     card: "Horta de temperos em apartamento",
     title: "Horta em apartamento: temperos fáceis para começar",
@@ -287,6 +301,8 @@ export const artigosNovos = [
   },
   {
     slug: "tirar-manchas-de-roupa",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Limpeza",
     card: "Guia de manchas: o que usar em cada caso",
     title: "Como tirar manchas de roupa: guia por tipo de mancha",
@@ -326,6 +342,8 @@ export const artigosNovos = [
   },
   {
     slug: "quantos-btus-ar-condicionado",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Economia",
     card: "Quantos BTUs eu preciso?",
     title: "Quantos BTUs preciso? Como escolher o ar-condicionado certo",
@@ -365,6 +383,8 @@ export const artigosNovos = [
   },
   {
     slug: "organizar-geladeira",
+    publicado: "2026-10-12",
+    atualizado: "2026-10-12",
     cat: "Cozinha",
     card: "Geladeira organizada, comida que dura mais",
     title: "Como organizar a geladeira e fazer os alimentos durarem mais",

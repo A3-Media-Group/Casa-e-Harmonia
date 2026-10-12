@@ -5,6 +5,12 @@
   "scripts": {
     "build": "node build.mjs",
     "start": "node serve.mjs",
-    "test": "node --test tests.mjs"
+    "test": "node --test tests.mjs",
+    "audit": "node scripts/audit.mjs",
+    "fotos": "node scripts/baixar-fotos.mjs",
+    "imagens": "python3 scripts/gerar-imagens.py"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

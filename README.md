@@ -54,3 +54,32 @@ Google Fonts é a única dependência externa de apresentação. O checklist nã
 - Novas ferramentas: BTU de ar-condicionado, consumo de energia, churrasco e papel de parede. Tinta sugere embalagens; piso calcula argamassa e rodapé; cronograma tem progresso e opções para pets, crianças e plantas; paletas passaram de 3 para 6, com simulação e cópia do código.
 - A seção de receitas e o conversor de medidas culinárias foram retirados por não fazerem parte do conceito do portal.
 - O `SITE_URL` padrão agora é `https://casaeharmonia.com.br`; a home usa canonical `/`.
+
+## Hospedagem (Hostinger) e `.htaccess`
+
+A fonte é `hospedagem/htaccess`; o build grava `dist/.htaccess` e a cópia da raiz. Ele faz:
+
+- `http://` e `www.` → `https://casaeharmonia.com.br` (um único 301);
+- `/index.html` e `/pasta/index.html` → `/` e `/pasta/` (301);
+- `ErrorDocument 404 /404.html` (status 404 real);
+- Brotli/gzip, cache de 1 ano para fontes, 30 dias para imagens e 1 ano para CSS/JS (versionados por `?v=<hash>`); HTML sempre revalida;
+- 404 para arquivos de código e dados do repositório (`data/`, `scripts/`, `*.mjs`, `*.md`…).
+
+Teste depois de publicar (as quatro variantes devem terminar em `https://casaeharmonia.com.br/` com um único 301):
+
+```sh
+curl -sIL http://casaeharmonia.com.br/      | grep -iE '^(HTTP|location)'
+curl -sIL http://www.casaeharmonia.com.br/  | grep -iE '^(HTTP|location)'
+curl -sIL https://www.casaeharmonia.com.br/ | grep -iE '^(HTTP|location)'
+curl -sIL https://casaeharmonia.com.br/     | grep -iE '^(HTTP|location)'
+curl -sI  https://casaeharmonia.com.br/index.html            | grep -iE '^(HTTP|location)'   # 301 → /
+curl -sI  https://casaeharmonia.com.br/nao-existe            | head -1                         # 404
+curl -sI  -H 'Accept-Encoding: br,gzip' https://casaeharmonia.com.br/styles.css | grep -iE 'content-encoding|cache-control'
+curl -sI  https://casaeharmonia.com.br/build.mjs             | head -1                         # 404
+```
+
+## Imagens
+
+- `npm run imagens` (Python 3 + Pillow, só no desenvolvimento) gera `assets/og/*.jpg` (1200 × 675), as versões 16:9 `assets/fotos/*-600|1200.webp` das fotos locais, `logo.webp`, favicons e recomprime fotos pesadas. Rode depois de `npm run build`, que grava `dist/imagens-manifest.json`, e rode o build de novo.
+- `npm run fotos` baixa as fotos do Pexels para `assets/fotos/` e `assets/og/` (precisa de internet; a rede do ambiente de edição bloqueia o Pexels). Enquanto não forem baixadas, as capas continuam vindo de `images.pexels.com` e a imagem de compartilhamento é um cartão tipográfico.
+- Fontes: DM Sans e Playfair Display (variáveis, subconjunto latin, licença OFL) em `assets/fontes/`, sem Google Fonts.

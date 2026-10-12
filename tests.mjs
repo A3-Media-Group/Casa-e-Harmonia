@@ -72,7 +72,7 @@ test("páginas, assets, links internos e JSON-LD válidos", () => {
     const html = fs.readFileSync(f, "utf8");
     assert.equal((html.match(/<h1[ >]/g) || []).length, 1, f);
     assert.match(html, /<main id="conteudo"/);
-    for (const m of html.matchAll(/(?:href|src)="(\/[^"#]*)(?:#[^"]*)?"/g))
+    for (const m of html.matchAll(/(?:href|src)="(\/[^"#?]*)(?:[?#][^"]*)?"/g))
       assert.ok(fs.existsSync("dist" + m[1]), f + " → " + m[1]);
     for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g))
       JSON.parse(m[1]);
