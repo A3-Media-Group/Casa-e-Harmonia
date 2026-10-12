@@ -1,6 +1,6 @@
 # Casa e Harmonia
 
-Portal estático em português: 13 guias e 5 ferramentas, sem dependências de produção. Logo e fotografias originais recuperados da cópia local do projeto; as URLs dos 10 artigos existentes foram preservadas.
+Portal estático em português: 23 guias, 12 receitas com foto, 34 dicas do dia a dia e 10 ferramentas, sem dependências de produção. Logo e fotografias originais recuperados da cópia local do projeto; as URLs dos 10 artigos existentes foram preservadas.
 
 ## Desenvolvimento e publicação
 
@@ -45,3 +45,12 @@ Google Fonts é a única dependência externa de apresentação. O checklist nã
 ## Validação
 
 `npm test` confere os cálculos, páginas, arquivos de imagens, links internos e sintaxe JSON-LD. A conferência no navegador inclui busca, rendimento acabado, piso, paletas e layout a 390 px.
+
+## Atualização de outubro de 2026
+
+- Conteúdo em `data/`: `artigos.mjs` (10 guias novos), `receitas.mjs`, `dicas.mjs` e `imagens.mjs` (registro de fotos).
+- Cada guia e receita tem foto exclusiva; o build falha se uma foto for usada em dois conteúdos e `npm test` confere a unicidade das capas.
+- Fotos novas do Pexels (licença gratuita, sem cadastro), carregadas de `images.pexels.com`, com crédito e link da página original. Se uma foto não carregar, aparece `assets/sem-foto.svg`.
+- Novas ferramentas: BTU de ar-condicionado, consumo de energia, conversor de medidas culinárias, churrasco e papel de parede. Tinta sugere embalagens; piso calcula argamassa e rodapé; cronograma tem progresso e opções para pets, crianças e plantas; paletas passaram de 3 para 6, com simulação e cópia do código.
+- Receitas com dados estruturados `Recipe`, ajuste de porções, lista de compras e impressão.
+- O `SITE_URL` padrão agora é `https://casaeharmonia.com.br`; a home usa canonical `/`.
