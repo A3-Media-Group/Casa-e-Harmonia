@@ -1964,3 +1964,24 @@ header nav {
   color: var(--green);
   text-decoration: underline;
 }
+/* Páginas de ferramenta (Fase 5) */
+.tool-page .intro p { font-size: 17px; }
+.campo { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.campo small { color: var(--muted); font-size: 12px; }
+.input-unit { display: flex; align-items: center; gap: 8px; }
+.input-unit input { flex: 1; min-width: 0; }
+.input-unit em { font-style: normal; color: var(--muted); font-size: 13px; white-space: nowrap; }
+.walls { display: grid; gap: 10px; margin-bottom: 8px; }
+.wall-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; }
+.premissas { margin: 14px 0; border: 1px dashed var(--line); border-radius: 12px; padding: 10px 14px; }
+.premissas summary { cursor: pointer; font-weight: 600; font-size: 14px; }
+.premissas .form-grid { margin-top: 12px; }
+.tool-panel form .button { margin-top: 18px; }
+.tool-actions { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; border-top: 1px solid #cfd8c4; padding-top: 12px; }
+.tool-actions[hidden] { display: none; }
+.result-title { font-family: "Playfair Display", Georgia, serif; font-size: 26px; line-height: 1.2; }
+.aviso { background: #f6efe0; border-left: 4px solid #b9773f; padding: 12px 16px; border-radius: 8px; font-size: 15px; }
+.tool-group { margin: 36px 0; }
+.tool-group h2 { font-size: 28px; }
+.check-group { font-weight: 700; color: var(--green); margin: 14px 0 6px; }
+@media (max-width: 600px) { .wall-row { grid-template-columns: 1fr 1fr; } .wall-row .text-button { grid-column: 1 / -1; justify-self: start; } }

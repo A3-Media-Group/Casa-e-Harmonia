@@ -17,7 +17,11 @@ ErrorDocument 404 /404.html
   RewriteCond %{THE_REQUEST} \s/+((?:[^\s?]*/)?)index\.html[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L,NE]
 
-  # 3) Arquivos de código e dados do repositório não são páginas públicas: respondem 404.
+  # 3) Página única antiga de ferramentas -> índice novo (o navegador mantém a âncora; o índice
+  #    redireciona #tinta, #btu etc. para a página própria de cada ferramenta).
+  RewriteRule ^ferramentas\.html$ /ferramentas/ [R=301,L]
+
+  # 4) Arquivos de código e dados do repositório não são páginas públicas: respondem 404.
   RewriteRule ^(data|scripts|hospedagem|dist|node_modules|\.git)(/|$) - [R=404,L]
   RewriteRule \.(mjs|md|py|lock)$ - [R=404,L]
   RewriteRule ^(package(-lock)?\.json|tests\.mjs|serve\.mjs|build\.mjs|\.gitignore)$ - [R=404,L]

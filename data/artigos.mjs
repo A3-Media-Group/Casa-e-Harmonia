@@ -53,7 +53,7 @@ export const artigosNovos = [
       ["Vinagre funciona contra mofo?", "O vinagre de álcool é uma opção mais suave para manchas leves. Para áreas grandes ou recorrentes, trate a causa da umidade e considere produtos antimofo específicos."],
       ["Posso pintar por cima do mofo?", "Não. A mancha volta. Limpe, deixe secar completamente, corrija a origem da umidade e só então repinte."],
     ],
-    tool: ["/ferramentas.html#tinta", "Calcular a tinta para repintar"],
+    tool: ["/ferramentas/calculadora-de-tinta/", "Calcular a tinta para repintar"],
     sources: [["Anvisa: cuidados com misturas de produtos de limpeza", ANVISA]],
   },
   {
@@ -105,7 +105,7 @@ export const artigosNovos = [
       ["De quanto em quanto tempo limpar?", "Aspire semanalmente. Uma limpeza geral a cada três a seis meses costuma bastar em casas sem pets; com pets ou crianças, pode ser necessário com mais frequência."],
       ["Lavadora extratora vale a pena?", "Ajuda em tecidos que aceitam água, desde que se use pouca solução e boa sucção. Siga o manual do aparelho e a etiqueta do sofá."],
     ],
-    tool: ["/ferramentas.html#organizacao", "Montar minha rotina de limpeza"],
+    tool: ["/ferramentas/cronograma-de-limpeza/", "Montar minha rotina de limpeza"],
     sources: [["Anvisa: cuidados com misturas de produtos de limpeza", ANVISA]],
   },
   {
@@ -160,7 +160,7 @@ export const artigosNovos = [
       ["Soda cáustica é segura?", "É um produto corrosivo que pode causar queimaduras e danificar tubulações. Se usar, siga exatamente o rótulo, proteja olhos e mãos e não misture com nada."],
       ["Quando chamar um encanador?", "Se vários ralos entopem ao mesmo tempo, se há retorno de água em outro ponto ou se a pia volta a entupir com frequência."],
     ],
-    tool: ["/ferramentas.html#organizacao", "Incluir a manutenção no cronograma"],
+    tool: ["/ferramentas/cronograma-de-limpeza/", "Incluir a manutenção no cronograma"],
     sources: [["Anvisa: cuidados com misturas de produtos de limpeza", ANVISA]],
   },
   {
@@ -217,7 +217,7 @@ export const artigosNovos = [
       ["Ar-condicionado inverter gasta menos?", "Em uso contínuo, costuma consumir menos porque ajusta a velocidade do compressor em vez de ligar e desligar. Confira a etiqueta de eficiência do modelo."],
       ["Como saber o consumo de cada aparelho?", "Multiplique a potência (W) pelas horas de uso e divida por 1.000. Nossa calculadora faz a conta para todos os aparelhos da casa."],
     ],
-    tool: ["/ferramentas.html#energia", "Calcular o consumo de energia"],
+    tool: ["/ferramentas/calculadora-de-consumo-de-energia/", "Calcular o consumo de energia"],
     sources: [["ANEEL: tarifas e bandeiras tarifárias", "https://www.gov.br/aneel/pt-br"]],
   },
   {
@@ -269,7 +269,7 @@ export const artigosNovos = [
       ["Cama de casal cabe em quarto de 9 m²?", "Em geral sim, desde que se avalie a posição da porta, da janela e do armário. Meça e simule a circulação antes de comprar."],
       ["Papel de parede funciona em quarto pequeno?", "Funciona bem em uma parede de destaque, como a da cabeceira. Estampas pequenas e tons suaves pesam menos visualmente."],
     ],
-    tool: ["/ferramentas.html#papel", "Calcular rolos de papel de parede"],
+    tool: ["/ferramentas/calculadora-de-papel-de-parede/", "Calcular rolos de papel de parede"],
     sources: [],
   },
   {
@@ -321,7 +321,7 @@ export const artigosNovos = [
       ["Como guardar roupas de inverno?", "Lave antes, deixe secar bem e guarde em caixas ou sacos de tecido respirável, na parte alta do armário."],
       ["Cabide de veludo vale a pena?", "Ajuda a evitar que peças escorreguem e economiza espaço por ser fino. Para casacos pesados, prefira cabides mais robustos."],
     ],
-    tool: ["/ferramentas.html#organizacao", "Gerar meu cronograma de organização"],
+    tool: ["/ferramentas/cronograma-de-limpeza/", "Gerar meu cronograma de organização"],
     sources: [],
   },
   {
@@ -476,7 +476,7 @@ export const artigosNovos = [
       ["Qual a temperatura mais econômica?", "Em torno de 23 °C costuma equilibrar conforto e consumo. Cada grau a menos aumenta o esforço do aparelho."],
       ["Ar portátil vale a pena?", "Pode atender quartos pequenos quando não é possível instalar split, mas costuma ser menos eficiente e mais barulhento."],
     ],
-    tool: ["/ferramentas.html#btu", "Calcular os BTUs do meu ambiente"],
+    tool: ["/ferramentas/calculadora-de-btu/", "Calcular os BTUs do meu ambiente"],
     sources: [],
   },
   {
@@ -528,7 +528,7 @@ export const artigosNovos = [
       ["Posso colocar comida quente na geladeira?", "Espere esfriar até perder o vapor (sem deixar horas fora) e divida em porções menores. Comida muito quente aumenta o consumo e aquece os outros alimentos."],
       ["Bicarbonato tira o cheiro da geladeira?", "Um pote aberto com bicarbonato ajuda a absorver odores leves. Limpeza e descarte de alimentos estragados continuam essenciais."],
     ],
-    tool: ["/ferramentas.html#energia", "Calcular o consumo da geladeira"],
+    tool: ["/ferramentas/calculadora-de-consumo-de-energia/", "Calcular o consumo da geladeira"],
     sources: [],
   },
 ];

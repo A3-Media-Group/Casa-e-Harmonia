@@ -36,7 +36,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#tinta",
+      "/ferramentas/calculadora-de-tinta/",
       "Calcular a tinta"
     ],
     "sources": [
@@ -104,7 +104,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#organizacao",
+      "/ferramentas/cronograma-de-limpeza/",
       "Gerar meu cronograma"
     ],
     "sources": [],
@@ -167,7 +167,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#reforma",
+      "/ferramentas/simulador-de-orcamento-de-reforma/",
       "Simular o orçamento"
     ],
     "sources": [],
@@ -230,7 +230,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#organizacao",
+      "/ferramentas/cronograma-de-limpeza/",
       "Gerar meu cronograma"
     ],
     "sources": [
@@ -297,7 +297,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#reforma",
+      "/ferramentas/simulador-de-orcamento-de-reforma/",
       "Simular o orçamento"
     ],
     "sources": [],
@@ -360,7 +360,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#reforma",
+      "/ferramentas/simulador-de-orcamento-de-reforma/",
       "Simular o orçamento"
     ],
     "sources": [],
@@ -422,7 +422,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#tinta",
+      "/ferramentas/calculadora-de-tinta/",
       "Calcular a tinta"
     ],
     "sources": [
@@ -489,7 +489,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#organizacao",
+      "/ferramentas/cronograma-de-limpeza/",
       "Gerar meu cronograma"
     ],
     "sources": [],
@@ -551,7 +551,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#organizacao",
+      "/ferramentas/cronograma-de-limpeza/",
       "Gerar meu cronograma"
     ],
     "sources": [],
@@ -609,7 +609,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#reforma",
+      "/ferramentas/simulador-de-orcamento-de-reforma/",
       "Simular o orçamento"
     ],
     "sources": [],
@@ -669,7 +669,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#paletas",
+      "/ferramentas/paletas-de-cores/",
       "Explorar paletas de cores"
     ],
     "sources": [
@@ -737,7 +737,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#tinta",
+      "/ferramentas/calculadora-de-tinta/",
       "Calcular a tinta"
     ],
     "sources": [
@@ -804,7 +804,7 @@ export const guiasOriginais = [
       ]
     ],
     "tool": [
-      "/ferramentas.html#organizacao",
+      "/ferramentas/cronograma-de-limpeza/",
       "Gerar meu cronograma"
     ],
     "sources": [
