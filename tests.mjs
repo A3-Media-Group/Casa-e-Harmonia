@@ -170,3 +170,109 @@ test("cada guia tem foto própria, sem repetição", () => {
 test("o site não tem referências a receitas", () => {
   for (const f of files) assert.doesNotMatch(fs.readFileSync(f, "utf8"), /\/receitas|"Recipe"|Receitas/, f);
 });
+
+/* ------------------------------- SEO (Fase 8) ------------------------------- */
+const ORIGEM = "https://casaeharmonia.com.br";
+const urlDe = (f) => "/" + path.relative("dist", f).split(path.sep).join("/").replace(/(^|\/)index\.html$/, "$1");
+const ler = (f) => fs.readFileSync(f, "utf8");
+const indexaveis = files.filter((f) => !/<meta name="robots" content="noindex/.test(ler(f)));
+const decode = (s) => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&lt;/g, "<");
+const N = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+test("title ≤ 60 e description 120–155, sem reticências e únicos", () => {
+  const titulos = new Map(), descs = new Map();
+  for (const f of indexaveis) {
+    const html = ler(f);
+    const t = decode(html.match(/<title>(.*?)<\/title>/)[1]);
+    const d = decode(html.match(/<meta name="description" content="([^"]*)"/)[1]);
+    assert.ok(t.length <= 60 && !t.endsWith("…"), `${f}: title (${t.length}) ${t}`);
+    assert.ok(d.length >= 120 && d.length <= 155 && !d.endsWith("…"), `${f}: description (${d.length})`);
+    assert.ok(!titulos.has(t), `title repetido em ${f} e ${titulos.get(t)}`);
+    assert.ok(!descs.has(d), `description repetida em ${f} e ${descs.get(d)}`);
+    titulos.set(t, f);
+    descs.set(d, f);
+  }
+});
+
+test("canonical absoluta, og:image local com 1200 px e zero links para /index.html", () => {
+  for (const f of indexaveis) {
+    const html = ler(f);
+    const canon = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+    assert.ok(canon && canon.startsWith(ORIGEM + "/"), `${f}: canonical ${canon}`);
+    assert.equal(canon, ORIGEM + urlDe(f), `${f}: canonical não corresponde à URL`);
+    assert.doesNotMatch(html, /href="[^"]*index\.html/, f);
+    const og = html.match(/<meta property="og:image" content="([^"]+)"/)[1];
+    assert.ok(og.startsWith(ORIGEM + "/assets/og/"), `${f}: og:image ${og}`);
+    assert.doesNotMatch(og, /logo/);
+    const buf = fs.readFileSync("dist" + og.slice(ORIGEM.length));
+    // Largura de um JPEG: marcador SOF (0xFFC0–0xFFC2).
+    let i = 2, largura = 0;
+    while (i < buf.length) {
+      const m = buf[i + 1], len = buf.readUInt16BE(i + 2);
+      if (m >= 0xc0 && m <= 0xc2) {
+        largura = buf.readUInt16BE(i + 7);
+        break;
+      }
+      i += 2 + len;
+    }
+    assert.ok(largura >= 1200, `${f}: og:image com ${largura}px`);
+  }
+});
+
+test("sitemap e páginas indexáveis coincidem, sem priority", () => {
+  const xml = fs.readFileSync("dist/sitemap.xml", "utf8");
+  assert.doesNotMatch(xml, /<priority>/);
+  const noSitemap = new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].slice(ORIGEM.length)));
+  for (const u of noSitemap) assert.ok(fs.existsSync("dist" + u + (u.endsWith("/") ? "index.html" : "")), "sitemap → inexistente: " + u);
+  for (const f of indexaveis) assert.ok(noSitemap.has(urlDe(f)), "fora do sitemap: " + urlDe(f));
+  assert.equal(noSitemap.size, indexaveis.length);
+  for (const m of xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) assert.match(m[1], /^\d{4}-\d{2}-\d{2}$/);
+});
+
+test("nenhuma URL antiga foi removida", () => {
+  const antigas = ["index.html", "sobre.html", "dicas.html", "ferramentas.html", "404.html", ...["japandi", "biofilia", "iluminacao-led", "plantas-para-sala", "cozinha-funcional", "casa-inteligente", "cores-terrosas", "organizacao-5s", "sofa-perfeito", "varanda-pequena", "cores-sala-pequena", "como-calcular-tinta", "rotina-limpeza", "como-tirar-mofo-da-parede", "como-limpar-sofa", "como-desentupir-pia", "economizar-conta-de-luz", "decorar-quarto-pequeno", "organizar-guarda-roupa", "horta-em-apartamento", "tirar-manchas-de-roupa", "quantos-btus-ar-condicionado", "organizar-geladeira"].map((s) => `artigos/${s}.html`)];
+  for (const a of antigas) assert.ok(fs.existsSync("dist/" + a) && fs.existsSync(a), "URL removida: " + a);
+  assert.match(fs.readFileSync("dist/.htaccess", "utf8"), /RewriteRule \^ferramentas\\\.html\$ \/ferramentas\/ \[R=301/);
+  assert.match(ler("dist/ferramentas.html"), /noindex/);
+});
+
+test("todo guia recebe ao menos 2 links de outros guias e tem links contextuais", () => {
+  const guias = files.filter((f) => f.includes(`${path.sep}artigos${path.sep}`));
+  const entrada = new Map(guias.map((g) => [urlDe(g), new Set()]));
+  for (const g of guias) {
+    const art = ler(g).match(/<article>[\s\S]*?<\/article>/)[0];
+    for (const m of art.matchAll(/href="(\/artigos\/[^"#]+)"/g)) if (m[1] !== urlDe(g)) entrada.get(m[1])?.add(urlDe(g));
+    const secoes = art.split(/<p class="related-title">/)[0];
+    const contextuais = new Set([...secoes.matchAll(/<section id="sec\d+">[\s\S]*?<\/section>/g)].flatMap((s) => [...s[0].matchAll(/href="\/artigos\/([^"]+)"/g)].map((m) => m[1])));
+    assert.ok(contextuais.size >= 2, `${g}: ${contextuais.size} link(s) contextual(is)`);
+  }
+  for (const [u, de] of entrada) assert.ok(de.size >= 2, `${u}: só ${de.size} link(s) de outros guias`);
+});
+
+test("palavra-chave nas primeiras 100 palavras e em pelo menos 2 H2", async () => {
+  const { guiasOriginais } = await import("./data/guias-originais.mjs");
+  const { artigosNovos } = await import("./data/artigos.mjs");
+  const { guiasDicas } = await import("./data/guias-dicas.mjs");
+  for (const a of [...guiasOriginais, ...artigosNovos, ...guiasDicas]) {
+    const main = ler(`dist/artigos/${a.slug}.html`).match(/<main[\s\S]*<\/main>/)[0];
+    const depoisH1 = main.slice(main.indexOf("</h1>")).replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).slice(0, 100).join(" ");
+    assert.ok(N(depoisH1).includes(N(a.kw)), `${a.slug}: "${a.kw}" fora das 100 primeiras palavras`);
+    const h2 = [...main.matchAll(/<h2[^>]*>(.*?)<\/h2>/g)].filter((m) => N(m[1]).includes(N(a.kw))).length;
+    assert.ok(h2 >= 2, `${a.slug}: "${a.kw}" em ${h2} H2`);
+  }
+});
+
+test("hubs e páginas de ferramenta completas", () => {
+  for (const f of files.filter((f) => f.includes(`${path.sep}guias${path.sep}`))) {
+    const html = ler(f);
+    assert.match(html, /"@type":"BreadcrumbList"/, f);
+    assert.match(html, /class="hub-list"/, f);
+  }
+  for (const slug of Object.keys(CH.ferramentas)) {
+    const html = ler(`dist/ferramentas/${slug}/index.html`);
+    for (const trecho of ["Como calculamos", "Exemplo resolvido", "Perguntas frequentes", "Guias relacionados", "Fontes", '"@type":"WebApplication"'])
+      assert.ok(html.includes(trecho), `${slug}: falta ${trecho}`);
+    assert.doesNotMatch(html, /aggregateRating|"review"/, slug);
+  }
+  assert.equal(Object.keys(CH.ferramentas).length, 20);
+});

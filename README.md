@@ -1,6 +1,6 @@
 # Casa e Harmonia
 
-Portal estático em português: 23 guias, 31 dicas do dia a dia e 9 ferramentas, sem dependências de produção. Logo e fotografias originais recuperados da cópia local do projeto; as URLs dos 10 artigos existentes foram preservadas.
+Portal estático em português: 31 guias, 5 páginas-hub por tema, 20 ferramentas com página própria e 31 dicas do dia a dia, sem dependências de produção. Logo e fotografias originais recuperados da cópia local do projeto; as URLs dos 10 artigos existentes foram preservadas.
 
 ## Desenvolvimento e publicação
 
@@ -102,3 +102,18 @@ Para ligar o GA4 depois: (1) publique uma política de privacidade atualizada e 
 
 - `CONTATO_EMAIL=contato@exemplo.com.br npm run build` publica o e-mail em `/contato/`. Sem a variável, o build avisa e usa o canal público do GitHub.
 - Guias aceitam os campos opcionais `autor: { nome, bio }`, `revisor: { nome, bio }` e `revisado: "AAAA-MM-DD"`. Sem dados reais, a assinatura é "Redação Casa e Harmonia". Não preencha com pessoas fictícias.
+
+## Estrutura de URLs (auditoria de SEO, outubro de 2026)
+
+| URL | Conteúdo | Fonte |
+| --- | --- | --- |
+| `/` | Home | `build.mjs` |
+| `/artigos/{slug}.html` | 31 guias (URLs antigas preservadas) | `data/guias-originais.mjs`, `data/artigos.mjs`, `data/guias-dicas.mjs` |
+| `/guias/{tema}/` | 5 hubs por tema | `data/hubs.mjs` |
+| `/ferramentas/` e `/ferramentas/{slug}/` | Índice e 20 ferramentas | `data/ferramentas.mjs` + `js/ferramentas/{slug}.js` |
+| `/ferramentas.html` | 301 para `/ferramentas/` (âncoras antigas levam à ferramenta) | `.htaccess` + página noindex |
+| `/dicas.html`, `/sobre.html`, `/privacidade/`, `/contato/` | Páginas institucionais | `build.mjs` |
+
+Cada guia tem `desc` (120–155), `seo` (title ≤ 60, quando o H1 é longo), `kw`, `tema`, `cluster`, `relacionados`, `ferramentas`, `publicado` e `atualizado` (data real da última mudança de conteúdo, usada no sitemap). O build falha se title/description saírem do padrão, se uma foto se repetir ou se um hub/ferramenta apontar para guia inexistente.
+
+`npm run audit` imprime, por página, o tamanho de title e description, palavras no `<article>`, links de entrada e saída e o resumo de órfãs. `npm test` cobre cálculos, links internos, sitemap, canonical, og:image ≥ 1200 px, palavra-chave e links entre guias.
