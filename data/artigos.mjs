@@ -207,7 +207,7 @@ export const artigosNovos = [
       ],
     ],
     relacionados: ["quantos-btus-ar-condicionado", "iluminacao-led", "casa-inteligente", "organizar-geladeira"],
-    ferramentas: ["energia", "btu"],
+    ferramentas: ["energia", "quanto-gasta-o-chuveiro-eletrico", "consumo-mensal-do-ar-condicionado"],
     contexto: [
       [2, "<p>Veja também <a href=\"/artigos/organizar-geladeira.html\">como organizar a geladeira</a> para que o ar frio circule melhor.</p>"],
       [3, "<p>Antes de comprar um aparelho, confira <a href=\"/artigos/quantos-btus-ar-condicionado.html\">quantos BTUs o ambiente precisa</a>; para a iluminação, entenda o <a href=\"/artigos/iluminacao-led.html\">LED quente e frio</a>.</p>"],
@@ -259,7 +259,7 @@ export const artigosNovos = [
       ],
     ],
     relacionados: ["cores-sala-pequena", "japandi", "iluminacao-led", "organizar-guarda-roupa"],
-    ferramentas: ["papel", "paletas", "tinta"],
+    ferramentas: ["papel", "calculadora-de-cortina", "tamanho-ideal-de-tapete"],
     contexto: [
       [2, "<p>Para escolher a combinação, veja como montar uma <a href=\"/artigos/cores-sala-pequena.html\">paleta de cores para ambientes pequenos</a>; o raciocínio vale para o quarto.</p>"],
       [3, "<p>Entenda a diferença entre <a href=\"/artigos/iluminacao-led.html\">LED quente e frio</a> e como <a href=\"/artigos/organizar-guarda-roupa.html\">organizar o guarda-roupa</a> para liberar espaço.</p>"],
@@ -467,7 +467,7 @@ export const artigosNovos = [
       ],
     ],
     relacionados: ["economizar-conta-de-luz", "casa-inteligente", "decorar-quarto-pequeno"],
-    ferramentas: ["btu", "energia"],
+    ferramentas: ["btu", "consumo-mensal-do-ar-condicionado", "energia"],
     contexto: [
       [3, "<p>Para estimar o gasto mensal, use os hábitos e a conta de kWh do guia <a href=\"/artigos/economizar-conta-de-luz.html\">como economizar na conta de luz</a>; tomadas e controles inteligentes aparecem em <a href=\"/artigos/casa-inteligente.html\">casa inteligente acessível</a>.</p>"],
     ],

@@ -8,7 +8,7 @@ export const hubs = [
     title: "Limpeza e manutenção da casa: guias práticos",
     desc: "Guias de limpeza e manutenção da casa: mofo na parede, sofá, pia entupida, manchas de roupa e uma rotina de limpeza que cabe na semana.",
     guias: ["como-tirar-mofo-da-parede", "como-limpar-sofa", "como-desentupir-pia", "tirar-manchas-de-roupa", "rotina-limpeza"],
-    ferramentas: ["organizacao"],
+    ferramentas: ["organizacao", "checklist-de-mudanca"],
     intro: [
       "Limpar a casa fica mais leve quando você separa dois tipos de trabalho: a manutenção diária, que evita o acúmulo, e as tarefas pontuais, que resolvem um problema específico, como uma mancha de mofo, um sofá encardido ou uma pia que não escoa. Os guias desta seção cobrem os dois lados, sempre com o mesmo critério: começar pela causa, usar o produto certo para cada superfície e saber a hora de chamar um profissional.",
       "Boa parte dos problemas de limpeza tem origem em umidade e em resíduos que ficam onde não deveriam. O mofo no canto do teto aparece quando o vapor do banho ou das roupas secando dentro de casa não encontra saída; a pia entope com gordura e restos de comida que endurecem no sifão; o sofá ganha cheiro quando o tecido recebe líquido e não seca direito. Por isso, cada guia traz um passo a passo para resolver agora e uma lista curta de hábitos para que o problema não volte.",
@@ -24,7 +24,7 @@ export const hubs = [
     title: "Decoração e cores: guias para salas e quartos",
     desc: "Guias de decoração e cores: paletas para sala pequena, cores terrosas, estilo Japandi, quarto pequeno, escolha do sofá e cálculo de tinta.",
     guias: ["cores-sala-pequena", "cores-terrosas", "japandi", "decorar-quarto-pequeno", "sofa-perfeito", "como-calcular-tinta", "varanda-pequena"],
-    ferramentas: ["paletas", "tinta", "papel", "piso"],
+    ferramentas: ["paletas", "tinta", "papel", "piso", "calculadora-de-cortina", "tamanho-ideal-de-tapete", "altura-de-quadros"],
     intro: [
       "Decorar bem não depende de trocar tudo. Na maior parte das casas, o caminho mais eficiente é partir do que fica (piso, marcenaria, o sofá que ainda tem anos de uso) e decidir uma mudança por vez: uma parede, uma cortina, a iluminação ou a disposição dos móveis. Os guias desta seção seguem essa lógica e ajudam a fazer escolhas que combinam entre si e com a rotina de quem mora no espaço.",
       "Cor é a mudança com maior impacto pelo menor custo, e também a que mais engana. A mesma tinta parece diferente de manhã, à noite, sob LED quente ou frio e ao lado de um piso amadeirado. Por isso, todos os guias de cor recomendam testar amostras na parede real antes de comprar. Você encontra combinações para salas pequenas, propostas com tons terrosos e a base neutra do estilo Japandi, além de uma ferramenta com paletas prontas e os códigos de cada tom.",
@@ -40,7 +40,7 @@ export const hubs = [
     title: "Organização da casa e da cozinha: guias práticos",
     desc: "Guias de organização: guarda-roupa, geladeira, método 5S adaptado para casa e cozinha funcional para guardar, preparar e limpar com menos passos.",
     guias: ["organizar-guarda-roupa", "organizar-geladeira", "organizacao-5s", "cozinha-funcional"],
-    ferramentas: ["organizacao", "reforma", "energia"],
+    ferramentas: ["organizacao", "checklist-de-mudanca", "reforma", "calculadora-de-rejunte"],
     intro: [
       "Organizar a casa não é deixá-la com cara de catálogo, e sim fazer com que cada coisa tenha um lugar fácil de encontrar e fácil de devolver. Quando guardar dá trabalho, o objeto fica pelo caminho. Os guias desta seção partem dessa ideia e mostram como reduzir o volume, criar zonas por frequência de uso e montar sistemas que outras pessoas da casa também conseguem manter.",
       "O método 5S, criado para ambientes de trabalho, funciona bem como roteiro doméstico: separar o que é útil, dar um lugar a cada coisa, limpar, padronizar e manter. A regra mais importante é começar pequeno. Uma gaveta concluída rende mais motivação do que três armários pela metade. Também vale esperar para comprar caixas e organizadores: primeiro você descobre o volume real que vai ficar, depois escolhe o recipiente.",
@@ -72,7 +72,7 @@ export const hubs = [
     title: "Energia e conforto em casa: conta de luz, ar e luz",
     desc: "Guias de energia e conforto: economizar na conta de luz, calcular os BTUs do ar-condicionado, escolher lâmpadas LED e começar a casa inteligente.",
     guias: ["economizar-conta-de-luz", "quantos-btus-ar-condicionado", "iluminacao-led", "casa-inteligente"],
-    ferramentas: ["energia", "btu", "reforma"],
+    ferramentas: ["energia", "btu", "quanto-gasta-o-chuveiro-eletrico", "consumo-mensal-do-ar-condicionado", "calculadora-de-iluminacao"],
     intro: [
       "Conforto e conta de luz andam juntos. O banho quente, o ar-condicionado, a geladeira e a iluminação respondem pela maior parte do consumo de muitas casas brasileiras, e pequenas escolhas nesses itens rendem mais do que desligar uma lâmpada esquecida. Os guias desta seção mostram onde está o gasto e como reduzir sem abrir mão do bem-estar.",
       "Tudo começa por uma conta simples: consumo em quilowatt-hora é a potência do aparelho em watts multiplicada pelas horas de uso e dividida por mil. Um chuveiro de 5.500 W ligado por meia hora por dia consome cerca de 82 kWh no mês. Com a calculadora de consumo, você monta a lista de aparelhos da casa, informa a tarifa da sua conta e descobre qual deles pesa mais. Tarifas e bandeiras mudam ao longo do ano e por distribuidora; os valores corretos estão na sua fatura e nas publicações da ANEEL.",

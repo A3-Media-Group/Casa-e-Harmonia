@@ -96,6 +96,43 @@ test("orçamento de reforma, cronograma e paletas", () => {
   assert.equal(fn("paletas-de-cores").paleta("japandi").cores.length, 3);
 });
 
+test("ferramentas novas: exemplos publicados conferem", () => {
+  const t = fn("calculadora-de-tijolos-e-blocos").blocos(4, 2.8, 1.68, 29, 19, 14, 1, 5);
+  assert.equal(t.total, 167);
+  assert.equal(Math.round(t.argamassaL), 109);
+  assert.throws(() => fn("calculadora-de-tijolos-e-blocos").blocos(4, 2.8, 20, 29, 19, 14, 1, 5));
+  const r = fn("calculadora-de-rejunte").rejunte(60, 60, 9, 2, 20, 10, 1.6);
+  assert.equal(Math.round(r.kgM2 * 1000) / 1000, 0.096);
+  assert.equal(Math.round(r.total * 100) / 100, 2.11);
+  assert.equal(r.emb5, 1);
+  assert.equal(Math.round(fn("calculadora-de-rejunte").rejunte(30, 30, 8, 2, 1, 0, 1.5).kgM2 * 100) / 100, 0.16);
+  assert.equal(fn("calculadora-de-argamassa").argamassa(20, 8, 20, 5).sacos, 9);
+  const c = fn("calculadora-de-cortina").cortina(2, 20, 2.6, 1, 2, 2.8, 20);
+  assert.deepEqual([c.trilho, c.franzida, c.corte, c.deitado, c.metros], [2.4, 4.8, 2.79, true, 4.8]);
+  assert.equal(fn("calculadora-de-cortina").cortina(2, 20, 2.6, 1, 2, 1.4, 20).faixas, 4);
+  assert.equal(fn("calculadora-de-iluminacao").iluminacao(150, 15, 806, 0.7).lampadas, 4);
+  assert.throws(() => fn("calculadora-de-iluminacao").iluminacao(150, 15, 806, 0));
+  const ch = fn("quanto-gasta-o-chuveiro-eletrico").chuveiro(5500, 10, 3, 30, 0.85);
+  assert.equal(ch.kwh, 82.5);
+  assert.equal(ch.kwhMenos2, 66);
+  const ar = fn("consumo-mensal-do-ar-condicionado").ar;
+  assert.equal(ar("potencia", 800, 0, 8, 30, 0.85).kwh, 192);
+  assert.equal(Math.round(ar("etiqueta", 0, 600, 8, 30, 0.85).kwh * 10) / 10, 69.2);
+  const tp = fn("tamanho-ideal-de-tapete").tapete;
+  assert.deepEqual([...tp("sala", 2.1, 1.9, 20).comum], [2, 2.5]);
+  assert.equal(tp("quarto", 1.38, 1.88, 50).largura, 2.38);
+  const q = fn("altura-de-quadros").quadro;
+  assert.equal(q("livre", 150, 60, 5).prego, 175);
+  assert.equal(q("movel", 150, 60, 5, 85, 20).prego, 160);
+  const d = fn("checklist-de-mudanca").datas("2026-11-15");
+  assert.deepEqual(Array.from(d.slice(0, 3), (x) => x[1]), ["18/10/2026", "01/11/2026", "08/11/2026"]);
+  assert.throws(() => fn("checklist-de-mudanca").datas(""));
+  const cv = fn("conversor-de-medidas").converter;
+  assert.equal(Math.round(cv("comprimento", 55, "pol").cm * 10) / 10, 139.7);
+  assert.equal(Math.round(cv("area", 120, "pe2").m2 * 100) / 100, 11.15);
+  assert.throws(() => cv("area", 1, "pol"));
+});
+
 const walk = (d) =>
   fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
 const files = walk("dist").filter((f) => f.endsWith(".html"));

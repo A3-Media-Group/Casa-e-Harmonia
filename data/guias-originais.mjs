@@ -55,6 +55,7 @@ export const guiasOriginais = [
     ],
     "ferramentas": [
       "paletas",
+      "altura-de-quadros",
       "organizacao"
     ],
     "contexto": [
@@ -180,6 +181,7 @@ export const guiasOriginais = [
       "cozinha-funcional"
     ],
     "ferramentas": [
+      "calculadora-de-iluminacao",
       "energia",
       "reforma"
     ],
@@ -311,7 +313,8 @@ export const guiasOriginais = [
     ],
     "ferramentas": [
       "reforma",
-      "energia"
+      "calculadora-de-rejunte",
+      "calculadora-de-iluminacao"
     ],
     "contexto": [
       [
@@ -373,7 +376,8 @@ export const guiasOriginais = [
     ],
     "ferramentas": [
       "energia",
-      "btu"
+      "btu",
+      "calculadora-de-iluminacao"
     ],
     "contexto": [
       [
@@ -502,7 +506,8 @@ export const guiasOriginais = [
       "organizar-geladeira"
     ],
     "ferramentas": [
-      "organizacao"
+      "organizacao",
+      "checklist-de-mudanca"
     ],
     "contexto": [
       [
@@ -563,7 +568,8 @@ export const guiasOriginais = [
       "japandi"
     ],
     "ferramentas": [
-      "reforma",
+      "tamanho-ideal-de-tapete",
+      "conversor-de-medidas",
       "paletas"
     ],
     "contexto": [
@@ -623,6 +629,7 @@ export const guiasOriginais = [
     ],
     "ferramentas": [
       "reforma",
+      "piso",
       "churrasco"
     ],
     "contexto": [
@@ -688,7 +695,8 @@ export const guiasOriginais = [
     ],
     "ferramentas": [
       "paletas",
-      "tinta"
+      "tinta",
+      "calculadora-de-cortina"
     ],
     "contexto": [
       [
@@ -755,7 +763,8 @@ export const guiasOriginais = [
     ],
     "ferramentas": [
       "tinta",
-      "reforma"
+      "reforma",
+      "calculadora-de-tijolos-e-blocos"
     ],
     "contexto": [
       [
