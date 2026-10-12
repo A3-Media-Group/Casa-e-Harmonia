@@ -45,7 +45,27 @@ export const guiasOriginais = [
       ]
     ],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "cores-terrosas",
+      "organizacao-5s",
+      "biofilia",
+      "decorar-quarto-pequeno"
+    ],
+    "ferramentas": [
+      "paletas",
+      "organizacao"
+    ],
+    "contexto": [
+      [
+        0,
+        "<p>Para tirar o excesso sem sofrimento, o <a href=\"/artigos/organizacao-5s.html\">método 5S em casa</a> é um bom ponto de partida.</p>"
+      ],
+      [
+        1,
+        "<p>Quem prefere tons mais quentes pode partir das <a href=\"/artigos/cores-terrosas.html\">cores terrosas</a>; as plantas entram como no <a href=\"/artigos/biofilia.html\">design biofílico</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "biofilia",
@@ -87,7 +107,27 @@ export const guiasOriginais = [
     ],
     "sources": [],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "plantas-para-sala",
+      "horta-em-apartamento",
+      "japandi",
+      "iluminacao-led"
+    ],
+    "ferramentas": [
+      "organizacao",
+      "paletas"
+    ],
+    "contexto": [
+      [
+        1,
+        "<p>Escolha espécies na lista de <a href=\"/artigos/plantas-para-sala.html\">plantas resistentes para a sala</a> ou comece uma <a href=\"/artigos/horta-em-apartamento.html\">horta de temperos</a>.</p>"
+      ],
+      [
+        2,
+        "<p>Madeira e fibras naturais também aparecem no <a href=\"/artigos/japandi.html\">estilo Japandi</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "iluminacao-led",
@@ -129,7 +169,27 @@ export const guiasOriginais = [
     ],
     "sources": [],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "economizar-conta-de-luz",
+      "casa-inteligente",
+      "decorar-quarto-pequeno",
+      "cozinha-funcional"
+    ],
+    "ferramentas": [
+      "energia",
+      "reforma"
+    ],
+    "contexto": [
+      [
+        1,
+        "<p>Na cozinha, combine com as soluções de <a href=\"/artigos/cozinha-funcional.html\">cozinha funcional</a>; no quarto, veja as ideias para <a href=\"/artigos/decorar-quarto-pequeno.html\">quarto pequeno</a>.</p>"
+      ],
+      [
+        2,
+        "<p>Lâmpadas conectadas permitem criar cenas: veja <a href=\"/artigos/casa-inteligente.html\">casa inteligente acessível</a> e o impacto na <a href=\"/artigos/economizar-conta-de-luz.html\">conta de luz</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "plantas-para-sala",
@@ -176,7 +236,26 @@ export const guiasOriginais = [
       ]
     ],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "biofilia",
+      "horta-em-apartamento",
+      "varanda-pequena"
+    ],
+    "ferramentas": [
+      "organizacao",
+      "paletas"
+    ],
+    "contexto": [
+      [
+        0,
+        "<p>Para integrar as plantas ao projeto, veja o guia de <a href=\"/artigos/biofilia.html\">design biofílico</a>.</p>"
+      ],
+      [
+        2,
+        "<p>Prefere algo que vai para a panela? Comece uma <a href=\"/artigos/horta-em-apartamento.html\">horta de temperos no apartamento</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "cozinha-funcional",
@@ -218,7 +297,27 @@ export const guiasOriginais = [
     ],
     "sources": [],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "organizar-geladeira",
+      "como-desentupir-pia",
+      "iluminacao-led",
+      "organizacao-5s"
+    ],
+    "ferramentas": [
+      "reforma",
+      "energia"
+    ],
+    "contexto": [
+      [
+        0,
+        "<p>A geladeira faz parte do percurso: veja <a href=\"/artigos/organizar-geladeira.html\">como organizar a geladeira</a>.</p>"
+      ],
+      [
+        2,
+        "<p>Ilumine a bancada com a <a href=\"/artigos/iluminacao-led.html\">temperatura de cor adequada</a> e evite entupimentos com as dicas de <a href=\"/artigos/como-desentupir-pia.html\">como desentupir a pia</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "casa-inteligente",
@@ -260,7 +359,26 @@ export const guiasOriginais = [
     ],
     "sources": [],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "economizar-conta-de-luz",
+      "iluminacao-led",
+      "quantos-btus-ar-condicionado"
+    ],
+    "ferramentas": [
+      "energia",
+      "btu"
+    ],
+    "contexto": [
+      [
+        0,
+        "<p>Programar horários ajuda a <a href=\"/artigos/economizar-conta-de-luz.html\">economizar na conta de luz</a>, e lâmpadas conectadas seguem a mesma lógica de <a href=\"/artigos/iluminacao-led.html\">temperatura de cor</a>.</p>"
+      ],
+      [
+        1,
+        "<p>Controladores de ar-condicionado não substituem o dimensionamento: confira <a href=\"/artigos/quantos-btus-ar-condicionado.html\">quantos BTUs você precisa</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "cores-terrosas",
@@ -307,7 +425,26 @@ export const guiasOriginais = [
       ]
     ],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "cores-sala-pequena",
+      "japandi",
+      "como-calcular-tinta"
+    ],
+    "ferramentas": [
+      "paletas",
+      "tinta"
+    ],
+    "contexto": [
+      [
+        1,
+        "<p>Areia com grafite conversa bem com o <a href=\"/artigos/japandi.html\">estilo Japandi</a>; em ambientes compactos, veja também as <a href=\"/artigos/cores-sala-pequena.html\">cores para sala pequena</a>.</p>"
+      ],
+      [
+        2,
+        "<p>Antes de comprar, siga o passo a passo de <a href=\"/artigos/como-calcular-tinta.html\">como calcular tinta</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "organizacao-5s",
@@ -349,7 +486,26 @@ export const guiasOriginais = [
     ],
     "sources": [],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "organizar-guarda-roupa",
+      "rotina-limpeza",
+      "cozinha-funcional",
+      "organizar-geladeira"
+    ],
+    "ferramentas": [
+      "organizacao"
+    ],
+    "contexto": [
+      [
+        0,
+        "<p>Bons lugares para começar: <a href=\"/artigos/organizar-guarda-roupa.html\">o guarda-roupa</a> e <a href=\"/artigos/organizar-geladeira.html\">a geladeira</a>.</p>"
+      ],
+      [
+        2,
+        "<p>Para distribuir as tarefas da semana, monte uma <a href=\"/artigos/rotina-limpeza.html\">rotina de limpeza leve</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "sofa-perfeito",
@@ -391,7 +547,22 @@ export const guiasOriginais = [
     ],
     "sources": [],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "como-limpar-sofa",
+      "cores-sala-pequena",
+      "japandi"
+    ],
+    "ferramentas": [
+      "reforma",
+      "paletas"
+    ],
+    "contexto": [
+      [
+        2,
+        "<p>Depois da compra, saiba <a href=\"/artigos/como-limpar-sofa.html\">como limpar o sofá de tecido</a> sem estragar a capa, e combine a cor com a <a href=\"/artigos/cores-sala-pequena.html\">paleta da sala</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "varanda-pequena",
@@ -433,7 +604,23 @@ export const guiasOriginais = [
     ],
     "sources": [],
     "publicado": "2026-09-12",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "horta-em-apartamento",
+      "biofilia",
+      "plantas-para-sala",
+      "iluminacao-led"
+    ],
+    "ferramentas": [
+      "reforma",
+      "churrasco"
+    ],
+    "contexto": [
+      [
+        1,
+        "<p>Se a varanda recebe sol, ela pode abrigar uma <a href=\"/artigos/horta-em-apartamento.html\">horta de temperos</a>; à noite, a <a href=\"/artigos/iluminacao-led.html\">luz quente de LED</a> deixa o espaço acolhedor.</p>"
+      ]
+    ]
   },
   {
     "slug": "cores-sala-pequena",
@@ -481,7 +668,27 @@ export const guiasOriginais = [
       ]
     ],
     "publicado": "2026-09-14",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "cores-terrosas",
+      "como-calcular-tinta",
+      "decorar-quarto-pequeno",
+      "sofa-perfeito"
+    ],
+    "ferramentas": [
+      "paletas",
+      "tinta"
+    ],
+    "contexto": [
+      [
+        0,
+        "<p>Se o sofá ainda vai ser comprado, veja <a href=\"/artigos/sofa-perfeito.html\">como escolher o sofá</a> antes de definir a paleta.</p>"
+      ],
+      [
+        1,
+        "<p>Gostou de tons quentes? Veja as <a href=\"/artigos/cores-terrosas.html\">combinações com cores terrosas</a> e, na hora de comprar, <a href=\"/artigos/como-calcular-tinta.html\">calcule a quantidade de tinta</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "como-calcular-tinta",
@@ -528,7 +735,26 @@ export const guiasOriginais = [
       ]
     ],
     "publicado": "2026-09-14",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "cores-sala-pequena",
+      "cores-terrosas",
+      "como-tirar-mofo-da-parede"
+    ],
+    "ferramentas": [
+      "tinta",
+      "reforma"
+    ],
+    "contexto": [
+      [
+        0,
+        "<p>Parede com manchas escuras? Resolva primeiro o problema seguindo o guia <a href=\"/artigos/como-tirar-mofo-da-parede.html\">como tirar mofo da parede</a>.</p>"
+      ],
+      [
+        2,
+        "<p>Ainda escolhendo a cor? Veja as <a href=\"/artigos/cores-sala-pequena.html\">cores para sala pequena</a> e as <a href=\"/artigos/cores-terrosas.html\">combinações terrosas</a>.</p>"
+      ]
+    ]
   },
   {
     "slug": "rotina-limpeza",
@@ -575,6 +801,25 @@ export const guiasOriginais = [
       ]
     ],
     "publicado": "2026-09-14",
-    "atualizado": "2026-09-14"
+    "atualizado": "2026-09-14",
+    "relacionados": [
+      "organizacao-5s",
+      "como-tirar-mofo-da-parede",
+      "como-limpar-sofa",
+      "como-desentupir-pia"
+    ],
+    "ferramentas": [
+      "organizacao"
+    ],
+    "contexto": [
+      [
+        0,
+        "<p>Para tarefas pontuais, consulte os guias de <a href=\"/artigos/como-tirar-mofo-da-parede.html\">como tirar mofo da parede</a> e <a href=\"/artigos/como-desentupir-pia.html\">como desentupir a pia</a>.</p>"
+      ],
+      [
+        1,
+        "<p>O <a href=\"/artigos/organizacao-5s.html\">método 5S adaptado para casa</a> ajuda a reduzir o que precisa ser limpo.</p>"
+      ]
+    ]
   }
 ];

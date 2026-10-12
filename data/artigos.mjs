@@ -41,6 +41,12 @@ export const artigosNovos = [
         "<p>Procure um profissional se a mancha volta rapidamente, se a área é maior que um metro quadrado, se o reboco está esfarelando ou se há goteiras. Infiltração não se resolve com tinta: é preciso corrigir a origem da água. Pessoas com asma, alergias ou baixa imunidade devem evitar fazer a limpeza.</p>",
       ],
     ],
+    relacionados: ["rotina-limpeza", "como-calcular-tinta", "tirar-manchas-de-roupa", "organizar-guarda-roupa"],
+    ferramentas: ["tinta", "organizacao"],
+    contexto: [
+      [2, "<p>Depois de resolver a umidade, use o guia de <a href=\"/artigos/como-calcular-tinta.html\">como calcular a tinta para repintar</a> e confira as dicas para <a href=\"/artigos/organizar-guarda-roupa.html\">evitar mofo dentro do guarda-roupa</a>.</p>"],
+      [3, "<p>Para não deixar a manutenção acumular, inclua a ventilação e a limpeza dos cantos úmidos na sua <a href=\"/artigos/rotina-limpeza.html\">rotina de limpeza semanal</a>.</p>"],
+    ],
     faq: [
       ["Água sanitária mata o mofo?", "Ela clareia e ajuda a limpar superfícies não porosas, mas não resolve a umidade que alimenta o fungo. Use diluída conforme o rótulo e nunca misture com outros produtos."],
       ["Vinagre funciona contra mofo?", "O vinagre de álcool é uma opção mais suave para manchas leves. Para áreas grandes ou recorrentes, trate a causa da umidade e considere produtos antimofo específicos."],
@@ -85,6 +91,12 @@ export const artigosNovos = [
         "Couro, veludo e suede",
         "<p>Couro natural pede pano levemente úmido e hidratante específico; evite álcool e vinagre. Veludo deve ser escovado no sentido do pelo com escova macia, com umidade mínima. Suede e camurça sintética costumam aceitar escova própria e pouca água. Em tecidos delicados, a limpeza profissional é a escolha mais segura.</p>",
       ],
+    ],
+    relacionados: ["sofa-perfeito", "tirar-manchas-de-roupa", "rotina-limpeza"],
+    ferramentas: ["organizacao", "reforma"],
+    contexto: [
+      [2, "<p>Muitas dessas técnicas também servem para tecidos de roupa: veja a <a href=\"/artigos/tirar-manchas-de-roupa.html\">tabela de manchas por tipo</a>.</p>"],
+      [3, "<p>Se ainda vai comprar, o guia <a href=\"/artigos/sofa-perfeito.html\">como escolher o sofá</a> ajuda a escolher um tecido fácil de limpar.</p>"],
     ],
     faq: [
       ["Posso usar vinagre no sofá?", "Em alguns tecidos laváveis, uma solução fraca ajuda com odores, mas pode manchar fibras sensíveis e couro. Teste antes ou prefira bicarbonato e detergente neutro."],
@@ -134,6 +146,11 @@ export const artigosNovos = [
         "Como evitar que a pia entupa de novo",
         "<ul><li>Use ralo com peneira e descarte restos de comida no lixo.</li><li>Limpe pratos com papel antes de lavar.</li><li>Guarde óleo usado em garrafa PET fechada e leve a um ponto de coleta.</li><li>Uma vez por semana, despeje água quente com detergente no ralo.</li></ul>",
       ],
+    ],
+    relacionados: ["cozinha-funcional", "organizar-geladeira", "rotina-limpeza"],
+    ferramentas: ["organizacao", "reforma"],
+    contexto: [
+      [4, "<p>Uma <a href=\"/artigos/cozinha-funcional.html\">cozinha bem organizada</a> facilita esse hábito, e a limpeza semanal do ralo pode entrar na sua <a href=\"/artigos/rotina-limpeza.html\">rotina de limpeza</a>.</p>"],
     ],
     faq: [
       ["Sal grosso desentope pia?", "Pode ajudar a raspar resíduos leves junto com água quente, mas não resolve entupimentos sólidos. A limpeza do sifão costuma ser mais eficaz."],
@@ -185,6 +202,12 @@ export const artigosNovos = [
         "<p>Compare a Etiqueta Nacional de Conservação de Energia (ENCE): ela mostra a classe de eficiência e o consumo estimado em kWh por mês. Um aparelho um pouco mais caro, mas eficiente, pode se pagar com a economia ao longo dos anos. Famílias de baixa renda inscritas no CadÚnico podem ter direito à Tarifa Social de Energia Elétrica; consulte sua distribuidora.</p>",
       ],
     ],
+    relacionados: ["quantos-btus-ar-condicionado", "iluminacao-led", "casa-inteligente", "organizar-geladeira"],
+    ferramentas: ["energia", "btu"],
+    contexto: [
+      [2, "<p>Veja também <a href=\"/artigos/organizar-geladeira.html\">como organizar a geladeira</a> para que o ar frio circule melhor.</p>"],
+      [3, "<p>Antes de comprar um aparelho, confira <a href=\"/artigos/quantos-btus-ar-condicionado.html\">quantos BTUs o ambiente precisa</a>; para a iluminação, entenda o <a href=\"/artigos/iluminacao-led.html\">LED quente e frio</a>.</p>"],
+    ],
     faq: [
       ["Tirar aparelhos da tomada economiza?", "Sim, em aparelhos com stand-by ativo (TVs antigas, carregadores, decodificadores). O efeito é menor que o de reduzir o banho ou o ar-condicionado, mas soma ao longo do mês."],
       ["Ar-condicionado inverter gasta menos?", "Em uso contínuo, costuma consumir menos porque ajusta a velocidade do compressor em vez de ligar e desligar. Confira a etiqueta de eficiência do modelo."],
@@ -229,6 +252,12 @@ export const artigosNovos = [
         "Iluminação e organização",
         "<ol start=\"10\"><li>Combine luz geral com arandelas ou fitas de LED quentes (2700 a 3000 K) para a noite.</li><li>Prateleiras altas para livros e objetos usados com menos frequência.</li><li>Ganchos atrás da porta para bolsas e o roupão do dia.</li></ol><p>Mantenha as superfícies com poucos objetos: o quarto parece maior quando o olhar descansa.</p>",
       ],
+    ],
+    relacionados: ["cores-sala-pequena", "japandi", "iluminacao-led", "organizar-guarda-roupa"],
+    ferramentas: ["papel", "paletas", "tinta"],
+    contexto: [
+      [2, "<p>Para escolher a combinação, veja como montar uma <a href=\"/artigos/cores-sala-pequena.html\">paleta de cores para ambientes pequenos</a>; o raciocínio vale para o quarto.</p>"],
+      [3, "<p>Entenda a diferença entre <a href=\"/artigos/iluminacao-led.html\">LED quente e frio</a> e como <a href=\"/artigos/organizar-guarda-roupa.html\">organizar o guarda-roupa</a> para liberar espaço.</p>"],
     ],
     faq: [
       ["Posso usar cor escura em quarto pequeno?", "Pode. Cores escuras criam aconchego, especialmente em uma parede de destaque. Equilibre com boa iluminação e tecidos claros."],
@@ -275,6 +304,12 @@ export const artigosNovos = [
         "<p>Colmeias em gavetas guardam meias, cintos e roupas íntimas. Caixas etiquetadas protegem roupas fora de estação. Para evitar mofo, abra as portas do guarda-roupa por alguns minutos ao dia e use sachês antiumidade. Reserve 10 minutos por semana para devolver peças ao lugar.</p>",
       ],
     ],
+    relacionados: ["organizacao-5s", "decorar-quarto-pequeno", "tirar-manchas-de-roupa"],
+    ferramentas: ["organizacao"],
+    contexto: [
+      [0, "<p>Antes de guardar, trate as peças manchadas com a <a href=\"/artigos/tirar-manchas-de-roupa.html\">tabela de manchas</a>.</p>"],
+      [3, "<p>O mesmo raciocínio do <a href=\"/artigos/organizacao-5s.html\">método 5S</a> vale para o resto da casa; em quartos compactos, veja as <a href=\"/artigos/decorar-quarto-pequeno.html\">ideias para quarto pequeno</a>.</p>"],
+    ],
     faq: [
       ["O que fazer com roupas que não uso, mas gosto?", "Coloque em uma caixa com a data. Se em seis meses você não sentiu falta, considere doar."],
       ["Como guardar roupas de inverno?", "Lave antes, deixe secar bem e guarde em caixas ou sacos de tecido respirável, na parte alta do armário."],
@@ -319,6 +354,12 @@ export const artigosNovos = [
         "Colheita e problemas comuns",
         "<ul><li>Colha as pontas do manjericão antes de florir para manter as folhas macias.</li><li>Corte a cebolinha a alguns centímetros da base: ela rebrota.</li><li>Folhas amareladas costumam indicar excesso de água.</li><li>Pulgões podem ser removidos com jato de água ou solução de sabão neutro bem diluída.</li></ul>",
       ],
+    ],
+    relacionados: ["plantas-para-sala", "varanda-pequena", "biofilia"],
+    ferramentas: ["organizacao"],
+    contexto: [
+      [0, "<p>Sem sol direto? Veja as <a href=\"/artigos/plantas-para-sala.html\">plantas que aceitam meia-sombra</a>.</p>"],
+      [1, "<p>Na varanda, combine os vasos com as ideias de <a href=\"/artigos/varanda-pequena.html\">varanda pequena</a>.</p>"],
     ],
     faq: [
       ["Qual o tempero mais fácil para iniciantes?", "Cebolinha e salsinha são boas para começar porque toleram meia-sombra e rebrotam após o corte."],
@@ -365,6 +406,12 @@ export const artigosNovos = [
         "<p>Deixe a peça de molho em água morna com sabão em pó ou alvejante sem cloro, conforme o rótulo, por algumas horas. Repita se necessário. Golas amareladas respondem bem a uma pasta de bicarbonato com detergente esfregada com escova macia. Seque à sombra e só passe depois de confirmar que a mancha saiu.</p>",
       ],
     ],
+    relacionados: ["como-limpar-sofa", "rotina-limpeza", "organizar-guarda-roupa"],
+    ferramentas: ["organizacao", "energia"],
+    contexto: [
+      [0, "<p>Para manchas em estofados, siga o passo a passo de <a href=\"/artigos/como-limpar-sofa.html\">como limpar sofá de tecido</a>.</p>"],
+      [3, "<p>Roupas limpas e bem secas duram mais quando guardadas do jeito certo: veja <a href=\"/artigos/organizar-guarda-roupa.html\">como organizar o guarda-roupa</a>.</p>"],
+    ],
     faq: [
       ["Bicarbonato tira mancha?", "Ajuda em odores e em manchas leves de suor quando usado em pasta, mas não substitui o tratamento adequado para cada tipo de mancha."],
       ["Posso usar água sanitária em roupa colorida?", "Não. O cloro descolore. Prefira alvejantes sem cloro e teste antes."],
@@ -410,6 +457,11 @@ export const artigosNovos = [
         "<p>Modelos inverter ajustam a rotação do compressor e costumam consumir menos em uso prolongado. Compare a etiqueta de eficiência energética. A instalação deve respeitar a distância entre as unidades, a inclinação do dreno e a capacidade do circuito elétrico. Contrate um profissional qualificado e verifique as regras do condomínio para a unidade externa.</p>",
       ],
     ],
+    relacionados: ["economizar-conta-de-luz", "casa-inteligente", "decorar-quarto-pequeno"],
+    ferramentas: ["btu", "energia"],
+    contexto: [
+      [3, "<p>Para estimar o gasto mensal, use os hábitos e a conta de kWh do guia <a href=\"/artigos/economizar-conta-de-luz.html\">como economizar na conta de luz</a>; tomadas e controles inteligentes aparecem em <a href=\"/artigos/casa-inteligente.html\">casa inteligente acessível</a>.</p>"],
+    ],
     faq: [
       ["Comprar um ar maior gasta mais?", "Não necessariamente, mas um aparelho superdimensionado liga e desliga muito, desumidifica pior e custa mais na compra. O ideal é a capacidade adequada."],
       ["Qual a temperatura mais econômica?", "Em torno de 23 °C costuma equilibrar conforto e consumo. Cada grau a menos aumenta o esforço do aparelho."],
@@ -454,6 +506,12 @@ export const artigosNovos = [
         "Freezer: congelar do jeito certo",
         "<ul><li>Porcione antes de congelar e retire o máximo de ar dos sacos.</li><li>Identifique com nome e data.</li><li>Descongele na geladeira, nunca sobre a pia.</li><li>Não recongele alimentos crus que já foram descongelados.</li></ul>",
       ],
+    ],
+    relacionados: ["cozinha-funcional", "economizar-conta-de-luz", "organizacao-5s"],
+    ferramentas: ["energia", "organizacao"],
+    contexto: [
+      [1, "<p>Uma geladeira organizada também gasta menos: veja os hábitos para <a href=\"/artigos/economizar-conta-de-luz.html\">economizar na conta de luz</a>.</p>"],
+      [2, "<p>Aproveite para revisar armários e gavetas com as ideias de <a href=\"/artigos/cozinha-funcional.html\">cozinha funcional</a>.</p>"],
     ],
     faq: [
       ["Por que não guardar ovos na porta?", "A porta é a área com maior variação de temperatura. Nas prateleiras internas, os ovos ficam mais estáveis."],
