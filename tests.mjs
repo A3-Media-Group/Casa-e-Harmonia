@@ -232,7 +232,7 @@ test("sitemap e páginas indexáveis coincidem, sem priority", () => {
 test("nenhuma URL antiga foi removida", () => {
   const antigas = ["index.html", "sobre.html", "dicas.html", "ferramentas.html", "404.html", ...["japandi", "biofilia", "iluminacao-led", "plantas-para-sala", "cozinha-funcional", "casa-inteligente", "cores-terrosas", "organizacao-5s", "sofa-perfeito", "varanda-pequena", "cores-sala-pequena", "como-calcular-tinta", "rotina-limpeza", "como-tirar-mofo-da-parede", "como-limpar-sofa", "como-desentupir-pia", "economizar-conta-de-luz", "decorar-quarto-pequeno", "organizar-guarda-roupa", "horta-em-apartamento", "tirar-manchas-de-roupa", "quantos-btus-ar-condicionado", "organizar-geladeira"].map((s) => `artigos/${s}.html`)];
   for (const a of antigas) assert.ok(fs.existsSync("dist/" + a) && fs.existsSync(a), "URL removida: " + a);
-  assert.match(fs.readFileSync("dist/.htaccess", "utf8"), /RewriteRule \^ferramentas\\\.html\$ \/ferramentas\/ \[R=301/);
+  assert.match(fs.readFileSync("dist/.htaccess", "utf8"), /RewriteRule \^ferramentas\\\.html\$ https:\/\/casaeharmonia\.com\.br\/ferramentas\/ \[R=301/);
   assert.match(ler("dist/ferramentas.html"), /noindex/);
 });
 

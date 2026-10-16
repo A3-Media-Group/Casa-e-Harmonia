@@ -59,8 +59,8 @@ Google Fonts é a única dependência externa de apresentação. O checklist nã
 
 A fonte é `hospedagem/htaccess`; o build grava `dist/.htaccess` e a cópia da raiz. Ele faz:
 
+- `/index.html` e `/pasta/index.html` → `https://casaeharmonia.com.br/` e `/pasta/` (um único 301, mesmo vindo de `http://` ou `www.`);
 - `http://` e `www.` → `https://casaeharmonia.com.br` (um único 301);
-- `/index.html` e `/pasta/index.html` → `/` e `/pasta/` (301);
 - `ErrorDocument 404 /404.html` (status 404 real);
 - Brotli/gzip, cache de 1 ano para fontes, 30 dias para imagens e 1 ano para CSS/JS (versionados por `?v=<hash>`); HTML sempre revalida;
 - 404 para arquivos de código e dados do repositório (`data/`, `scripts/`, `*.mjs`, `*.md`…).
