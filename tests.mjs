@@ -276,3 +276,20 @@ test("hubs e páginas de ferramenta completas", () => {
   }
   assert.equal(Object.keys(CH.ferramentas).length, 20);
 });
+
+test("dados estruturados: BreadcrumbList nas internas, Article nos guias, WebSite/Organization na home, robots coerente", () => {
+  const tipos = (html) =>
+    [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)].flatMap((m) => {
+      const d = JSON.parse(m[1]);
+      return (d["@graph"] || [d]).map((i) => i["@type"]);
+    });
+  for (const f of indexaveis) {
+    const t = tipos(ler(f));
+    if (urlDe(f) === "/") assert.deepEqual(t.sort(), ["Organization", "WebSite"], f);
+    else assert.ok(t.includes("BreadcrumbList"), `${f}: sem BreadcrumbList`);
+    if (/dist\/artigos\//.test(f)) assert.ok(t.includes("Article"), `${f}: sem Article`);
+    assert.doesNotMatch(ler(f), /noindex|aggregateRating|"review"/, f);
+  }
+  assert.match(fs.readFileSync("dist/robots.txt", "utf8"), new RegExp(`^Sitemap: ${ORIGEM}/sitemap\\.xml$`, "m"));
+  assert.ok(fs.existsSync("dist/sitemap.xml") && !fs.existsSync("dist/sitemap-index.xml"));
+});
