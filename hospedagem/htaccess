@@ -17,12 +17,19 @@ ErrorDocument 404 /404.html
   #    o índice redireciona #tinta, #btu etc. para a página própria de cada ferramenta).
   RewriteRule ^ferramentas\.html$ https://casaeharmonia.com.br/ferramentas/ [R=301,L]
 
-  # 3) http -> https e www -> domínio sem www, em um único 301.
+  # 3) Endereços da versão anterior do site (relatório do Search Console de 16/10/2026) -> página equivalente,
+  #    em um único 301. /feng-shui-bem-estar/ e /ferramentas/quiz-de-estilo/ não têm equivalente e ficam em 404.
+  RewriteRule ^decoracao/?$ https://casaeharmonia.com.br/guias/decoracao-e-cores/ [R=301,L]
+  RewriteRule ^jardinagem/?$ https://casaeharmonia.com.br/guias/plantas-e-natureza/ [R=301,L]
+  RewriteRule ^sobre/?$ https://casaeharmonia.com.br/sobre.html [R=301,L]
+  RewriteRule ^politica-de-(privacidade|cookies)/?$ https://casaeharmonia.com.br/privacidade/ [R=301,L]
+
+  # 4) http -> https e www -> domínio sem www, em um único 301.
   RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://casaeharmonia.com.br%{REQUEST_URI} [R=301,L,NE]
 
-  # 4) Arquivos de código e dados do repositório não são páginas públicas: respondem 404.
+  # 5) Arquivos de código e dados do repositório não são páginas públicas: respondem 404.
   RewriteRule ^(data|scripts|hospedagem|dist|node_modules|\.git)(/|$) - [R=404,L]
   RewriteRule \.(mjs|md|py|lock)$ - [R=404,L]
   RewriteRule ^(package(-lock)?\.json|tests\.mjs|serve\.mjs|build\.mjs|\.gitignore)$ - [R=404,L]

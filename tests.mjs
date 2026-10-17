@@ -293,3 +293,23 @@ test("dados estruturados: BreadcrumbList nas internas, Article nos guias, WebSit
   assert.match(fs.readFileSync("dist/robots.txt", "utf8"), new RegExp(`^Sitemap: ${ORIGEM}/sitemap\\.xml$`, "m"));
   assert.ok(fs.existsSync("dist/sitemap.xml") && !fs.existsSync("dist/sitemap-index.xml"));
 });
+
+test("endereços da versão anterior: 301 para a página equivalente; sem equivalente, 404", () => {
+  const ht = fs.readFileSync("dist/.htaccess", "utf8");
+  const regras = [...ht.matchAll(/^\s*RewriteRule \^(\S+?)\/\?\$ (\S+) \[R=301,L\]$/gm)];
+  const destinoDe = (antigo) => regras.find(([, re]) => new RegExp(`^${re}$`).test(antigo))?.[2];
+  const mapa = {
+    decoracao: "/guias/decoracao-e-cores/",
+    jardinagem: "/guias/plantas-e-natureza/",
+    sobre: "/sobre.html",
+    "politica-de-privacidade": "/privacidade/",
+    "politica-de-cookies": "/privacidade/",
+  };
+  for (const [antigo, novo] of Object.entries(mapa)) {
+    assert.equal(destinoDe(antigo), ORIGEM + novo, antigo);
+    assert.ok(fs.existsSync("dist" + novo + (novo.endsWith("/") ? "index.html" : "")), novo);
+  }
+  for (const antigo of ["feng-shui-bem-estar", "ferramentas/quiz-de-estilo"]) assert.equal(destinoDe(antigo), undefined, antigo);
+  // As regras de URL antiga vêm antes da troca de host, para chegar ao destino em um único salto.
+  assert.ok(ht.indexOf("RewriteRule ^decoracao") < ht.indexOf("RewriteCond %{HTTPS} off"));
+});

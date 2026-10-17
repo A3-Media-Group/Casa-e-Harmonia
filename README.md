@@ -61,6 +61,7 @@ A fonte é `hospedagem/htaccess`; o build grava `dist/.htaccess` e a cópia da r
 
 - `/index.html` e `/pasta/index.html` → `https://casaeharmonia.com.br/` e `/pasta/` (um único 301, mesmo vindo de `http://` ou `www.`);
 - `http://` e `www.` → `https://casaeharmonia.com.br` (um único 301);
+- endereços da versão anterior do site → página equivalente (um único 301): `/decoracao/` → `/guias/decoracao-e-cores/`, `/jardinagem/` → `/guias/plantas-e-natureza/`, `/sobre/` → `/sobre.html`, `/politica-de-privacidade/` e `/politica-de-cookies/` → `/privacidade/`. `/feng-shui-bem-estar/` e `/ferramentas/quiz-de-estilo/` não têm equivalente e respondem 404;
 - `ErrorDocument 404 /404.html` (status 404 real);
 - Brotli/gzip, cache de 1 ano para fontes, 30 dias para imagens e 1 ano para CSS/JS (versionados por `?v=<hash>`); HTML sempre revalida;
 - 404 para arquivos de código e dados do repositório (`data/`, `scripts/`, `*.mjs`, `*.md`…).
