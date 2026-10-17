@@ -59,10 +59,12 @@ Google Fonts é a única dependência externa de apresentação. O checklist nã
 
 A fonte é `hospedagem/htaccess`; o build grava `dist/.htaccess` e a cópia da raiz. Ele faz:
 
+- `/index.html` e `/pasta/index.html` → `https://casaeharmonia.com.br/` e `/pasta/` (um único 301, mesmo vindo de `http://` ou `www.`);
 - `http://` e `www.` → `https://casaeharmonia.com.br` (um único 301);
-- `/index.html` e `/pasta/index.html` → `/` e `/pasta/` (301);
+- endereços da versão anterior do site → página equivalente (um único 301): `/decoracao/` → `/guias/decoracao-e-cores/`, `/jardinagem/` → `/guias/plantas-e-natureza/`, `/sobre/` → `/sobre.html`, `/politica-de-privacidade/` e `/politica-de-cookies/` → `/privacidade/`. `/feng-shui-bem-estar/` e `/ferramentas/quiz-de-estilo/` não têm equivalente e respondem 404;
 - `ErrorDocument 404 /404.html` (status 404 real);
 - Brotli/gzip, cache de 1 ano para fontes, 30 dias para imagens e 1 ano para CSS/JS (versionados por `?v=<hash>`); HTML sempre revalida;
+- 404 para arquivos e pastas ocultos (`.git/`, `.github/`, `.env`, `.gitignore`…), exceto `/.well-known/` (validação de SSL e domínio);
 - 404 para arquivos de código e dados do repositório (`data/`, `scripts/`, `*.mjs`, `*.md`…).
 
 Teste depois de publicar (as quatro variantes devem terminar em `https://casaeharmonia.com.br/` com um único 301):
@@ -77,6 +79,22 @@ curl -sI  https://casaeharmonia.com.br/nao-existe            | head -1          
 curl -sI  -H 'Accept-Encoding: br,gzip' https://casaeharmonia.com.br/styles.css | grep -iE 'content-encoding|cache-control'
 curl -sI  https://casaeharmonia.com.br/build.mjs             | head -1                         # 404
 ```
+
+## Publicação: trocar o site atual por este build
+
+O site que está no ar hoje não é o build deste repositório: ele publica `sitemap-index.xml`, `/decoracao/`, `/politica-de-cookies/` e outros endereços que este código não gera. Para trocá-lo:
+
+1. **Pacote.** Em GitHub → Actions → "Build e testes", abra a última execução verde em `main` e baixe o artefato `site-dist` (zip com o conteúdo de `dist/`, incluindo `.htaccess`). Sem o GitHub: `npm run build` e compacte o conteúdo de `dist/`, não a pasta.
+2. **Onde o site está.** No hPanel, em Sites, confira se `casaeharmonia.com.br` é uma hospedagem web com `public_html`. Se ele foi feito no Construtor de Sites, no WordPress ou em outro serviço (Vercel, Netlify…), o domínio precisa passar a apontar para a hospedagem web antes do passo 4.
+3. **Cópia de segurança.** No Gerenciador de Arquivos, compacte todo o conteúdo de `public_html` (com arquivos ocultos) e baixe o zip. Não apague nada antes de ter essa cópia.
+4. **Troca.** Mova o conteúdo antigo de `public_html` para uma pasta fora dela (por exemplo `~/site-antigo/`), envie o zip do passo 1 para `public_html` e extraia. `index.html`, `.htaccess`, `sitemap.xml` e `robots.txt` devem ficar direto em `public_html`, não em uma subpasta. Ative "mostrar arquivos ocultos" para conferir o `.htaccess`.
+5. **SSL e cache.** Em Segurança → SSL, o certificado deve cobrir `casaeharmonia.com.br` e `www.casaeharmonia.com.br`. Limpe o cache da CDN/LiteSpeed da Hostinger, se estiver ativo.
+6. **Conferência.** Rode os comandos `curl` da seção anterior e também:
+   `curl -sI https://casaeharmonia.com.br/decoracao/ | grep -iE '^(HTTP|location)'` (301 → `/guias/decoracao-e-cores/`) e
+   `curl -sI https://casaeharmonia.com.br/sitemap.xml | head -1` (200).
+7. **Search Console.** Remova o sitemap `sitemap-index.xml`, envie `https://casaeharmonia.com.br/sitemap.xml` e peça a indexação da home.
+
+Alternativa ao passo 4: em Avançado → Git no hPanel, implante a branch `main` deste repositório em `public_html`. A raiz do repositório já traz as cópias geradas pelo build, e o `.htaccess` responde 404 para os arquivos de código e dados. Atualizações futuras passam a ser um novo deploy de `main`.
 
 ## Imagens
 

@@ -1,0 +1,35 @@
+# Gera e testa o site. Não publica nada: o pacote "site-dist" (conteúdo de dist/, com o .htaccess)
+# fica disponível para download na execução e é enviado à hospedagem manualmente (ver README, "Publicação").
+name: Build e testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run build
+        env:
+          SITE_URL: https://casaeharmonia.com.br
+      - run: npm test
+      # O build também grava as cópias da raiz; se elas divergirem do que está no repositório, alguém esqueceu de rodar o build.
+      - name: Cópias da raiz atualizadas
+        run: git diff --exit-code -- . ':(exclude)dist'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: dist/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30

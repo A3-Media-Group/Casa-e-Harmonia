@@ -232,7 +232,7 @@ test("sitemap e páginas indexáveis coincidem, sem priority", () => {
 test("nenhuma URL antiga foi removida", () => {
   const antigas = ["index.html", "sobre.html", "dicas.html", "ferramentas.html", "404.html", ...["japandi", "biofilia", "iluminacao-led", "plantas-para-sala", "cozinha-funcional", "casa-inteligente", "cores-terrosas", "organizacao-5s", "sofa-perfeito", "varanda-pequena", "cores-sala-pequena", "como-calcular-tinta", "rotina-limpeza", "como-tirar-mofo-da-parede", "como-limpar-sofa", "como-desentupir-pia", "economizar-conta-de-luz", "decorar-quarto-pequeno", "organizar-guarda-roupa", "horta-em-apartamento", "tirar-manchas-de-roupa", "quantos-btus-ar-condicionado", "organizar-geladeira"].map((s) => `artigos/${s}.html`)];
   for (const a of antigas) assert.ok(fs.existsSync("dist/" + a) && fs.existsSync(a), "URL removida: " + a);
-  assert.match(fs.readFileSync("dist/.htaccess", "utf8"), /RewriteRule \^ferramentas\\\.html\$ \/ferramentas\/ \[R=301/);
+  assert.match(fs.readFileSync("dist/.htaccess", "utf8"), /RewriteRule \^ferramentas\\\.html\$ https:\/\/casaeharmonia\.com\.br\/ferramentas\/ \[R=301/);
   assert.match(ler("dist/ferramentas.html"), /noindex/);
 });
 
@@ -275,4 +275,50 @@ test("hubs e páginas de ferramenta completas", () => {
     assert.doesNotMatch(html, /aggregateRating|"review"/, slug);
   }
   assert.equal(Object.keys(CH.ferramentas).length, 20);
+});
+
+test("dados estruturados: BreadcrumbList nas internas, Article nos guias, WebSite/Organization na home, robots coerente", () => {
+  const tipos = (html) =>
+    [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)].flatMap((m) => {
+      const d = JSON.parse(m[1]);
+      return (d["@graph"] || [d]).map((i) => i["@type"]);
+    });
+  for (const f of indexaveis) {
+    const t = tipos(ler(f));
+    if (urlDe(f) === "/") assert.deepEqual(t.sort(), ["Organization", "WebSite"], f);
+    else assert.ok(t.includes("BreadcrumbList"), `${f}: sem BreadcrumbList`);
+    if (/dist\/artigos\//.test(f)) assert.ok(t.includes("Article"), `${f}: sem Article`);
+    assert.doesNotMatch(ler(f), /noindex|aggregateRating|"review"/, f);
+  }
+  assert.match(fs.readFileSync("dist/robots.txt", "utf8"), new RegExp(`^Sitemap: ${ORIGEM}/sitemap\\.xml$`, "m"));
+  assert.ok(fs.existsSync("dist/sitemap.xml") && !fs.existsSync("dist/sitemap-index.xml"));
+});
+
+test("endereços da versão anterior: 301 para a página equivalente; sem equivalente, 404", () => {
+  const ht = fs.readFileSync("dist/.htaccess", "utf8");
+  const regras = [...ht.matchAll(/^\s*RewriteRule \^(\S+?)\/\?\$ (\S+) \[R=301,L\]$/gm)];
+  const destinoDe = (antigo) => regras.find(([, re]) => new RegExp(`^${re}$`).test(antigo))?.[2];
+  const mapa = {
+    decoracao: "/guias/decoracao-e-cores/",
+    jardinagem: "/guias/plantas-e-natureza/",
+    sobre: "/sobre.html",
+    "politica-de-privacidade": "/privacidade/",
+    "politica-de-cookies": "/privacidade/",
+  };
+  for (const [antigo, novo] of Object.entries(mapa)) {
+    assert.equal(destinoDe(antigo), ORIGEM + novo, antigo);
+    assert.ok(fs.existsSync("dist" + novo + (novo.endsWith("/") ? "index.html" : "")), novo);
+  }
+  for (const antigo of ["feng-shui-bem-estar", "ferramentas/quiz-de-estilo"]) assert.equal(destinoDe(antigo), undefined, antigo);
+  // As regras de URL antiga vêm antes da troca de host, para chegar ao destino em um único salto.
+  assert.ok(ht.indexOf("RewriteRule ^decoracao") < ht.indexOf("RewriteCond %{HTTPS} off"));
+});
+
+test("arquivos ocultos respondem 404, exceto /.well-known/", () => {
+  const ht = fs.readFileSync("dist/.htaccess", "utf8");
+  const re = ht.match(/^\s*RewriteRule (\(\^\|\/\)\\\.\S+) - \[R=404,L\]$/m);
+  assert.ok(re, "regra de arquivos ocultos ausente");
+  const bloqueia = (url) => new RegExp(re[1]).test(url);
+  for (const u of [".git/config", ".git/HEAD", ".github/workflows/build.yml", ".gitignore", ".env", "assets/.DS_Store", "ferramentas/.cache/x"]) assert.ok(bloqueia(u), u);
+  for (const u of [".well-known/acme-challenge/abc", ".well-known/security.txt", "", "index.html", "assets/logo.webp", "ferramentas/calculadora-de-tinta/"]) assert.ok(!bloqueia(u), u);
 });
