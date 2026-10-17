@@ -30,7 +30,7 @@ ErrorDocument 404 /404.html
   RewriteRule ^ https://casaeharmonia.com.br%{REQUEST_URI} [R=301,L,NE]
 
   # 5) Arquivos de código e dados do repositório não são páginas públicas: respondem 404.
-  RewriteRule ^(data|scripts|hospedagem|dist|node_modules|\.git)(/|$) - [R=404,L]
+  RewriteRule ^(data|scripts|hospedagem|dist|node_modules|\.git|\.github)(/|$) - [R=404,L]
   RewriteRule \.(mjs|md|py|lock)$ - [R=404,L]
   RewriteRule ^(package(-lock)?\.json|tests\.mjs|serve\.mjs|build\.mjs|\.gitignore)$ - [R=404,L]
 </IfModule>
