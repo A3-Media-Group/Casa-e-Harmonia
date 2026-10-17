@@ -29,7 +29,11 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://casaeharmonia.com.br%{REQUEST_URI} [R=301,L,NE]
 
-  # 5) Arquivos de código e dados do repositório não são páginas públicas: respondem 404.
+  # 5) Arquivos e pastas ocultos (.git/, .github/, .gitignore, .env…) respondem 404, exceto /.well-known/
+  #    (validação de SSL e de domínio).
+  RewriteRule (^|/)\.(?!well-known(/|$)) - [R=404,L]
+
+  # 6) Arquivos de código e dados do repositório não são páginas públicas: respondem 404.
   RewriteRule ^(data|scripts|hospedagem|dist|node_modules|\.git|\.github)(/|$) - [R=404,L]
   RewriteRule \.(mjs|md|py|lock)$ - [R=404,L]
   RewriteRule ^(package(-lock)?\.json|tests\.mjs|serve\.mjs|build\.mjs|\.gitignore)$ - [R=404,L]

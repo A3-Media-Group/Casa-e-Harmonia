@@ -313,3 +313,12 @@ test("endereços da versão anterior: 301 para a página equivalente; sem equiva
   // As regras de URL antiga vêm antes da troca de host, para chegar ao destino em um único salto.
   assert.ok(ht.indexOf("RewriteRule ^decoracao") < ht.indexOf("RewriteCond %{HTTPS} off"));
 });
+
+test("arquivos ocultos respondem 404, exceto /.well-known/", () => {
+  const ht = fs.readFileSync("dist/.htaccess", "utf8");
+  const re = ht.match(/^\s*RewriteRule (\(\^\|\/\)\\\.\S+) - \[R=404,L\]$/m);
+  assert.ok(re, "regra de arquivos ocultos ausente");
+  const bloqueia = (url) => new RegExp(re[1]).test(url);
+  for (const u of [".git/config", ".git/HEAD", ".github/workflows/build.yml", ".gitignore", ".env", "assets/.DS_Store", "ferramentas/.cache/x"]) assert.ok(bloqueia(u), u);
+  for (const u of [".well-known/acme-challenge/abc", ".well-known/security.txt", "", "index.html", "assets/logo.webp", "ferramentas/calculadora-de-tinta/"]) assert.ok(!bloqueia(u), u);
+});
